@@ -133,7 +133,6 @@ public class LogInForm extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void etunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etunameActionPerformed

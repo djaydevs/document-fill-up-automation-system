@@ -28,10 +28,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         jpBG = new javax.swing.JPanel();
         jpTopnavbg = new javax.swing.JPanel();
-        lblResidentsData3 = new javax.swing.JLabel();
-        lblResidentsData2 = new javax.swing.JLabel();
+        lblDashboard = new javax.swing.JLabel();
         lblResidentsData = new javax.swing.JLabel();
-        lblResidentsData1 = new javax.swing.JLabel();
+        lblResidentsDataTitle = new javax.swing.JLabel();
+        lblLogout = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         lblNavbg = new javax.swing.JLabel();
         registerborder = new javax.swing.JPanel();
@@ -84,25 +84,25 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jpTopnavbg.setPreferredSize(new java.awt.Dimension(1440, 90));
         jpTopnavbg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblResidentsData3.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
-        lblResidentsData3.setForeground(new java.awt.Color(255, 255, 255));
-        lblResidentsData3.setText("Dashboard");
-        jpTopnavbg.add(lblResidentsData3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
+        lblDashboard.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        lblDashboard.setText("Dashboard");
+        jpTopnavbg.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
 
-        lblResidentsData2.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
-        lblResidentsData2.setForeground(new java.awt.Color(255, 255, 255));
-        lblResidentsData2.setText("Resident Data");
-        jpTopnavbg.add(lblResidentsData2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
-
-        lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
+        lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
-        lblResidentsData.setText("| Residents Data");
-        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+        lblResidentsData.setText("Residents Data");
+        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
 
-        lblResidentsData1.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
-        lblResidentsData1.setForeground(new java.awt.Color(255, 255, 255));
-        lblResidentsData1.setText("Logout");
-        jpTopnavbg.add(lblResidentsData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 30, -1, -1));
+        lblResidentsDataTitle.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
+        lblResidentsDataTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsDataTitle.setText("| Residents Data");
+        jpTopnavbg.add(lblResidentsDataTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+
+        lblLogout.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblLogout.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogout.setText("Logout");
+        jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 30, -1, -1));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jpTopnavbg.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -369,6 +369,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblDateofbirth;
     private javax.swing.JLabel lblDefaultimage;
     private javax.swing.JLabel lblFirstname;
@@ -377,13 +378,12 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblInitial;
     private javax.swing.JLabel lblLastname;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblNavbg;
     private javax.swing.JLabel lblPlaceofbirth;
     private javax.swing.JLabel lblRegistration;
     private javax.swing.JLabel lblResidentsData;
-    private javax.swing.JLabel lblResidentsData1;
-    private javax.swing.JLabel lblResidentsData2;
-    private javax.swing.JLabel lblResidentsData3;
+    private javax.swing.JLabel lblResidentsDataTitle;
     private javax.swing.JLabel lblStreet;
     private javax.swing.JLabel lblYearstay;
     private javax.swing.JRadioButton rbtnFemale;

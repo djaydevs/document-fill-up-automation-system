@@ -26,20 +26,297 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpBG = new javax.swing.JPanel();
+        jpTopnavbg = new javax.swing.JPanel();
+        lblResidentsData3 = new javax.swing.JLabel();
+        lblResidentsData2 = new javax.swing.JLabel();
+        lblResidentsData = new javax.swing.JLabel();
+        lblResidentsData1 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        lblNavbg = new javax.swing.JLabel();
+        registerborder = new javax.swing.JPanel();
+        lblRegistration = new javax.swing.JLabel();
+        lblLastname = new javax.swing.JLabel();
+        txtLname = new javax.swing.JTextField();
+        lblFirstname = new javax.swing.JLabel();
+        txtFname = new javax.swing.JTextField();
+        lblInitial = new javax.swing.JLabel();
+        txtInitial = new javax.swing.JTextField();
+        lblAddress = new javax.swing.JLabel();
+        lblHousenum = new javax.swing.JLabel();
+        txtHousenum = new javax.swing.JTextField();
+        lblStreet = new javax.swing.JLabel();
+        txtStreet = new javax.swing.JTextField();
+        lblGender = new javax.swing.JLabel();
+        rbtnMale = new javax.swing.JRadioButton();
+        rbtnFemale = new javax.swing.JRadioButton();
+        lblAge = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
+        lblYearstay = new javax.swing.JLabel();
+        txtYearstay = new javax.swing.JTextField();
+        lblDateofbirth = new javax.swing.JLabel();
+        txtDateofbirth = new javax.swing.JTextField();
+        lblPlaceofbirth = new javax.swing.JLabel();
+        txtPlaceofbirth = new javax.swing.JTextField();
+        lblContact = new javax.swing.JLabel();
+        txtContact = new javax.swing.JTextField();
+        lblDefaultimage = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        tableborder = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        residentsTable = new javax.swing.JTable();
+        txtSearch = new javax.swing.JTextField();
+        lastname = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jpFooter = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jpBG.setBackground(new java.awt.Color(255, 255, 255));
+        jpBG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jpTopnavbg.setBackground(new java.awt.Color(255, 255, 255));
+        jpTopnavbg.setPreferredSize(new java.awt.Dimension(1440, 90));
+        jpTopnavbg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblResidentsData3.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblResidentsData3.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData3.setText("Dashboard");
+        jpTopnavbg.add(lblResidentsData3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
+
+        lblResidentsData2.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblResidentsData2.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData2.setText("Resident Data");
+        jpTopnavbg.add(lblResidentsData2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
+
+        lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
+        lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData.setText("| Residents Data");
+        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+
+        lblResidentsData1.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblResidentsData1.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData1.setText("Logout");
+        jpTopnavbg.add(lblResidentsData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 30, -1, -1));
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
+        jpTopnavbg.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        lblNavbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavbg.png"))); // NOI18N
+        jpTopnavbg.add(lblNavbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jpBG.add(jpTopnavbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 90));
+
+        registerborder.setBackground(new java.awt.Color(255, 255, 255));
+        registerborder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        registerborder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblRegistration.setFont(new java.awt.Font("Rockwell", 0, 30)); // NOI18N
+        lblRegistration.setForeground(new java.awt.Color(0, 102, 153));
+        lblRegistration.setText("Registration Form");
+        registerborder.add(lblRegistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        lblLastname.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblLastname.setText("Last Name");
+        registerborder.add(lblLastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        txtLname.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtLname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 190, 30));
+
+        lblFirstname.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblFirstname.setText("First Name");
+        registerborder.add(lblFirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        txtFname.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtFname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 190, 30));
+
+        lblInitial.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblInitial.setText("Middle Initial");
+        registerborder.add(lblInitial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+        txtInitial.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtInitial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtInitial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 190, 30));
+
+        lblAddress.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblAddress.setText("Address");
+        registerborder.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        lblHousenum.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblHousenum.setText("House #");
+        registerborder.add(lblHousenum, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+
+        txtHousenum.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtHousenum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtHousenum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 100, 30));
+
+        lblStreet.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblStreet.setText("Street");
+        registerborder.add(lblStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+
+        txtStreet.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtStreet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 100, 30));
+
+        lblGender.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblGender.setText("Gender");
+        registerborder.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+
+        rbtnMale.setBackground(new java.awt.Color(255, 255, 255));
+        rbtnMale.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        rbtnMale.setText("Male");
+        registerborder.add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
+
+        rbtnFemale.setBackground(new java.awt.Color(255, 255, 255));
+        rbtnFemale.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        rbtnFemale.setText("Female");
+        registerborder.add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
+
+        lblAge.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblAge.setText("Age");
+        registerborder.add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
+
+        txtAge.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtAge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 190, 30));
+
+        lblYearstay.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblYearstay.setText("Years of Stay");
+        registerborder.add(lblYearstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
+
+        txtYearstay.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtYearstay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtYearstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 190, 30));
+
+        lblDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblDateofbirth.setText("Date of birth");
+        registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
+
+        txtDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtDateofbirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 190, 30));
+
+        lblPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblPlaceofbirth.setText("Place of birth");
+        registerborder.add(lblPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, -1, -1));
+
+        txtPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtPlaceofbirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 190, 30));
+
+        lblContact.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lblContact.setText("Contact #");
+        registerborder.add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, -1, -1));
+
+        txtContact.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtContact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 190, 30));
+
+        lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
+        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(13, 76, 146));
+        jButton2.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Clear");
+        registerborder.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
+
+        jButton3.setBackground(new java.awt.Color(13, 76, 146));
+        jButton3.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Upload Image");
+        registerborder.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 140, 40));
+
+        jButton4.setBackground(new java.awt.Color(13, 76, 146));
+        jButton4.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Add");
+        registerborder.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
+
+        jButton5.setBackground(new java.awt.Color(13, 76, 146));
+        jButton5.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Update");
+        registerborder.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
+
+        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 630, 690));
+
+        tableborder.setBackground(new java.awt.Color(255, 255, 255));
+        tableborder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        tableborder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        residentsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(residentsTable);
+
+        tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 720, 530));
+
+        txtSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, 170, 30));
+
+        lastname.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
+        lastname.setText("Search");
+        tableborder.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(13, 76, 146));
+        jButton1.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Delete");
+        tableborder.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
+
+        jButton6.setBackground(new java.awt.Color(13, 76, 146));
+        jButton6.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Generate I.D");
+        tableborder.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
+
+        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 740, 690));
+
+        jpFooter.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jpFooterLayout = new javax.swing.GroupLayout(jpFooter);
+        jpFooter.setLayout(jpFooterLayout);
+        jpFooterLayout.setHorizontalGroup(
+            jpFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1380, Short.MAX_VALUE)
+        );
+        jpFooterLayout.setVerticalGroup(
+            jpFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        jpBG.add(jpFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 1380, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jpBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jpBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -78,5 +355,52 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpBG;
+    private javax.swing.JPanel jpFooter;
+    private javax.swing.JPanel jpTopnavbg;
+    private javax.swing.JLabel lastname;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblDateofbirth;
+    private javax.swing.JLabel lblDefaultimage;
+    private javax.swing.JLabel lblFirstname;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblHousenum;
+    private javax.swing.JLabel lblInitial;
+    private javax.swing.JLabel lblLastname;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblNavbg;
+    private javax.swing.JLabel lblPlaceofbirth;
+    private javax.swing.JLabel lblRegistration;
+    private javax.swing.JLabel lblResidentsData;
+    private javax.swing.JLabel lblResidentsData1;
+    private javax.swing.JLabel lblResidentsData2;
+    private javax.swing.JLabel lblResidentsData3;
+    private javax.swing.JLabel lblStreet;
+    private javax.swing.JLabel lblYearstay;
+    private javax.swing.JRadioButton rbtnFemale;
+    private javax.swing.JRadioButton rbtnMale;
+    private javax.swing.JPanel registerborder;
+    private javax.swing.JTable residentsTable;
+    private javax.swing.JPanel tableborder;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtDateofbirth;
+    private javax.swing.JTextField txtFname;
+    private javax.swing.JTextField txtHousenum;
+    private javax.swing.JTextField txtInitial;
+    private javax.swing.JTextField txtLname;
+    private javax.swing.JTextField txtPlaceofbirth;
+    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtStreet;
+    private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables
 }

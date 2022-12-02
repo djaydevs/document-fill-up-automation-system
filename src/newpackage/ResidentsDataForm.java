@@ -61,17 +61,17 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblContact = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
         lblDefaultimage = new javax.swing.JLabel();
-        btnUpload = new com.k33ptoo.components.KButton();
-        btnClear = new com.k33ptoo.components.KButton();
-        btnAdd = new com.k33ptoo.components.KButton();
-        btnUpdate = new com.k33ptoo.components.KButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         tableborder = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         residentsTable = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         lastname = new javax.swing.JLabel();
-        btnGenerate = new com.k33ptoo.components.KButton();
-        btnDelete = new com.k33ptoo.components.KButton();
+        jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jpFooter = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -220,75 +220,31 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 190, 30));
 
         lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
-        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
+        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
-        btnUpload.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        btnUpload.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnUpload.setkBorderRadius(25);
-        btnUpload.setkEndColor(new java.awt.Color(140, 185, 225));
-        btnUpload.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnUpload.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnUpload.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnUpload.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnUpload.setkStartColor(new java.awt.Color(13, 76, 146));
-        btnUpload.setLabel("Upload Image");
-        btnUpload.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUploadActionPerformed(evt);
-            }
-        });
-        registerborder.add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 140, 40));
+        jButton2.setBackground(new java.awt.Color(13, 76, 146));
+        jButton2.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Clear");
+        registerborder.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
 
-        btnClear.setText("Clear");
-        btnClear.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        btnClear.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnClear.setkBorderRadius(25);
-        btnClear.setkEndColor(new java.awt.Color(140, 185, 225));
-        btnClear.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnClear.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnClear.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnClear.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnClear.setkStartColor(new java.awt.Color(13, 76, 146));
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-        registerborder.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
+        jButton3.setBackground(new java.awt.Color(13, 76, 146));
+        jButton3.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Upload Image");
+        registerborder.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 140, 40));
 
-        btnAdd.setText("Add");
-        btnAdd.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        btnAdd.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnAdd.setkBorderRadius(25);
-        btnAdd.setkEndColor(new java.awt.Color(140, 185, 225));
-        btnAdd.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnAdd.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnAdd.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnAdd.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnAdd.setkStartColor(new java.awt.Color(13, 76, 146));
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
+        jButton4.setBackground(new java.awt.Color(13, 76, 146));
+        jButton4.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Add");
+        registerborder.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
 
-        btnUpdate.setText("Update");
-        btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        btnUpdate.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnUpdate.setkBorderRadius(25);
-        btnUpdate.setkEndColor(new java.awt.Color(140, 185, 225));
-        btnUpdate.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnUpdate.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnUpdate.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnUpdate.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnUpdate.setkStartColor(new java.awt.Color(13, 76, 146));
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
+        jButton5.setBackground(new java.awt.Color(13, 76, 146));
+        jButton5.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Update");
+        registerborder.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
 
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 630, 690));
 
@@ -319,39 +275,17 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lastname.setText("Search");
         tableborder.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
-        btnGenerate.setText("Generate I.D");
-        btnGenerate.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        btnGenerate.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnGenerate.setkBorderRadius(25);
-        btnGenerate.setkEndColor(new java.awt.Color(140, 185, 225));
-        btnGenerate.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnGenerate.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnGenerate.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnGenerate.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnGenerate.setkStartColor(new java.awt.Color(13, 76, 146));
-        btnGenerate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerateActionPerformed(evt);
-            }
-        });
-        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
+        jButton1.setBackground(new java.awt.Color(13, 76, 146));
+        jButton1.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Delete");
+        tableborder.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
 
-        btnDelete.setText("Delete");
-        btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        btnDelete.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnDelete.setkBorderRadius(25);
-        btnDelete.setkEndColor(new java.awt.Color(140, 185, 225));
-        btnDelete.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnDelete.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnDelete.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnDelete.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnDelete.setkStartColor(new java.awt.Color(13, 76, 146));
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
+        jButton6.setBackground(new java.awt.Color(13, 76, 146));
+        jButton6.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Generate I.D");
+        tableborder.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
 
         jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 740, 690));
 
@@ -384,30 +318,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUploadActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClearActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGenerateActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,12 +355,12 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.k33ptoo.components.KButton btnAdd;
-    private com.k33ptoo.components.KButton btnClear;
-    private com.k33ptoo.components.KButton btnDelete;
-    private com.k33ptoo.components.KButton btnGenerate;
-    private com.k33ptoo.components.KButton btnUpdate;
-    private com.k33ptoo.components.KButton btnUpload;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBG;
     private javax.swing.JPanel jpFooter;

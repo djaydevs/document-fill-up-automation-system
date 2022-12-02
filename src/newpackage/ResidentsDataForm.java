@@ -28,8 +28,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         jpBG = new javax.swing.JPanel();
         jpTopnavbg = new javax.swing.JPanel();
-        lblResidentsData1 = new javax.swing.JLabel();
+        lblResidentsData3 = new javax.swing.JLabel();
+        lblResidentsData2 = new javax.swing.JLabel();
         lblResidentsData = new javax.swing.JLabel();
+        lblResidentsData1 = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         lblNavbg = new javax.swing.JLabel();
         registerborder = new javax.swing.JPanel();
@@ -71,7 +73,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnGenerate = new com.k33ptoo.components.KButton();
         btnDelete = new com.k33ptoo.components.KButton();
         jpFooter = new javax.swing.JPanel();
-        btnBack = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -83,15 +84,25 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jpTopnavbg.setPreferredSize(new java.awt.Dimension(1440, 90));
         jpTopnavbg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblResidentsData1.setFont(new java.awt.Font("Microsoft YaHei", 1, 30)); // NOI18N
-        lblResidentsData1.setForeground(new java.awt.Color(255, 255, 255));
-        lblResidentsData1.setText("Logout");
-        jpTopnavbg.add(lblResidentsData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 20, -1, -1));
+        lblResidentsData3.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblResidentsData3.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData3.setText("Dashboard");
+        jpTopnavbg.add(lblResidentsData3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
+
+        lblResidentsData2.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblResidentsData2.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData2.setText("Resident Data");
+        jpTopnavbg.add(lblResidentsData2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
 
         lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setText("| Residents Data");
         jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+
+        lblResidentsData1.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lblResidentsData1.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData1.setText("Logout");
+        jpTopnavbg.add(lblResidentsData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 30, -1, -1));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jpTopnavbg.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -208,7 +219,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         txtContact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
         registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 190, 30));
 
-        lblDefaultimage.setIcon(new javax.swing.ImageIcon("C:\\Users\\Reymart\\Desktop\\assets\\defaultimage.png")); // NOI18N
+        lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
         registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
 
         btnUpload.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
@@ -346,40 +357,18 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         jpFooter.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnBack.setText("Back");
-        btnBack.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        btnBack.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnBack.setkBorderRadius(25);
-        btnBack.setkEndColor(new java.awt.Color(140, 185, 225));
-        btnBack.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnBack.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnBack.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnBack.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnBack.setkStartColor(new java.awt.Color(13, 76, 146));
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jpFooterLayout = new javax.swing.GroupLayout(jpFooter);
         jpFooter.setLayout(jpFooterLayout);
         jpFooterLayout.setHorizontalGroup(
             jpFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpFooterLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1201, Short.MAX_VALUE))
+            .addGap(0, 1380, Short.MAX_VALUE)
         );
         jpFooterLayout.setVerticalGroup(
             jpFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFooterLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jpBG.add(jpFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 1380, 70));
+        jpBG.add(jpFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 1380, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -395,10 +384,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
@@ -461,7 +446,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton btnAdd;
-    private com.k33ptoo.components.KButton btnBack;
     private com.k33ptoo.components.KButton btnClear;
     private com.k33ptoo.components.KButton btnDelete;
     private com.k33ptoo.components.KButton btnGenerate;
@@ -488,6 +472,8 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblRegistration;
     private javax.swing.JLabel lblResidentsData;
     private javax.swing.JLabel lblResidentsData1;
+    private javax.swing.JLabel lblResidentsData2;
+    private javax.swing.JLabel lblResidentsData3;
     private javax.swing.JLabel lblStreet;
     private javax.swing.JLabel lblYearstay;
     private javax.swing.JRadioButton rbtnFemale;

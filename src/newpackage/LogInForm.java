@@ -28,8 +28,8 @@ public class LogInForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnlogin = new javax.swing.JButton();
         lbforgotpass = new javax.swing.JLabel();
-        btnlogin = new com.k33ptoo.components.KButton();
         etpass = new javax.swing.JTextField();
         etuname = new javax.swing.JTextField();
         line = new javax.swing.JLabel();
@@ -49,27 +49,21 @@ public class LogInForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbforgotpass.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
-        lbforgotpass.setForeground(new java.awt.Color(104, 185, 225));
-        lbforgotpass.setText("<html><p><u>Forgot Password?</u></p></html>");
-        jPanel1.add(lbforgotpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 850, -1, -1));
-
-        btnlogin.setText("LOG IN");
+        btnlogin.setBackground(new java.awt.Color(13, 76, 146));
         btnlogin.setFont(new java.awt.Font("Microsoft YaHei", 1, 30)); // NOI18N
-        btnlogin.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        btnlogin.setkBorderRadius(70);
-        btnlogin.setkEndColor(new java.awt.Color(104, 185, 225));
-        btnlogin.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        btnlogin.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        btnlogin.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        btnlogin.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        btnlogin.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnlogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnlogin.setLabel("LOG IN");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
             }
         });
         jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1134, 624, 237, 73));
+
+        lbforgotpass.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        lbforgotpass.setForeground(new java.awt.Color(104, 185, 225));
+        lbforgotpass.setText("<html><p><u>Forgot Password?</u></p></html>");
+        jPanel1.add(lbforgotpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 850, -1, -1));
 
         etpass.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         etpass.setBorder(null);
@@ -141,13 +135,13 @@ public class LogInForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnloginActionPerformed
-
     private void etunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etunameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_etunameActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,7 +179,7 @@ public class LogInForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.k33ptoo.components.KButton btnlogin;
+    private javax.swing.JButton btnlogin;
     private javax.swing.JTextField etpass;
     private javax.swing.JTextField etuname;
     private javax.swing.JLabel icpass;

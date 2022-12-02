@@ -59,19 +59,19 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblContact = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
         lblDefaultimage = new javax.swing.JLabel();
-        kButton2 = new com.k33ptoo.components.KButton();
-        kButton3 = new com.k33ptoo.components.KButton();
-        kButton4 = new com.k33ptoo.components.KButton();
-        kButton5 = new com.k33ptoo.components.KButton();
+        btnUpload = new com.k33ptoo.components.KButton();
+        btnClear = new com.k33ptoo.components.KButton();
+        btnAdd = new com.k33ptoo.components.KButton();
+        btnUpdate = new com.k33ptoo.components.KButton();
         tableborder = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         residentsTable = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         lastname = new javax.swing.JLabel();
-        kButton6 = new com.k33ptoo.components.KButton();
-        kButton7 = new com.k33ptoo.components.KButton();
+        btnGenerate = new com.k33ptoo.components.KButton();
+        btnDelete = new com.k33ptoo.components.KButton();
         jpFooter = new javax.swing.JPanel();
-        kButton1 = new com.k33ptoo.components.KButton();
+        btnBack = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -211,73 +211,73 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblDefaultimage.setIcon(new javax.swing.ImageIcon("C:\\Users\\Reymart\\Desktop\\assets\\defaultimage.png")); // NOI18N
         registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
 
-        kButton2.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        kButton2.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton2.setkBorderRadius(25);
-        kButton2.setkEndColor(new java.awt.Color(140, 185, 225));
-        kButton2.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        kButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton2.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        kButton2.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton2.setkStartColor(new java.awt.Color(13, 76, 146));
-        kButton2.setLabel("Upload Image");
-        kButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpload.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        btnUpload.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        btnUpload.setkBorderRadius(25);
+        btnUpload.setkEndColor(new java.awt.Color(140, 185, 225));
+        btnUpload.setkHoverEndColor(new java.awt.Color(13, 76, 146));
+        btnUpload.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnUpload.setkHoverStartColor(new java.awt.Color(13, 76, 146));
+        btnUpload.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnUpload.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnUpload.setLabel("Upload Image");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton2ActionPerformed(evt);
+                btnUploadActionPerformed(evt);
             }
         });
-        registerborder.add(kButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 140, 40));
+        registerborder.add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 140, 40));
 
-        kButton3.setText("Clear");
-        kButton3.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        kButton3.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton3.setkBorderRadius(25);
-        kButton3.setkEndColor(new java.awt.Color(140, 185, 225));
-        kButton3.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        kButton3.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton3.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        kButton3.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton3.setkStartColor(new java.awt.Color(13, 76, 146));
-        kButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnClear.setText("Clear");
+        btnClear.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        btnClear.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        btnClear.setkBorderRadius(25);
+        btnClear.setkEndColor(new java.awt.Color(140, 185, 225));
+        btnClear.setkHoverEndColor(new java.awt.Color(13, 76, 146));
+        btnClear.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnClear.setkHoverStartColor(new java.awt.Color(13, 76, 146));
+        btnClear.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnClear.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton3ActionPerformed(evt);
+                btnClearActionPerformed(evt);
             }
         });
-        registerborder.add(kButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
+        registerborder.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
 
-        kButton4.setText("Add");
-        kButton4.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        kButton4.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton4.setkBorderRadius(25);
-        kButton4.setkEndColor(new java.awt.Color(140, 185, 225));
-        kButton4.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        kButton4.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton4.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        kButton4.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton4.setkStartColor(new java.awt.Color(13, 76, 146));
-        kButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setText("Add");
+        btnAdd.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        btnAdd.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        btnAdd.setkBorderRadius(25);
+        btnAdd.setkEndColor(new java.awt.Color(140, 185, 225));
+        btnAdd.setkHoverEndColor(new java.awt.Color(13, 76, 146));
+        btnAdd.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnAdd.setkHoverStartColor(new java.awt.Color(13, 76, 146));
+        btnAdd.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnAdd.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton4ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
-        registerborder.add(kButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
+        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
 
-        kButton5.setText("Update");
-        kButton5.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        kButton5.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton5.setkBorderRadius(25);
-        kButton5.setkEndColor(new java.awt.Color(140, 185, 225));
-        kButton5.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        kButton5.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton5.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        kButton5.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton5.setkStartColor(new java.awt.Color(13, 76, 146));
-        kButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("Update");
+        btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        btnUpdate.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        btnUpdate.setkBorderRadius(25);
+        btnUpdate.setkEndColor(new java.awt.Color(140, 185, 225));
+        btnUpdate.setkHoverEndColor(new java.awt.Color(13, 76, 146));
+        btnUpdate.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnUpdate.setkHoverStartColor(new java.awt.Color(13, 76, 146));
+        btnUpdate.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnUpdate.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton5ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        registerborder.add(kButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
+        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
 
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 630, 690));
 
@@ -308,57 +308,57 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lastname.setText("Search");
         tableborder.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
-        kButton6.setText("Generate I.D");
-        kButton6.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        kButton6.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton6.setkBorderRadius(25);
-        kButton6.setkEndColor(new java.awt.Color(140, 185, 225));
-        kButton6.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        kButton6.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton6.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        kButton6.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton6.setkStartColor(new java.awt.Color(13, 76, 146));
-        kButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerate.setText("Generate I.D");
+        btnGenerate.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        btnGenerate.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        btnGenerate.setkBorderRadius(25);
+        btnGenerate.setkEndColor(new java.awt.Color(140, 185, 225));
+        btnGenerate.setkHoverEndColor(new java.awt.Color(13, 76, 146));
+        btnGenerate.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnGenerate.setkHoverStartColor(new java.awt.Color(13, 76, 146));
+        btnGenerate.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnGenerate.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnGenerate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton6ActionPerformed(evt);
+                btnGenerateActionPerformed(evt);
             }
         });
-        tableborder.add(kButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
+        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
 
-        kButton7.setText("Delete");
-        kButton7.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        kButton7.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton7.setkBorderRadius(25);
-        kButton7.setkEndColor(new java.awt.Color(140, 185, 225));
-        kButton7.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        kButton7.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton7.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        kButton7.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton7.setkStartColor(new java.awt.Color(13, 76, 146));
-        kButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        btnDelete.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        btnDelete.setkBorderRadius(25);
+        btnDelete.setkEndColor(new java.awt.Color(140, 185, 225));
+        btnDelete.setkHoverEndColor(new java.awt.Color(13, 76, 146));
+        btnDelete.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnDelete.setkHoverStartColor(new java.awt.Color(13, 76, 146));
+        btnDelete.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnDelete.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton7ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
-        tableborder.add(kButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
+        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
 
         jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 740, 690));
 
         jpFooter.setBackground(new java.awt.Color(255, 255, 255));
 
-        kButton1.setText("Back");
-        kButton1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
-        kButton1.setkBackGroundColor(new java.awt.Color(255, 255, 255));
-        kButton1.setkBorderRadius(25);
-        kButton1.setkEndColor(new java.awt.Color(140, 185, 225));
-        kButton1.setkHoverEndColor(new java.awt.Color(13, 76, 146));
-        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton1.setkHoverStartColor(new java.awt.Color(13, 76, 146));
-        kButton1.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton1.setkStartColor(new java.awt.Color(13, 76, 146));
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("Back");
+        btnBack.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        btnBack.setkBackGroundColor(new java.awt.Color(255, 255, 255));
+        btnBack.setkBorderRadius(25);
+        btnBack.setkEndColor(new java.awt.Color(140, 185, 225));
+        btnBack.setkHoverEndColor(new java.awt.Color(13, 76, 146));
+        btnBack.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        btnBack.setkHoverStartColor(new java.awt.Color(13, 76, 146));
+        btnBack.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        btnBack.setkStartColor(new java.awt.Color(13, 76, 146));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -368,14 +368,14 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             jpFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFooterLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(1201, Short.MAX_VALUE))
         );
         jpFooterLayout.setVerticalGroup(
             jpFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFooterLayout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -396,33 +396,33 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kButton1ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
-    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kButton2ActionPerformed
+    }//GEN-LAST:event_btnUploadActionPerformed
 
-    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kButton3ActionPerformed
+    }//GEN-LAST:event_btnClearActionPerformed
 
-    private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kButton4ActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kButton5ActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void kButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton6ActionPerformed
+    private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kButton6ActionPerformed
+    }//GEN-LAST:event_btnGenerateActionPerformed
 
-    private void kButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton7ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_kButton7ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,17 +460,17 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.k33ptoo.components.KButton btnAdd;
+    private com.k33ptoo.components.KButton btnBack;
+    private com.k33ptoo.components.KButton btnClear;
+    private com.k33ptoo.components.KButton btnDelete;
+    private com.k33ptoo.components.KButton btnGenerate;
+    private com.k33ptoo.components.KButton btnUpdate;
+    private com.k33ptoo.components.KButton btnUpload;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBG;
     private javax.swing.JPanel jpFooter;
     private javax.swing.JPanel jpTopnavbg;
-    private com.k33ptoo.components.KButton kButton1;
-    private com.k33ptoo.components.KButton kButton2;
-    private com.k33ptoo.components.KButton kButton3;
-    private com.k33ptoo.components.KButton kButton4;
-    private com.k33ptoo.components.KButton kButton5;
-    private com.k33ptoo.components.KButton kButton6;
-    private com.k33ptoo.components.KButton kButton7;
     private javax.swing.JLabel lastname;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;

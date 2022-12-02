@@ -101,8 +101,8 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         lblLogout.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblLogout.setForeground(new java.awt.Color(255, 255, 255));
-        lblLogout.setText("Logout");
-        jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 30, -1, -1));
+        lblLogout.setText("Log Out");
+        jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 30, -1, -1));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jpTopnavbg.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -246,7 +246,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jButton5.setText("Update");
         registerborder.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
 
-        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 630, 690));
+        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 630, 690));
 
         tableborder.setBackground(new java.awt.Color(255, 255, 255));
         tableborder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
@@ -287,7 +287,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jButton6.setText("Generate I.D");
         tableborder.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
 
-        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 740, 690));
+        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, 740, 690));
 
         jpFooter.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -302,7 +302,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jpBG.add(jpFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 1380, 30));
+        jpBG.add(jpFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 870, 1380, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

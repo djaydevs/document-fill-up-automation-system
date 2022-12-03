@@ -129,6 +129,11 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(3, 87, 122));
         jLabel14.setText("List of Documents");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         jpBackground.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -310,6 +315,10 @@ public class DashboardForm extends javax.swing.JFrame {
         CameraScanForm csf = new CameraScanForm();
         csf.show();
     }//GEN-LAST:event_btnBCMouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments

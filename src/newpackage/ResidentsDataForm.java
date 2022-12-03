@@ -5,6 +5,9 @@
 package newpackage;
 
 import java.awt.Color;
+import java.awt.*;
+import java.io.*;
+import javax.swing.*;
 
 /**
  *
@@ -65,17 +68,17 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblContact = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
         lblDefaultimage = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnUpload = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         tableborder = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         residentsTable = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         lastname = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnGenerate = new javax.swing.JButton();
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
 
@@ -252,29 +255,39 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
         registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(13, 76, 146));
-        jButton2.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Clear");
-        registerborder.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
+        btnClear.setBackground(new java.awt.Color(13, 76, 146));
+        btnClear.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnClear.setForeground(new java.awt.Color(255, 255, 255));
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        registerborder.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
 
-        jButton3.setBackground(new java.awt.Color(13, 76, 146));
-        jButton3.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Upload Image");
-        registerborder.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 140, 40));
+        btnUpload.setBackground(new java.awt.Color(13, 76, 146));
+        btnUpload.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnUpload.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpload.setText("Upload Image");
+        btnUpload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUploadActionPerformed(evt);
+            }
+        });
+        registerborder.add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 140, 40));
 
-        jButton4.setBackground(new java.awt.Color(13, 76, 146));
-        jButton4.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Add");
-        registerborder.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
+        btnAdd.setBackground(new java.awt.Color(13, 76, 146));
+        btnAdd.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdd.setText("Add");
+        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
 
-        jButton5.setBackground(new java.awt.Color(13, 76, 146));
-        jButton5.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Update");
-        registerborder.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
+        btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
+        btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
 
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 630, 690));
 
@@ -305,17 +318,17 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lastname.setText("Search");
         tableborder.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(13, 76, 146));
-        jButton1.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Delete");
-        tableborder.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
+        btnDelete.setBackground(new java.awt.Color(13, 76, 146));
+        btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Delete");
+        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
 
-        jButton6.setBackground(new java.awt.Color(13, 76, 146));
-        jButton6.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Generate I.D");
-        tableborder.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
+        btnGenerate.setBackground(new java.awt.Color(13, 76, 146));
+        btnGenerate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnGenerate.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerate.setText("Generate I.D");
+        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
 
         jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, 740, 690));
 
@@ -386,6 +399,36 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblLogoutMouseClicked
 
+    private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File file = chooser.getSelectedFile();
+        String filename = file.getAbsolutePath();
+        ImageIcon imgIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblDefaultimage.getWidth(), lblDefaultimage.getHeight(), Image.SCALE_SMOOTH));
+        lblDefaultimage.setIcon(imgIcon);
+        
+    }//GEN-LAST:event_btnUploadActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        txtLname.setText("");
+        txtFname.setText("");
+        txtInitial.setText("");
+        txtHousenum.setText("");
+        txtStreet.setText("");
+        rbtnMale.setSelected(false);
+        rbtnFemale.setSelected(false);
+        txtAge.setText("");
+        txtYearstay.setText("");
+        lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
+        txtDateofbirth.setText("");
+        txtPlaceofbirth.setText("");
+        txtContact.setText("");
+        
+        
+    }//GEN-LAST:event_btnClearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,12 +465,12 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnGenerate;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUpload;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBG;
@@ -473,5 +516,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables
     private String gender;
+    private byte[] resident_image = null;
 }
 

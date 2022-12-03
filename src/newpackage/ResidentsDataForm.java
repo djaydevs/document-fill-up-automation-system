@@ -314,7 +314,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(residentsTable);
 
-        tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 720, 530));
+        tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 720, 530));
 
         txtSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));

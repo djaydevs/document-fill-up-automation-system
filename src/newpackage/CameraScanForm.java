@@ -61,7 +61,7 @@ public class CameraScanForm extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 1, 32)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(3, 87, 122));
         jLabel13.setText("| Scan QR Code");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         brdwebcam.setBackground(new java.awt.Color(255, 255, 255));
         brdwebcam.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
@@ -69,10 +69,10 @@ public class CameraScanForm extends javax.swing.JFrame {
 
         lbinstruction.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lbinstruction.setText("<html><center><strong>Isakto sa frame ng camera ang QR code.</strong>\n<br>Please place the QR code inside the camera frame.</center><html>");
-        brdwebcam.add(lbinstruction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 500, -1));
+        brdwebcam.add(lbinstruction, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         webcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        brdwebcam.add(webcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 511, 319));
+        brdwebcam.add(webcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 511, 319));
 
         lbinstruction1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         lbinstruction1.setText("<html>Upload QR code if camera is unavailable.<html>");
@@ -89,7 +89,7 @@ public class CameraScanForm extends javax.swing.JFrame {
         });
         brdwebcam.add(btnqrupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 305, 70));
 
-        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 570, 710));
+        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

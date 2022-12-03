@@ -42,11 +42,11 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        btnCOI = new javax.swing.JPanel();
         lblCOI = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        btnCOR = new javax.swing.JPanel();
         lblCOR = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        btnBC = new javax.swing.JPanel();
         lblBC = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -134,85 +134,100 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(13, 76, 146));
+        btnCOI.setBackground(new java.awt.Color(13, 76, 146));
+        btnCOI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCOIMouseClicked(evt);
+            }
+        });
 
         lblCOI.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
         lblCOI.setForeground(new java.awt.Color(255, 255, 255));
         lblCOI.setText("Certificate of Indigency");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnCOILayout = new javax.swing.GroupLayout(btnCOI);
+        btnCOI.setLayout(btnCOILayout);
+        btnCOILayout.setHorizontalGroup(
+            btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCOILayout.createSequentialGroup()
                 .addContainerGap(111, Short.MAX_VALUE)
                 .addComponent(lblCOI)
                 .addGap(92, 92, 92))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        btnCOILayout.setVerticalGroup(
+            btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCOILayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(lblCOI)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 90));
+        jPanel3.add(btnCOI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 90));
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(13, 76, 146), 3));
+        btnCOR.setBackground(new java.awt.Color(255, 255, 255));
+        btnCOR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(13, 76, 146), 3));
+        btnCOR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCORMouseClicked(evt);
+            }
+        });
 
         lblCOR.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
         lblCOR.setForeground(new java.awt.Color(13, 76, 146));
         lblCOR.setText("Certificate of Residency");
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnCORLayout = new javax.swing.GroupLayout(btnCOR);
+        btnCOR.setLayout(btnCORLayout);
+        btnCORLayout.setHorizontalGroup(
+            btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCORLayout.createSequentialGroup()
                 .addContainerGap(100, Short.MAX_VALUE)
                 .addComponent(lblCOR)
                 .addGap(92, 92, 92))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        btnCORLayout.setVerticalGroup(
+            btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCORLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblCOR)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 590, 90));
+        jPanel3.add(btnCOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 590, 90));
 
-        jPanel7.setBackground(new java.awt.Color(13, 76, 146));
+        btnBC.setBackground(new java.awt.Color(13, 76, 146));
+        btnBC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBCMouseClicked(evt);
+            }
+        });
 
         lblBC.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
         lblBC.setForeground(new java.awt.Color(255, 255, 255));
         lblBC.setText("Barangay Clearance");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout btnBCLayout = new javax.swing.GroupLayout(btnBC);
+        btnBC.setLayout(btnBCLayout);
+        btnBCLayout.setHorizontalGroup(
+            btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 590, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGroup(btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnBCLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(lblBC)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnBCLayout.setVerticalGroup(
+            btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGroup(btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnBCLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(lblBC)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 590, 90));
+        jPanel3.add(btnBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 590, 90));
 
         jpBackground.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 590, 270));
 
@@ -278,6 +293,24 @@ public class DashboardForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_lblLogoutMouseClicked
 
+    private void btnCOIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCOIMouseClicked
+        // TODO add your handling code here:
+        CameraScanForm csf = new CameraScanForm();
+        csf.show();
+    }//GEN-LAST:event_btnCOIMouseClicked
+
+    private void btnCORMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCORMouseClicked
+        // TODO add your handling code here:
+        CameraScanForm csf = new CameraScanForm();
+        csf.show();
+    }//GEN-LAST:event_btnCORMouseClicked
+
+    private void btnBCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBCMouseClicked
+        // TODO add your handling code here:
+        CameraScanForm csf = new CameraScanForm();
+        csf.show();
+    }//GEN-LAST:event_btnBCMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -314,6 +347,9 @@ public class DashboardForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btnBC;
+    private javax.swing.JPanel btnCOI;
+    private javax.swing.JPanel btnCOR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -326,11 +362,8 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpBackground;

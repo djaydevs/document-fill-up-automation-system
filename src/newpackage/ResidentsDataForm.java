@@ -17,7 +17,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
      */
     public ResidentsDataForm() {
         initComponents();
-        jpRD.setBackground(new Color(	104, 185, 225));
         
     }
 
@@ -98,13 +97,18 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblDashboard.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblDashboard.setText("Dashboard");
-        jpTopnavbg.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
+        lblDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDashboardMouseClicked(evt);
+            }
+        });
+        jpTopnavbg.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 23, -1, -1));
 
         lblResidentsData.setBackground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setText("Residents Data");
-        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
+        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 23, -1, -1));
 
         jpRD.setBackground(new java.awt.Color(104, 185, 225));
         jpRD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -113,7 +117,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblLogout.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblLogout.setForeground(new java.awt.Color(255, 255, 255));
         lblLogout.setText("Log Out");
-        jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 30, -1, -1));
+        jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 23, -1, -1));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jpTopnavbg.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -183,11 +187,21 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         rbtnMale.setBackground(new java.awt.Color(255, 255, 255));
         rbtnMale.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         rbtnMale.setText("Male");
+        rbtnMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnMaleActionPerformed(evt);
+            }
+        });
         registerborder.add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
         rbtnFemale.setBackground(new java.awt.Color(255, 255, 255));
         rbtnFemale.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         rbtnFemale.setText("Female");
+        rbtnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnFemaleActionPerformed(evt);
+            }
+        });
         registerborder.add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
 
         lblAge.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -335,6 +349,30 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked
+        // TODO add your handling code here:
+        DashboardForm df = new DashboardForm();
+        df.show();
+        
+        dispose();
+    }//GEN-LAST:event_lblDashboardMouseClicked
+
+    private void rbtnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMaleActionPerformed
+        // TODO add your handling code here:
+        gender = "Male";
+        if(rbtnMale.isSelected()){
+            rbtnFemale.setSelected(false);
+        }
+    }//GEN-LAST:event_rbtnMaleActionPerformed
+
+    private void rbtnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFemaleActionPerformed
+        // TODO add your handling code here:
+        gender = "Female";
+        if(rbtnFemale.isSelected()){
+            rbtnMale.setSelected(false);
+        }
+    }//GEN-LAST:event_rbtnFemaleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -421,4 +459,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtStreet;
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables
+    private String gender;
 }
+

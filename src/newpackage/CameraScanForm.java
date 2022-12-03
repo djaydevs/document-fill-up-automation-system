@@ -26,21 +26,88 @@ public class CameraScanForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        brdwebcam = new javax.swing.JPanel();
+        lbinstruction = new javax.swing.JLabel();
+        webcam = new javax.swing.JPanel();
+        lbinstruction1 = new javax.swing.JLabel();
+        btnqrupload = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 30)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Barangay Fatima 1");
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
+        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavbg.png"))); // NOI18N
+        jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 85));
+
+        jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 1, 32)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(3, 87, 122));
+        jLabel13.setText("| Scan QR Code");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        brdwebcam.setBackground(new java.awt.Color(255, 255, 255));
+        brdwebcam.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        brdwebcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbinstruction.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        lbinstruction.setText("<html><center><strong>Isakto sa frame ng camera ang QR code.</strong>\n<br>Please place the QR code inside the camera frame.</center><html>");
+        brdwebcam.add(lbinstruction, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+
+        webcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        brdwebcam.add(webcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 511, 319));
+
+        lbinstruction1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        lbinstruction1.setText("<html>Upload QR code if camera is unavailable.<html>");
+        brdwebcam.add(lbinstruction1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 630, 360, -1));
+
+        btnqrupload.setBackground(new java.awt.Color(13, 76, 146));
+        btnqrupload.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        btnqrupload.setForeground(new java.awt.Color(255, 255, 255));
+        btnqrupload.setText("Upload QR Code Image");
+        btnqrupload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnqruploadActionPerformed(evt);
+            }
+        });
+        brdwebcam.add(btnqrupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 305, 70));
+
+        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 700));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnqruploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnqruploadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnqruploadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +145,16 @@ public class CameraScanForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel brdwebcam;
+    private javax.swing.JButton btnqrupload;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lbinstruction;
+    private javax.swing.JLabel lbinstruction1;
+    private javax.swing.JPanel webcam;
     // End of variables declaration//GEN-END:variables
 }

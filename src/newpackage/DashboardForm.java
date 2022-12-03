@@ -112,15 +112,14 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblQr.setBackground(new java.awt.Color(102, 102, 102));
-        lblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
-        lblQr.setText("jLabel8");
-        jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 149, 120));
+        lblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/qrlogo.png"))); // NOI18N
+        jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 140, 140));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         jLabel10.setText("Choose from the list of documents that will be process, then start scanning residents QR code.");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 20)); // NOI18N
         jLabel11.setText("Pumili ng dokumentong kailangan i-proseso bago magpatuloy sa pag-scan ng QR code ng residente. ");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 

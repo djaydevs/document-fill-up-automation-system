@@ -117,6 +117,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblLogout.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblLogout.setForeground(new java.awt.Color(255, 255, 255));
         lblLogout.setText("Log Out");
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseClicked(evt);
+            }
+        });
         jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 23, -1, -1));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
@@ -372,6 +377,14 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             rbtnMale.setSelected(false);
         }
     }//GEN-LAST:event_rbtnFemaleActionPerformed
+
+    private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
+        // TODO add your handling code here:
+        LogInForm lif = new LogInForm();
+        lif.show();
+        
+        dispose();
+    }//GEN-LAST:event_lblLogoutMouseClicked
 
     /**
      * @param args the command line arguments

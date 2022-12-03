@@ -30,14 +30,13 @@ public class CameraScanForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         brdwebcam = new javax.swing.JPanel();
         lbinstruction = new javax.swing.JLabel();
         webcam = new javax.swing.JPanel();
         lbinstruction1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnqrupload = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,10 +52,6 @@ public class CameraScanForm extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jPanel8.setBackground(new java.awt.Color(104, 185, 225));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel6.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 240, 85));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavbg.png"))); // NOI18N
         jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
@@ -83,16 +78,16 @@ public class CameraScanForm extends javax.swing.JFrame {
         lbinstruction1.setText("<html>Upload QR code if camera is unavailable.<html>");
         brdwebcam.add(lbinstruction1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 630, 360, -1));
 
-        jButton3.setBackground(new java.awt.Color(13, 76, 146));
-        jButton3.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Upload QR Code Image");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnqrupload.setBackground(new java.awt.Color(13, 76, 146));
+        btnqrupload.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        btnqrupload.setForeground(new java.awt.Color(255, 255, 255));
+        btnqrupload.setText("Upload QR Code Image");
+        btnqrupload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnqruploadActionPerformed(evt);
             }
         });
-        brdwebcam.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 305, 70));
+        brdwebcam.add(btnqrupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 305, 70));
 
         jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 570, 710));
 
@@ -110,9 +105,9 @@ public class CameraScanForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnqruploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnqruploadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnqruploadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,14 +146,13 @@ public class CameraScanForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel brdwebcam;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnqrupload;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lbinstruction;
     private javax.swing.JLabel lbinstruction1;
     private javax.swing.JPanel webcam;

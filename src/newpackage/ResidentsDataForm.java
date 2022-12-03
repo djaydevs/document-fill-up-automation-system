@@ -72,6 +72,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnUpload = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         tableborder = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         residentsTable = new javax.swing.JTable();
@@ -253,7 +254,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 190, 30));
 
         lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
-        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
+        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, 140));
 
         btnClear.setBackground(new java.awt.Color(13, 76, 146));
         btnClear.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -288,6 +289,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 200, 160));
 
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 630, 690));
 
@@ -472,6 +478,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpload;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBG;
     private javax.swing.JPanel jpFooter;

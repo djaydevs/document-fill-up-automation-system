@@ -293,7 +293,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 200, 160));
+        registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 180, 160));
 
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 630, 690));
 

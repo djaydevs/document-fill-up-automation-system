@@ -38,7 +38,7 @@ public class CameraScanForm extends javax.swing.JFrame {
         lbinstruction1 = new javax.swing.JLabel();
         btnqrupload = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,6 +103,7 @@ public class CameraScanForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnqruploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnqruploadActionPerformed

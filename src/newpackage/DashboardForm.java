@@ -29,21 +29,21 @@ public class DashboardForm extends javax.swing.JFrame {
         jpBackground = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblResidentsData = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lblLogout = new javax.swing.JLabel();
+        lblDashboard = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        lblQr = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lblBC = new javax.swing.JLabel();
+        lblCOI = new javax.swing.JLabel();
+        lblCOR = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -64,23 +64,23 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel3.setText("Barangay Fatima 1");
         jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Residents Data");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, -1, -1));
+        lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
+        lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
+        lblResidentsData.setText("Residents Data");
+        jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Log Out");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 30, -1, -1));
+        lblLogout.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
+        lblLogout.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogout.setText("Log Out");
+        jPanel6.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 30, -1, -1));
 
-        jLabel19.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Dashboard");
-        jPanel6.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
+        lblDashboard.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
+        lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        lblDashboard.setText("Dashboard");
+        jPanel6.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavbg.png"))); // NOI18N
         jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -96,10 +96,10 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 149, 120));
+        lblQr.setBackground(new java.awt.Color(102, 102, 102));
+        lblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
+        lblQr.setText("jLabel8");
+        jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 149, 120));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         jLabel10.setText("Choose from the list of documents that will be process, then start scanning residents QR code.");
@@ -120,17 +120,17 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
-        jLabel15.setText("Barangay Clearance");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+        lblBC.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
+        lblBC.setText("Barangay Clearance");
+        jPanel3.add(lblBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
-        jLabel16.setText("Certificate of Indigency");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        lblCOI.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
+        lblCOI.setText("Certificate of Indigency");
+        jPanel3.add(lblCOI, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
-        jLabel17.setText("Certificate of Residency");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        lblCOR.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
+        lblCOR.setText("Certificate of Residency");
+        jPanel3.add(lblCOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(104, 185, 225));
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 1, true));
@@ -252,16 +252,9 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -272,5 +265,12 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpBackground;
+    private javax.swing.JLabel lblBC;
+    private javax.swing.JLabel lblCOI;
+    private javax.swing.JLabel lblCOR;
+    private javax.swing.JLabel lblDashboard;
+    private javax.swing.JLabel lblLogout;
+    private javax.swing.JLabel lblQr;
+    private javax.swing.JLabel lblResidentsData;
     // End of variables declaration//GEN-END:variables
 }

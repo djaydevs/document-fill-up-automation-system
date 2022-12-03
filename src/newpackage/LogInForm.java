@@ -4,6 +4,14 @@
  */
 package newpackage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DJay
@@ -30,7 +38,6 @@ public class LogInForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnlogin = new javax.swing.JButton();
         lbforgotpass = new javax.swing.JLabel();
-        etpass = new javax.swing.JTextField();
         etuname = new javax.swing.JTextField();
         line = new javax.swing.JLabel();
         line1 = new javax.swing.JLabel();
@@ -43,6 +50,7 @@ public class LogInForm extends javax.swing.JFrame {
         lbbrgy = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         loginbg = new javax.swing.JLabel();
+        etpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,10 +72,6 @@ public class LogInForm extends javax.swing.JFrame {
         lbforgotpass.setForeground(new java.awt.Color(104, 185, 225));
         lbforgotpass.setText("<html><p><u>Forgot Password?</u></p></html>");
         jPanel1.add(lbforgotpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 850, -1, -1));
-
-        etpass.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
-        etpass.setBorder(null);
-        jPanel1.add(etpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, 500, 70));
 
         etuname.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         etuname.setBorder(null);
@@ -121,6 +125,10 @@ public class LogInForm extends javax.swing.JFrame {
         loginbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/loginbg.png"))); // NOI18N
         jPanel1.add(loginbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        etpass.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
+        etpass.setBorder(null);
+        jPanel1.add(etpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, 490, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +148,31 @@ public class LogInForm extends javax.swing.JFrame {
     }//GEN-LAST:event_etunameActionPerformed
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-        // TODO add your handling code here:
+        if (etuname.getText().equals("") || (etpass.getText().equals(""))) {
+            JOptionPane.showMessageDialog(this, "Please enter username and password"); 
+        } else 
+        {
+            try {
+            //connection string and statement query
+           Connection conn = (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+           PreparedStatement pst = conn.prepareStatement("SELECT * FROM tbl_users WHERE username=? AND password=?");
+           pst.setString(1, etuname.getText());
+           pst.setString(2, etpass.getText());
+           ResultSet rs = pst.executeQuery();
+               
+               if (rs.next()) {
+                   JOptionPane.showMessageDialog(this, "login Succesfully");
+                   new DashboardForm().show();
+                   this.dispose();
+               }else {
+                   etuname.setText("");
+                   etpass.setText("");
+                   JOptionPane.showMessageDialog(this, "username or password is incorrect");
+               }          
+       } catch (SQLException e) {
+           JOptionPane.showMessageDialog(this, e.getMessage());
+       }
+       }
     }//GEN-LAST:event_btnloginActionPerformed
 
     /**
@@ -180,7 +212,7 @@ public class LogInForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnlogin;
-    private javax.swing.JTextField etpass;
+    private javax.swing.JPasswordField etpass;
     private javax.swing.JTextField etuname;
     private javax.swing.JLabel icpass;
     private javax.swing.JLabel icuname;

@@ -33,6 +33,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
         lblDashboard = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -86,6 +87,10 @@ public class DashboardForm extends javax.swing.JFrame {
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblDashboard.setText("Dashboard");
         jPanel6.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, -1, -1));
+
+        jPanel8.setBackground(new java.awt.Color(104, 185, 225));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, 240, 85));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavbg.png"))); // NOI18N
         jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -275,6 +280,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpBackground;

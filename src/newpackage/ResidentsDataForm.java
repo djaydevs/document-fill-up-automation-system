@@ -106,6 +106,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblResidentsData.setText("Residents Data");
         jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
 
+        jpRD.setBackground(new java.awt.Color(104, 185, 225));
         jpRD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jpTopnavbg.add(jpRD, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, 240, 85));
 

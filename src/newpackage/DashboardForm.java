@@ -67,6 +67,11 @@ public class DashboardForm extends javax.swing.JFrame {
         lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setText("Residents Data");
+        lblResidentsData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblResidentsDataMouseClicked(evt);
+            }
+        });
         jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
@@ -210,6 +215,14 @@ public class DashboardForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblResidentsDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResidentsDataMouseClicked
+        // TODO add your handling code here:
+        ResidentsDataForm rdf = new ResidentsDataForm();
+        rdf.show();
+        
+        dispose();
+    }//GEN-LAST:event_lblResidentsDataMouseClicked
 
     /**
      * @param args the command line arguments

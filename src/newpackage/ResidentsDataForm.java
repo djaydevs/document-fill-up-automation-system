@@ -4,6 +4,8 @@
  */
 package newpackage;
 
+import java.awt.Color;
+
 /**
  *
  * @author DJay
@@ -15,6 +17,8 @@ public class ResidentsDataForm extends javax.swing.JFrame {
      */
     public ResidentsDataForm() {
         initComponents();
+        jpRD.setBackground(new Color(	104, 185, 225));
+        
     }
 
     /**
@@ -31,6 +35,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblDashboard = new javax.swing.JLabel();
         lblResidentsData = new javax.swing.JLabel();
+        jpRD = new javax.swing.JPanel();
         lblLogout = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         lblNavbg = new javax.swing.JLabel();
@@ -95,10 +100,14 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblDashboard.setText("Dashboard");
         jpTopnavbg.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
 
+        lblResidentsData.setBackground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setText("Residents Data");
         jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
+
+        jpRD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpTopnavbg.add(jpRD, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, 240, 85));
 
         lblLogout.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblLogout.setForeground(new java.awt.Color(255, 255, 255));
@@ -371,6 +380,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBG;
     private javax.swing.JPanel jpFooter;
+    private javax.swing.JPanel jpRD;
     private javax.swing.JPanel jpTopnavbg;
     private javax.swing.JLabel lastname;
     private javax.swing.JLabel lblAddress;

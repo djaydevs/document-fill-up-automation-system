@@ -4,6 +4,10 @@
  */
 package newpackage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author DJay
@@ -51,7 +55,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        userTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,7 +78,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 lblResidentsDataMouseClicked(evt);
             }
         });
-        jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 23, -1, -1));
+        jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 2, -1, 80));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -87,12 +91,12 @@ public class DashboardForm extends javax.swing.JFrame {
                 lblLogoutMouseClicked(evt);
             }
         });
-        jPanel6.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 23, -1, -1));
+        jPanel6.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 2, -1, 80));
 
         lblDashboard.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblDashboard.setText("Dashboard");
-        jPanel6.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 23, -1, -1));
+        jPanel6.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 3, -1, 80));
 
         jPanel8.setBackground(new java.awt.Color(104, 185, 225));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -245,7 +249,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -256,7 +260,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(userTable);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 490));
 
@@ -374,7 +378,6 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpBackground;
     private javax.swing.JLabel lblBC;
     private javax.swing.JLabel lblCOI;
@@ -383,5 +386,6 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblQr;
     private javax.swing.JLabel lblResidentsData;
+    private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
 }

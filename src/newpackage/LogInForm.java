@@ -4,6 +4,7 @@
  */
 package newpackage;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -127,6 +128,11 @@ public class LogInForm extends javax.swing.JFrame {
 
         etpass.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         etpass.setBorder(null);
+        etpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                etpassKeyPressed(evt);
+            }
+        });
         jPanel1.add(etpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, 490, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,6 +181,36 @@ public class LogInForm extends javax.swing.JFrame {
        }
        }
     }//GEN-LAST:event_btnloginActionPerformed
+
+    private void etpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_etpassKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                if (etuname.getText().equals("") || (etpass.getText().equals(""))) {
+                JOptionPane.showMessageDialog(this, "Please enter username and password"); 
+            } else 
+            {
+                try {
+                //connection string and statement query
+               Connection conn = (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+               PreparedStatement pst = conn.prepareStatement("SELECT * FROM tbl_users WHERE username=? AND password=?");
+               pst.setString(1, etuname.getText());
+               pst.setString(2, etpass.getText());
+               ResultSet rs = pst.executeQuery();
+
+                   if (rs.next()) {
+                       JOptionPane.showMessageDialog(this, "login Succesfully");
+                       new DashboardForm().show();
+                       this.dispose();
+                   }else {
+                       etuname.setText("");
+                       etpass.setText("");
+                       JOptionPane.showMessageDialog(this, "username or password is incorrect");
+                   }          
+           } catch (SQLException e) {
+               JOptionPane.showMessageDialog(this, e.getMessage());
+           }
+           }
+        } 
+    }//GEN-LAST:event_etpassKeyPressed
 
     /**
      * @param args the command line arguments

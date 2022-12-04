@@ -6,6 +6,7 @@ package newpackage;
 
 import java.awt.Color;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import javax.swing.*;
 
@@ -73,9 +74,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        invalid4 = new javax.swing.JLabel();
+        invalid1 = new javax.swing.JLabel();
         tableborder = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        residentsTable = new javax.swing.JTable();
+        tbl_residents = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         lastname = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
@@ -106,13 +109,13 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 lblDashboardMouseClicked(evt);
             }
         });
-        jpTopnavbg.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 23, -1, -1));
+        jpTopnavbg.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 3, -1, 80));
 
         lblResidentsData.setBackground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setText("Residents Data");
-        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 23, -1, -1));
+        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 3, -1, 80));
 
         jpRD.setBackground(new java.awt.Color(104, 185, 225));
         jpRD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,7 +129,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 lblLogoutMouseClicked(evt);
             }
         });
-        jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 23, -1, -1));
+        jpTopnavbg.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 3, -1, 80));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jpTopnavbg.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -159,6 +162,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         txtFname.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtFname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        txtFname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFnameActionPerformed(evt);
+            }
+        });
         registerborder.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 190, 30));
 
         lblInitial.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -178,7 +186,13 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         registerborder.add(lblHousenum, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
 
         txtHousenum.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtHousenum.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHousenum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        txtHousenum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHousenumActionPerformed(evt);
+            }
+        });
         registerborder.add(txtHousenum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 100, 30));
 
         lblStreet.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -186,6 +200,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         registerborder.add(lblStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
         txtStreet.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtStreet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtStreet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
         registerborder.add(txtStreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 100, 30));
 
@@ -234,7 +249,17 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
 
         txtDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtDateofbirth.setForeground(new java.awt.Color(204, 204, 204));
+        txtDateofbirth.setText("mm/dd/yyyy");
         txtDateofbirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        txtDateofbirth.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDateofbirthFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDateofbirthFocusLost(evt);
+            }
+        });
         registerborder.add(txtDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 190, 30));
 
         lblPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -251,6 +276,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         txtContact.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtContact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContactKeyPressed(evt);
+            }
+        });
         registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 190, 30));
 
         lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
@@ -282,6 +312,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnAdd.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
         registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
 
         btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
@@ -295,13 +330,19 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 180, 160));
 
+        invalid4.setForeground(new java.awt.Color(255, 0, 0));
+        registerborder.add(invalid4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 530, -1, -1));
+
+        invalid1.setForeground(new java.awt.Color(255, 0, 51));
+        registerborder.add(invalid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
+
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 630, 690));
 
         tableborder.setBackground(new java.awt.Color(255, 255, 255));
         tableborder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         tableborder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        residentsTable.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_residents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -312,7 +353,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(residentsTable);
+        jScrollPane1.setViewportView(tbl_residents);
 
         tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 720, 530));
 
@@ -431,9 +472,61 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         txtDateofbirth.setText("");
         txtPlaceofbirth.setText("");
         txtContact.setText("");
+        invalid1.setText("");
+        invalid4.setText("");
         
         
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void txtDateofbirthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDateofbirthFocusGained
+        // TODO add your handling code here:
+        if(txtDateofbirth.getText().equals("mm/dd/yyyy")){
+            txtDateofbirth.setText("");
+            txtDateofbirth.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtDateofbirthFocusGained
+
+    private void txtDateofbirthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDateofbirthFocusLost
+        // TODO add your handling code here:
+        if(txtDateofbirth.getText().equals("")){
+            txtDateofbirth.setText("mm/dd/yyyy");
+            txtDateofbirth.setForeground(new Color(0,0,0));
+        }      
+    }//GEN-LAST:event_txtDateofbirthFocusLost
+
+    private void txtFnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFnameActionPerformed
+
+    private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
+        // TODO add your handling code here:
+        String contactNo = txtContact.getText();
+        int length = contactNo.length();
+        
+        if(evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9'){
+            if(length<11){
+                txtContact.setEditable(true);
+                invalid4.setText("");  
+            }else{
+                txtContact.setEditable(false);
+            }
+        }else{
+            if(evt.getExtendedKeyCode () == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE){
+                txtContact.setEditable(true);
+            }else{
+                txtContact.setEditable(false);
+                invalid4.setText("Invalid input");
+            }
+        }  
+    }//GEN-LAST:event_txtContactKeyPressed
+
+    private void txtHousenumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHousenumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHousenumActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +570,8 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerate;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpload;
+    private javax.swing.JLabel invalid1;
+    private javax.swing.JLabel invalid4;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -508,8 +603,8 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtnFemale;
     private javax.swing.JRadioButton rbtnMale;
     private javax.swing.JPanel registerborder;
-    private javax.swing.JTable residentsTable;
     private javax.swing.JPanel tableborder;
+    private javax.swing.JTable tbl_residents;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtDateofbirth;

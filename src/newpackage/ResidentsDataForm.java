@@ -9,8 +9,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.sql.*;
-import java.sql.SQLException;
 import javax.swing.*;
+import net.proteanit.sql.DbUtils;
 
 
 
@@ -22,12 +22,21 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     /**
      * Creates new form ResidentsDataForm
      */
+    Connection conn;
+    PreparedStatement ps;
+    ResultSet rs;
+    
     public ResidentsDataForm() {
-        initComponents();
-        
-       
-    }
-   
+    
+        try{
+            initComponents();
+            residentTbl();
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");              
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -80,12 +89,12 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         invalid = new javax.swing.JLabel();
         tableborder = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblResidents = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         lastname = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         btnGenerate = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblResidents = new javax.swing.JTable();
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
 
@@ -249,7 +258,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         lblDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lblDateofbirth.setText("Date of birth");
-        registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, -1, -1));
+        registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
 
         txtDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtDateofbirth.setForeground(new java.awt.Color(204, 204, 204));
@@ -263,19 +272,19 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 txtDateofbirthFocusLost(evt);
             }
         });
-        registerborder.add(txtDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 190, 30));
+        registerborder.add(txtDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 190, 30));
 
         lblPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lblPlaceofbirth.setText("Place of birth");
-        registerborder.add(lblPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, -1, -1));
+        registerborder.add(lblPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
 
         txtPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtPlaceofbirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
-        registerborder.add(txtPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 190, 30));
+        registerborder.add(txtPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 190, 30));
 
         lblContact.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lblContact.setText("Contact #");
-        registerborder.add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, -1, -1));
+        registerborder.add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, -1, -1));
 
         txtContact.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtContact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
@@ -284,10 +293,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 txtContactKeyPressed(evt);
             }
         });
-        registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 190, 30));
+        registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 190, 30));
 
         lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
-        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 140));
+        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, 140));
 
         btnClear.setBackground(new java.awt.Color(13, 76, 146));
         btnClear.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -309,7 +318,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnUploadActionPerformed(evt);
             }
         });
-        registerborder.add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 140, 40));
+        registerborder.add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 140, 40));
 
         btnAdd.setBackground(new java.awt.Color(13, 76, 146));
         btnAdd.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -320,61 +329,77 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 620, 140, 40));
+        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 140, 40));
 
         btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
         btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
-        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 140, 40));
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 140, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 180, 160));
+        registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 180, 160));
 
         invalid.setForeground(new java.awt.Color(255, 0, 0));
-        registerborder.add(invalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, -1, -1));
+        registerborder.add(invalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
 
-        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 600, 690));
+        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 690));
 
         tableborder.setBackground(new java.awt.Color(255, 255, 255));
         tableborder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         tableborder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblResidents.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Identification #", "Last Name", "First Name", "Middle Initial", "Address", "Gender", "Age", "Years of Stay", "Birthday", "Birth Place", "Contact #"
-            }
-        ));
-        jScrollPane1.setViewportView(tblResidents);
-
-        tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 750, 530));
-
         txtSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
-        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, 170, 30));
+        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 170, 30));
 
         lastname.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
         lastname.setText("Search");
-        tableborder.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
+        tableborder.add(lastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, -1));
 
         btnDelete.setBackground(new java.awt.Color(13, 76, 146));
         btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
-        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 620, 140, 40));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 620, 140, 40));
 
         btnGenerate.setBackground(new java.awt.Color(13, 76, 146));
         btnGenerate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnGenerate.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerate.setText("Generate I.D");
-        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, 140, 40));
+        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 140, 40));
 
-        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 770, 690));
+        tblResidents.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        tblResidents.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblResidents.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblResidentsMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblResidents);
+
+        tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 810, 530));
+
+        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 830, 690));
 
         jpFooter.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -411,6 +436,18 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void residentTbl (){
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+            String sql = "SELECT *FROM ROOT.TBL_RESIDENTS";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            tblResidents.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
     private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked
         // TODO add your handling code here:
         DashboardForm df = new DashboardForm();
@@ -438,7 +475,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here: 
         logout = new JFrame("Log Out");
-        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Warning!",
+        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Message",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
             LogInForm lif = new LogInForm();
@@ -453,9 +490,22 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File file = chooser.getSelectedFile();
-        String filename = file.getAbsolutePath();
+        filename = file.getAbsolutePath();
         ImageIcon imgIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblDefaultimage.getWidth(), lblDefaultimage.getHeight(), Image.SCALE_SMOOTH));
         lblDefaultimage.setIcon(imgIcon);
+        
+        try{
+            File image = new File(filename);
+            FileInputStream fis = new FileInputStream(image);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] b = new byte[1024];
+            for(int checkNum; (checkNum = fis.read(b)) !=-1;){
+                baos.write(b,0,checkNum);
+            }
+            resident_image = baos.toByteArray();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
         
     }//GEN-LAST:event_btnUploadActionPerformed
 
@@ -527,7 +577,112 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        try{
+            String sql ="INSERT INTO ROOT.TBL_RESIDENTS VALUES (?, ?, ?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, txtLname.getText());
+            ps.setString(2, txtFname.getText());
+            ps.setString(3, txtInitial.getText());
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Resident Data Added !");
+            
+            txtLname.setText("");
+            txtFname.setText("");
+            txtInitial.setText("");
+            txtHousenum.setText("");
+            txtStreet.setText("");
+            rbtnMale.setSelected(false);
+            rbtnFemale.setSelected(false);
+            txtAge.setText("");
+            txtYearstay.setText("");
+            lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
+            txtDateofbirth.setText("");
+            txtPlaceofbirth.setText("");
+            txtContact.setText("");
+            invalid.setText("");
+        
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);   
+        }
+        residentTbl();
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int ask = JOptionPane.showConfirmDialog(null, "Do you really want to delete?","Message",
+            JOptionPane.YES_NO_OPTION);
+        if(ask == 0){
+            try{
+                String sql = "DELETE FROM ROOT.TBL_RESIDENTS WHERE l_name = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, txtLname.getText()); 
+                ps.execute();
+                
+                txtLname.setText("");
+                txtFname.setText("");
+                txtInitial.setText("");
+                txtHousenum.setText("");
+                txtStreet.setText("");
+                rbtnMale.setSelected(false);
+                rbtnFemale.setSelected(false);
+                txtAge.setText("");
+                txtYearstay.setText("");
+                lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
+                txtDateofbirth.setText("");
+                txtPlaceofbirth.setText("");
+                txtContact.setText("");
+                invalid.setText("");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+        residentTbl();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblResidentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResidentsMouseClicked
+        // TODO add your handling code here:
+        try{
+            int row = tblResidents.getSelectedRow();
+            String tblClick = (tblResidents.getModel().getValueAt(row, 0).toString());
+            String sql = "SELECT * FROM ROOT.TBL_RESIDENTS WHERE l_name = '"+tblClick+"'";
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                String col1 = rs.getString("l_name");
+                txtLname.setText(col1);
+                String col2 = rs.getString("f_name");
+                txtFname.setText(col2);
+                String col3 = rs.getString("mi");
+                txtInitial.setText(col3);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_tblResidentsMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        try{
+            int row = tblResidents.getSelectedRow();
+            String tblClick = (tblResidents.getModel().getValueAt(row, 0).toString());
+            
+            String val1 = txtLname.getText();
+            String val2 = txtFname.getText();
+            String val3 = txtInitial.getText();
+            
+            String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = '"+val1+"', f_name = '"+val2+"', mi = '"+val3+"'"
+                    + "WHERE l_name = '"+tblClick+"'";
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Updated");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        residentTbl();
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -618,6 +773,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables
     private String gender;
+    private String filename = null;
     private byte[] resident_image = null;
 }
 

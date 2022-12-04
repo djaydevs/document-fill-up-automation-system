@@ -298,7 +298,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
         logout = new JFrame("Log Out");
-        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Warning!",
+        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Message",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
             LogInForm lif = new LogInForm();

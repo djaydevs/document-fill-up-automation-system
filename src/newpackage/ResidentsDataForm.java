@@ -381,6 +381,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnGenerate.setText("Generate I.D");
         tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 140, 40));
 
+        tblResidents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
         tblResidents.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         tblResidents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -677,6 +678,21 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             ps = conn.prepareStatement(sql);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Updated");
+            
+            txtLname.setText("");
+            txtFname.setText("");
+            txtInitial.setText("");
+            txtHousenum.setText("");
+            txtStreet.setText("");
+            rbtnMale.setSelected(false);
+            rbtnFemale.setSelected(false);
+            txtAge.setText("");
+            txtYearstay.setText("");
+            lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
+            txtDateofbirth.setText("");
+            txtPlaceofbirth.setText("");
+            txtContact.setText("");
+            invalid.setText("");
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

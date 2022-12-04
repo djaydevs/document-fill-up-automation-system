@@ -7,6 +7,8 @@ package newpackage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -292,13 +294,18 @@ public class DashboardForm extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_lblResidentsDataMouseClicked
-
+    private JFrame logout;
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
-        LogInForm lif = new LogInForm();
-        lif.show();
-        
-        dispose();
+        logout = new JFrame("Log Out");
+        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Warning!",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
+            LogInForm lif = new LogInForm();
+            lif.show();
+            
+            dispose();
+        }
         
     }//GEN-LAST:event_lblLogoutMouseClicked
 

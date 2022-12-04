@@ -8,22 +8,26 @@ import java.awt.Color;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
+import java.sql.*;
+import java.sql.SQLException;
 import javax.swing.*;
+
+
 
 /**
  *
  * @author DJay
  */
 public class ResidentsDataForm extends javax.swing.JFrame {
-
     /**
      * Creates new form ResidentsDataForm
      */
     public ResidentsDataForm() {
         initComponents();
         
+       
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,11 +78,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        invalid4 = new javax.swing.JLabel();
-        invalid1 = new javax.swing.JLabel();
+        invalid = new javax.swing.JLabel();
         tableborder = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_residents = new javax.swing.JTable();
+        tblResidents = new javax.swing.JTable();
         txtSearch = new javax.swing.JTextField();
         lastname = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
@@ -246,7 +249,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         lblDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lblDateofbirth.setText("Date of birth");
-        registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
+        registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, -1, -1));
 
         txtDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtDateofbirth.setForeground(new java.awt.Color(204, 204, 204));
@@ -260,19 +263,19 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 txtDateofbirthFocusLost(evt);
             }
         });
-        registerborder.add(txtDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 190, 30));
+        registerborder.add(txtDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 190, 30));
 
         lblPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lblPlaceofbirth.setText("Place of birth");
-        registerborder.add(lblPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, -1, -1));
+        registerborder.add(lblPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, -1, -1));
 
         txtPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtPlaceofbirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
-        registerborder.add(txtPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 190, 30));
+        registerborder.add(txtPlaceofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, 190, 30));
 
         lblContact.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lblContact.setText("Contact #");
-        registerborder.add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, -1, -1));
+        registerborder.add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, -1, -1));
 
         txtContact.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtContact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
@@ -281,10 +284,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 txtContactKeyPressed(evt);
             }
         });
-        registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 190, 30));
+        registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 190, 30));
 
         lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
-        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, 140));
+        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, 140));
 
         btnClear.setBackground(new java.awt.Color(13, 76, 146));
         btnClear.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -306,7 +309,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnUploadActionPerformed(evt);
             }
         });
-        registerborder.add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 140, 40));
+        registerborder.add(btnUpload, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 140, 40));
 
         btnAdd.setBackground(new java.awt.Color(13, 76, 146));
         btnAdd.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -317,45 +320,39 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 620, 140, 40));
+        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 620, 140, 40));
 
         btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
         btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
-        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 140, 40));
+        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 140, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 180, 160));
+        registerborder.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 180, 160));
 
-        invalid4.setForeground(new java.awt.Color(255, 0, 0));
-        registerborder.add(invalid4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 530, -1, -1));
+        invalid.setForeground(new java.awt.Color(255, 0, 0));
+        registerborder.add(invalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 530, -1, -1));
 
-        invalid1.setForeground(new java.awt.Color(255, 0, 51));
-        registerborder.add(invalid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
-
-        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 630, 690));
+        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 600, 690));
 
         tableborder.setBackground(new java.awt.Color(255, 255, 255));
         tableborder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         tableborder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbl_residents.setModel(new javax.swing.table.DefaultTableModel(
+        tblResidents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Identification #", "Last Name", "First Name", "Middle Initial", "Address", "Gender", "Age", "Years of Stay", "Birthday", "Birth Place", "Contact #"
             }
         ));
-        jScrollPane1.setViewportView(tbl_residents);
+        jScrollPane1.setViewportView(tblResidents);
 
-        tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 720, 530));
+        tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 750, 530));
 
         txtSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
@@ -369,15 +366,15 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
-        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 140, 40));
+        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 620, 140, 40));
 
         btnGenerate.setBackground(new java.awt.Color(13, 76, 146));
         btnGenerate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnGenerate.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerate.setText("Generate I.D");
-        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, 140, 40));
+        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, 140, 40));
 
-        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, 740, 690));
+        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 770, 690));
 
         jpFooter.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -437,13 +434,18 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             rbtnMale.setSelected(false);
         }
     }//GEN-LAST:event_rbtnFemaleActionPerformed
-
+    private JFrame logout;
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
-        // TODO add your handling code here:
-        LogInForm lif = new LogInForm();
-        lif.show();
-        
-        dispose();
+        // TODO add your handling code here: 
+        logout = new JFrame("Log Out");
+        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Warning!",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
+            LogInForm lif = new LogInForm();
+            lif.show();
+            
+            dispose();
+        }
     }//GEN-LAST:event_lblLogoutMouseClicked
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
@@ -472,8 +474,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         txtDateofbirth.setText("");
         txtPlaceofbirth.setText("");
         txtContact.setText("");
-        invalid1.setText("");
-        invalid4.setText("");
+        invalid.setText("");
         
         
     }//GEN-LAST:event_btnClearActionPerformed
@@ -506,7 +507,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         if(evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9'){
             if(length<11){
                 txtContact.setEditable(true);
-                invalid4.setText("");  
+                invalid.setText("");  
             }else{
                 txtContact.setEditable(false);
             }
@@ -515,7 +516,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 txtContact.setEditable(true);
             }else{
                 txtContact.setEditable(false);
-                invalid4.setText("Invalid input");
+                invalid.setText("Invalid input");
             }
         }  
     }//GEN-LAST:event_txtContactKeyPressed
@@ -570,8 +571,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JButton btnGenerate;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpload;
-    private javax.swing.JLabel invalid1;
-    private javax.swing.JLabel invalid4;
+    private javax.swing.JLabel invalid;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -604,7 +604,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtnMale;
     private javax.swing.JPanel registerborder;
     private javax.swing.JPanel tableborder;
-    private javax.swing.JTable tbl_residents;
+    private javax.swing.JTable tblResidents;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtDateofbirth;

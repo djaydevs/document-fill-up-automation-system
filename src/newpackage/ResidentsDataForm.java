@@ -6,7 +6,7 @@ package newpackage;
 
 import java.awt.Color;
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.*;
 import java.sql.*;
 import javax.swing.*;
@@ -261,7 +261,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
 
         txtDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
-        txtDateofbirth.setForeground(new java.awt.Color(204, 204, 204));
         txtDateofbirth.setText("mm/dd/yyyy");
         txtDateofbirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
         txtDateofbirth.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -296,7 +295,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         registerborder.add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 190, 30));
 
         lblDefaultimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/defaultimage.png"))); // NOI18N
-        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, 140));
+        registerborder.add(lblDefaultimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 160, 140));
 
         btnClear.setBackground(new java.awt.Color(13, 76, 146));
         btnClear.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -488,25 +487,36 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
-        File file = chooser.getSelectedFile();
-        filename = file.getAbsolutePath();
-        ImageIcon imgIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lblDefaultimage.getWidth(), lblDefaultimage.getHeight(), Image.SCALE_SMOOTH));
+        JFileChooser JFchooser = new JFileChooser();
+        JFchooser.showOpenDialog(null);
+        File file = JFchooser.getSelectedFile();
+        fileloc = file.getAbsolutePath();
+        ImageIcon imgIcon = new ImageIcon(new ImageIcon(fileloc).getImage().getScaledInstance(lblDefaultimage.getWidth(), lblDefaultimage.getHeight(), Image.SCALE_SMOOTH));
         lblDefaultimage.setIcon(imgIcon);
-        
+       
         try{
-            File image = new File(filename);
+            File image = new File(fileloc);
             FileInputStream fis = new FileInputStream(image);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            byte[] b = new byte[1024];
-            for(int checkNum; (checkNum = fis.read(b)) !=-1;){
+            byte[] b = new byte[5000];
+            for(int checkNum; (checkNum = fis.read(b)) != -1;){
                 baos.write(b,0,checkNum);
             }
             resident_image = baos.toByteArray();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+        
+        try{
+            String value1 = txtLname.getText();
+            String sql = "Update ROOT.TBL_RESIDENTS SET profile = ? WHERE lastname = '"+value1+"'";
+            ps = conn.prepareStatement(sql);
+            ps.setBytes(1, resident_image);
+            ps.execute();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Image Updated");
+        }
+        residentTbl();
         
     }//GEN-LAST:event_btnUploadActionPerformed
 
@@ -579,11 +589,20 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         try{
-            String sql ="INSERT INTO ROOT.TBL_RESIDENTS VALUES (?, ?, ?)";
+            String sql ="INSERT INTO ROOT.TBL_RESIDENTS (lastname,firstname,mi,house_number,street,gender,age,year_of_stay,birthday,birthplace,contact_number,profile) VALUES (?, ?, ?, ?, ?, ? ,? ,? ,? ,? ,? ,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtLname.getText());
             ps.setString(2, txtFname.getText());
             ps.setString(3, txtInitial.getText());
+            ps.setString(4, txtHousenum.getText());
+            ps.setString(5, txtStreet.getText());
+            ps.setString(6, gender);
+            ps.setString(7, txtAge.getText());
+            ps.setString(8, txtYearstay.getText());
+            ps.setString(9, txtDateofbirth.getText());
+            ps.setString(10, txtPlaceofbirth.getText());
+            ps.setString(11, txtContact.getText());
+            ps.setBytes(12, resident_image);
             
             ps.execute();
             JOptionPane.showMessageDialog(null, "Resident Data Added !");
@@ -605,7 +624,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);   
+            JOptionPane.showMessageDialog(null, "Please fill up all the fields !");   
         }
         residentTbl();
     }//GEN-LAST:event_btnAddActionPerformed
@@ -616,7 +635,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             JOptionPane.YES_NO_OPTION);
         if(ask == 0){
             try{
-                String sql = "DELETE FROM ROOT.TBL_RESIDENTS WHERE l_name = ?";
+                String sql = "DELETE FROM ROOT.TBL_RESIDENTS WHERE lastname = ?";
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, txtLname.getText()); 
                 ps.execute();
@@ -647,16 +666,46 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         try{
             int row = tblResidents.getSelectedRow();
             String tblClick = (tblResidents.getModel().getValueAt(row, 0).toString());
-            String sql = "SELECT * FROM ROOT.TBL_RESIDENTS WHERE l_name = '"+tblClick+"'";
+            String sql = "SELECT * FROM ROOT.TBL_RESIDENTS WHERE lastname = '"+tblClick+"'";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             if(rs.next()){
-                String col1 = rs.getString("l_name");
+                String col1 = rs.getString("lastname");
                 txtLname.setText(col1);
-                String col2 = rs.getString("f_name");
+                String col2 = rs.getString("firstname");
                 txtFname.setText(col2);
                 String col3 = rs.getString("mi");
                 txtInitial.setText(col3);
+                String col4 = rs.getString("house_number");
+                txtHousenum.setText(col4);
+                String col5 = rs.getString("street");
+                txtStreet.setText(col5);
+                if("Male".equals(rs.getString("gender"))){
+                    rbtnMale.setSelected(true);
+                    rbtnFemale.setSelected(false);
+                    gender = "Male";
+                }else if("Female".equals(rs.getString("gender"))){
+                    rbtnFemale.setSelected(true);
+                    rbtnMale.setSelected(false);
+                    gender = "Female";
+                }else{
+                    rbtnMale.setSelected(false);
+                    rbtnFemale.setSelected(false);
+                }
+                String col6 = rs.getString("age");
+                txtAge.setText(col6);
+                String col7 = rs.getString("year_of_stay");
+                txtYearstay.setText(col7);
+                String col8 = rs.getString("birthday");
+                txtDateofbirth.setText(col8);
+                String col9 = rs.getString("birthplace");
+                txtPlaceofbirth.setText(col9);
+                String col10 = rs.getString("contact_number");
+                txtContact.setText(col10);
+                
+                byte[] col11 = rs.getBytes("profile");
+                ImageIcon imgicon = new ImageIcon(col11);
+                lblDefaultimage.setIcon(imgicon);
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -672,12 +721,21 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             String val1 = txtLname.getText();
             String val2 = txtFname.getText();
             String val3 = txtInitial.getText();
-            
-            String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = '"+val1+"', f_name = '"+val2+"', mi = '"+val3+"'"
-                    + "WHERE l_name = '"+tblClick+"'";
+            String val4 = txtHousenum.getText();
+            String val5 = txtStreet.getText();
+            String val6 = gender;
+            String val7 = txtAge.getText();
+            String val8 = txtYearstay.getText();
+            String val9 = txtDateofbirth.getText();
+            String val10 = txtPlaceofbirth.getText();
+            String val11 = txtContact.getText();
+      
+            String sql = "UPDATE ROOT.TBL_RESIDENTS SET lastname = '"+val1+"', firstname = '"+val2+"', mi = '"+val3+"', house_number = '"+val4+"', street = '"+val5+"',"
+                    + "gender = '"+val6+"', age = '"+val7+"', year_of_stay ='"+val8+"', birthday = '"+val9+"', birthplace = '"+val10+"',contact_number = '"+val11+"'"
+                    + "WHERE lastname = '"+tblClick+"'";
             ps = conn.prepareStatement(sql);
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Updated");
+            JOptionPane.showMessageDialog(null, "Resident Data Updated");
             
             txtLname.setText("");
             txtFname.setText("");
@@ -789,7 +847,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables
     private String gender;
-    private String filename = null;
+    private String fileloc = null;
     private byte[] resident_image = null;
 }
 

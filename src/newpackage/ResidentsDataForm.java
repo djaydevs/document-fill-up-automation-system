@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.table.*;
 import net.proteanit.sql.DbUtils;
 
 
@@ -30,6 +31,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     
         try{
             initComponents();
+            populationCount();
             residentTbl();
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");              
@@ -88,6 +90,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         invalid = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         tableborder = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         lastname = new javax.swing.JLabel();
@@ -95,6 +98,8 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnGenerate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResidents = new javax.swing.JTable();
+        lblPopulation = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
 
@@ -258,19 +263,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         lblDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
         lblDateofbirth.setText("Date of birth");
-        registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
+        registerborder.add(lblDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
 
         txtDateofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
-        txtDateofbirth.setText("mm/dd/yyyy");
         txtDateofbirth.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
-        txtDateofbirth.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDateofbirthFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDateofbirthFocusLost(evt);
-            }
-        });
         registerborder.add(txtDateofbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 190, 30));
 
         lblPlaceofbirth.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
@@ -349,6 +345,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         invalid.setForeground(new java.awt.Color(255, 0, 0));
         registerborder.add(invalid, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        jLabel1.setText("mm/dd/yyyy");
+        registerborder.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
+
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 690));
 
         tableborder.setBackground(new java.awt.Color(255, 255, 255));
@@ -357,6 +357,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         txtSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
         tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 170, 30));
 
         lastname.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
@@ -398,6 +403,18 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblResidents);
 
         tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 810, 530));
+
+        lblPopulation.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        lblPopulation.setForeground(new java.awt.Color(0, 102, 153));
+        lblPopulation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPopulation.setToolTipText("");
+        tableborder.add(lblPopulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 30, 40));
+
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel4.setText("POPULATION :");
+        jLabel4.setToolTipText("");
+        tableborder.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 190, 40));
 
         jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 830, 690));
 
@@ -444,6 +461,24 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             tblResidents.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    private void populationCount(){
+         try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+            String sql = "SELECT COUNT(info_id) FROM ROOT.TBL_RESIDENTS";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+               int sum = rs.getInt(1);
+               String str = String.valueOf(sum);
+               lblPopulation.setText(str);
+            }
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -539,22 +574,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnClearActionPerformed
-
-    private void txtDateofbirthFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDateofbirthFocusGained
-        // TODO add your handling code here:
-        if(txtDateofbirth.getText().equals("mm/dd/yyyy")){
-            txtDateofbirth.setText("");
-            txtDateofbirth.setForeground(new Color(0,0,0));
-        }
-    }//GEN-LAST:event_txtDateofbirthFocusGained
-
-    private void txtDateofbirthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDateofbirthFocusLost
-        // TODO add your handling code here:
-        if(txtDateofbirth.getText().equals("")){
-            txtDateofbirth.setText("mm/dd/yyyy");
-            txtDateofbirth.setForeground(new Color(0,0,0));
-        }      
-    }//GEN-LAST:event_txtDateofbirthFocusLost
 
     private void txtFnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFnameActionPerformed
         // TODO add your handling code here:
@@ -758,6 +777,15 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         residentTbl();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+       DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
+       TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+       tblResidents.setRowSorter(tr);
+       tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));
+       
+    }//GEN-LAST:event_txtSearchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -801,7 +829,9 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpload;
     private javax.swing.JLabel invalid;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBG;
@@ -824,6 +854,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblNavbg;
     private javax.swing.JLabel lblPlaceofbirth;
+    private javax.swing.JLabel lblPopulation;
     private javax.swing.JLabel lblRegistration;
     private javax.swing.JLabel lblResidentsData;
     private javax.swing.JLabel lblResidentsDataTitle;

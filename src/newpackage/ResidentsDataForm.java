@@ -467,7 +467,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }
     
     private void populationCount(){
-         try{
+        try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
             String sql = "SELECT COUNT(info_id) FROM ROOT.TBL_RESIDENTS";
@@ -481,7 +481,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
-        }
+        }   
     }
     private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked
         // TODO add your handling code here:
@@ -624,7 +624,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             ps.setBytes(12, resident_image);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Resident Data Added !");
-  
+          
             txtLname.setText("");
             txtFname.setText("");
             txtInitial.setText("");
@@ -668,7 +668,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             JOptionPane.YES_NO_OPTION);
         if(ask == 0){
             try{
-                String sql = "DELETE FROM ROOT.TBL_RESIDENTS WHERE lastname = ?";
+                String sql = "DELETE FROM ROOT.TBL_RESIDENT WHERE lastname = ?";
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, txtLname.getText()); 
                 ps.execute();
@@ -796,7 +796,53 @@ public class ResidentsDataForm extends javax.swing.JFrame {
        DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
        tblResidents.setRowSorter(tr);
-       tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));   
+       tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));
+
+    try{ String sql = "SELECT * FROM ROOT.TBL_RESIDENTS WHERE lastname = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, txtSearch.getText());
+            rs = ps.executeQuery();
+            if(rs.next()){
+                String col1 = rs.getString("lastname");
+                txtLname.setText(col1);
+                String col2 = rs.getString("firstname");
+                txtFname.setText(col2);
+                String col3 = rs.getString("mi");
+                txtInitial.setText(col3);
+                String col4 = rs.getString("house_number");
+                txtHousenum.setText(col4);
+                String col5 = rs.getString("street");
+                txtStreet.setText(col5);
+                if("Male".equals(rs.getString("gender"))){
+                    rbtnMale.setSelected(true);
+                    rbtnFemale.setSelected(false);
+                    gender = "Male";
+                }else if("Female".equals(rs.getString("gender"))){
+                    rbtnFemale.setSelected(true);
+                    rbtnMale.setSelected(false);
+                    gender = "Female";
+                }else{
+                    rbtnMale.setSelected(false);
+                    rbtnFemale.setSelected(false);
+                }
+                String col6 = rs.getString("age");
+                txtAge.setText(col6);
+                String col7 = rs.getString("year_of_stay");
+                txtYearstay.setText(col7);
+                String col8 = rs.getString("birthday");
+                txtDateofbirth.setText(col8);
+                String col9 = rs.getString("birthplace");
+                txtPlaceofbirth.setText(col9);
+                String col10 = rs.getString("contact_number");
+                txtContact.setText(col10);
+                
+                byte[] col11 = rs.getBytes("profile");
+                ImageIcon imgicon = new ImageIcon(col11);
+                lblDefaultimage.setIcon(imgicon);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Thank you!");
+        }
     }//GEN-LAST:event_txtSearchKeyReleased
 
     /**

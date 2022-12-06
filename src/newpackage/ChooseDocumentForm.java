@@ -27,7 +27,6 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -42,16 +41,15 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         lblCOR = new javax.swing.JLabel();
         btnBC = new javax.swing.JPanel();
         lblBC = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        indigencypanel = new javax.swing.JPanel();
+        residencypanel = new javax.swing.JPanel();
+        clearancepanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 1, 32)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(3, 87, 122));
-        jLabel13.setText("| Choose Document");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -64,9 +62,10 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavbg.png"))); // NOI18N
-        jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
+        jLabel18.setText("  ");
+        jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 85));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 85));
 
         brdwebcam.setBackground(new java.awt.Color(255, 255, 255));
         brdwebcam.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
@@ -74,11 +73,11 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 20)); // NOI18N
         jLabel11.setText("<html>Pumili ng dokumento na kailangan ng residente.</html>");
-        brdwebcam.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 550, -1));
+        brdwebcam.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, -1));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         jLabel10.setText("<html>Choose a document that the resident needs.</html>");
-        brdwebcam.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 550, -1));
+        brdwebcam.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 550, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,9 +98,9 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         btnCOILayout.setHorizontalGroup(
             btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCOILayout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(58, 58, 58)
                 .addComponent(lblCOI)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         btnCOILayout.setVerticalGroup(
             btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +110,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        jPanel3.add(btnCOI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 90));
+        jPanel3.add(btnCOI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
 
         btnCOR.setBackground(new java.awt.Color(255, 255, 255));
         btnCOR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(13, 76, 146), 3));
@@ -130,19 +129,19 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         btnCORLayout.setHorizontalGroup(
             btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCORLayout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(58, 58, 58)
                 .addComponent(lblCOR)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         btnCORLayout.setVerticalGroup(
             btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCORLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addComponent(lblCOR)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jPanel3.add(btnCOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 550, 90));
+        jPanel3.add(btnCOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 430, 90));
 
         btnBC.setBackground(new java.awt.Color(13, 76, 146));
         btnBC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,24 +158,73 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         btnBC.setLayout(btnBCLayout);
         btnBCLayout.setHorizontalGroup(
             btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBCLayout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
+            .addGroup(btnBCLayout.createSequentialGroup()
+                .addGap(88, 88, 88)
                 .addComponent(lblBC)
-                .addGap(143, 143, 143))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         btnBCLayout.setVerticalGroup(
             btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBCLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(24, 24, 24)
                 .addComponent(lblBC)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jPanel3.add(btnBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 550, 90));
+        jPanel3.add(btnBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 430, 90));
 
-        brdwebcam.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 550, 270));
+        brdwebcam.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 270));
 
-        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 400));
+        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 470, 390));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        indigencypanel.setBackground(new java.awt.Color(102, 255, 255));
+
+        javax.swing.GroupLayout indigencypanelLayout = new javax.swing.GroupLayout(indigencypanel);
+        indigencypanel.setLayout(indigencypanelLayout);
+        indigencypanelLayout.setHorizontalGroup(
+            indigencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 816, Short.MAX_VALUE)
+        );
+        indigencypanelLayout.setVerticalGroup(
+            indigencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1056, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(indigencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
+
+        residencypanel.setBackground(new java.awt.Color(255, 51, 204));
+
+        javax.swing.GroupLayout residencypanelLayout = new javax.swing.GroupLayout(residencypanel);
+        residencypanel.setLayout(residencypanelLayout);
+        residencypanelLayout.setHorizontalGroup(
+            residencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 816, Short.MAX_VALUE)
+        );
+        residencypanelLayout.setVerticalGroup(
+            residencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1056, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(residencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
+
+        clearancepanel.setBackground(new java.awt.Color(0, 255, 0));
+
+        javax.swing.GroupLayout clearancepanelLayout = new javax.swing.GroupLayout(clearancepanel);
+        clearancepanel.setLayout(clearancepanelLayout);
+        clearancepanelLayout.setHorizontalGroup(
+            clearancepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 816, Short.MAX_VALUE)
+        );
+        clearancepanelLayout.setVerticalGroup(
+            clearancepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1056, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(clearancepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, 816, 1056));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,7 +234,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, Short.MAX_VALUE)
         );
 
         pack();
@@ -194,18 +242,23 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
     private void btnCOIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCOIMouseClicked
         // TODO add your handling code here:
-        
+        indigencypanel.setVisible(true);
+        residencypanel.setVisible(false);
+        clearancepanel.setVisible(false);
     }//GEN-LAST:event_btnCOIMouseClicked
 
     private void btnCORMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCORMouseClicked
         // TODO add your handling code here:
-        
+        indigencypanel.setVisible(false);
+        residencypanel.setVisible(true);
+        clearancepanel.setVisible(false);
     }//GEN-LAST:event_btnCORMouseClicked
 
     private void btnBCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBCMouseClicked
         // TODO add your handling code here:
-        //CameraScanForm csf = new CameraScanForm();
-        //csf.show();
+        indigencypanel.setVisible(false);
+        residencypanel.setVisible(false);
+        clearancepanel.setVisible(true);
     }//GEN-LAST:event_btnBCMouseClicked
 
     /**
@@ -248,17 +301,20 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private javax.swing.JPanel btnBC;
     private javax.swing.JPanel btnCOI;
     private javax.swing.JPanel btnCOR;
+    private javax.swing.JPanel clearancepanel;
+    private javax.swing.JPanel indigencypanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblBC;
     private javax.swing.JLabel lblCOI;
     private javax.swing.JLabel lblCOR;
+    private javax.swing.JPanel residencypanel;
     // End of variables declaration//GEN-END:variables
 }

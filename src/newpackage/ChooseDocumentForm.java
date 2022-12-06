@@ -41,6 +41,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         lblCOR = new javax.swing.JLabel();
         btnBC = new javax.swing.JPanel();
         lblBC = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         indigencypanel = new javax.swing.JPanel();
         residencypanel = new javax.swing.JPanel();
@@ -177,6 +178,9 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 470, 390));
 
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         indigencypanel.setBackground(new java.awt.Color(102, 255, 255));
@@ -224,7 +228,9 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         jPanel4.add(clearancepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, 816, 1056));
+        jScrollPane2.setViewportView(jPanel4);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, 816, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,7 +240,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1160, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
         );
 
         pack();
@@ -312,6 +318,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBC;
     private javax.swing.JLabel lblCOI;
     private javax.swing.JLabel lblCOR;

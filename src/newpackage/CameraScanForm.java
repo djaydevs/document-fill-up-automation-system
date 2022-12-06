@@ -4,17 +4,39 @@
  */
 package newpackage;
 
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+
 /**
  *
  * @author DJay
  */
-public class CameraScanForm extends javax.swing.JFrame {
+public class CameraScanForm extends javax.swing.JFrame implements Runnable, ThreadFactory {
+    
+    private WebcamPanel panel = null;
+    private Webcam webcam = null;
 
+    //private static final long serialVersionUID = 6441489157408381878L;
+    private Executor executor = Executors.newSingleThreadExecutor(this);
     /**
      * Creates new form CameraScanForm
      */
     public CameraScanForm() {
         initComponents();
+        initWebcam();
     }
 
     /**
@@ -34,11 +56,11 @@ public class CameraScanForm extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         brdwebcam = new javax.swing.JPanel();
         lbinstruction = new javax.swing.JLabel();
-        webcam = new javax.swing.JPanel();
-        lbinstruction1 = new javax.swing.JLabel();
-        btnqrupload = new javax.swing.JButton();
+        panelwebcam = new javax.swing.JPanel();
+        result_field = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Scan QR Code");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,25 +93,11 @@ public class CameraScanForm extends javax.swing.JFrame {
         lbinstruction.setText("<html><center><strong>Isakto sa frame ng camera ang QR code.</strong>\n<br>Please place the QR code inside the camera frame.</center><html>");
         brdwebcam.add(lbinstruction, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
-        webcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        brdwebcam.add(webcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 511, 319));
+        panelwebcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        brdwebcam.add(panelwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 511, 310));
+        brdwebcam.add(result_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 50));
 
-        lbinstruction1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
-        lbinstruction1.setText("<html>Upload QR code if camera is unavailable.<html>");
-        brdwebcam.add(lbinstruction1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 630, 360, -1));
-
-        btnqrupload.setBackground(new java.awt.Color(13, 76, 146));
-        btnqrupload.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
-        btnqrupload.setForeground(new java.awt.Color(255, 255, 255));
-        btnqrupload.setText("Upload QR Code Image");
-        btnqrupload.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnqruploadActionPerformed(evt);
-            }
-        });
-        brdwebcam.add(btnqrupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 305, 70));
-
-        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 700));
+        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,16 +107,11 @@ public class CameraScanForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnqruploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnqruploadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnqruploadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,20 +124,16 @@ public class CameraScanForm extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CameraScanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CameraScanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CameraScanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CameraScanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -147,7 +146,6 @@ public class CameraScanForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel brdwebcam;
-    private javax.swing.JButton btnqrupload;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
@@ -155,7 +153,60 @@ public class CameraScanForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lbinstruction;
-    private javax.swing.JLabel lbinstruction1;
-    private javax.swing.JPanel webcam;
+    private javax.swing.JPanel panelwebcam;
+    private javax.swing.JLabel result_field;
     // End of variables declaration//GEN-END:variables
+    
+    private void initWebcam() {
+        Dimension size = WebcamResolution.QVGA.getSize();
+        webcam = Webcam.getWebcams().get(0);
+        webcam.setViewSize(size);
+
+        panel = new WebcamPanel(webcam);
+        panel.setPreferredSize(size);
+        panel.setFPSDisplayed(true);
+
+        panelwebcam.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 310));
+
+        executor.execute(this);
+    }
+    @Override
+    public void run() {
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
+            Result result = null;
+            BufferedImage image = null;
+
+            if (webcam.isOpen()) {
+                if ((image = webcam.getImage()) == null) {
+                    continue;
+                } 
+            }
+            
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+            try {
+                result = new MultiFormatReader().decode(bitmap);
+            } catch (NotFoundException e) {
+                //No result
+            }
+
+            if (result != null) {
+                result_field.setText(result.getText());
+            }
+        } while (true);
+    }
+
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, "My Thread");
+        t.setDaemon(true);
+        return t;
+    }
 }

@@ -4,12 +4,6 @@
  */
 package newpackage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author DJay
@@ -47,20 +41,20 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnCOI = new javax.swing.JPanel();
-        lblCOI = new javax.swing.JLabel();
-        btnCOR = new javax.swing.JPanel();
-        lblCOR = new javax.swing.JLabel();
-        btnBC = new javax.swing.JPanel();
-        lblBC = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        btnscanqrcode = new javax.swing.JButton();
+        btnuploadqrcode = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        userTable = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Document Fill-Up Automation System - Dashboard");
 
         jpBackground.setBackground(new java.awt.Color(255, 255, 255));
         jpBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,7 +74,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 lblResidentsDataMouseClicked(evt);
             }
         });
-        jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 2, -1, 80));
+        jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 23, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -93,12 +87,12 @@ public class DashboardForm extends javax.swing.JFrame {
                 lblLogoutMouseClicked(evt);
             }
         });
-        jPanel6.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 2, -1, 80));
+        jPanel6.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 23, -1, -1));
 
         lblDashboard.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblDashboard.setText("Dashboard");
-        jPanel6.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 3, -1, 80));
+        jPanel6.add(lblDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 23, -1, -1));
 
         jPanel8.setBackground(new java.awt.Color(104, 185, 225));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,127 +114,57 @@ public class DashboardForm extends javax.swing.JFrame {
 
         lblQr.setBackground(new java.awt.Color(102, 102, 102));
         lblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/qrlogo.png"))); // NOI18N
-        jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, 140));
+        jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 150, 150));
 
-        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jLabel10.setText("<html>Choose from the list of documents that will be process,<br>then start scanning residents QR code.</html>");
+        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
+        jLabel10.setText("<html>This application processes document by using QR code technology.</html>");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 420, -1));
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 23)); // NOI18N
-        jLabel11.setText("<html>Pumili ng dokumentong kailangan<br>i-proseso bago magpatuloy sa<br>pag-scan ng QR code ng residente. </html>");
+        jLabel11.setText("<html>Ang application na ito ay nagpo-proseso ng mga dokumento sa pamamagitan ng QR code.</html>");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 420, -1));
 
         jpBackground.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 180));
 
         jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(3, 87, 122));
-        jLabel14.setText("List of Documents");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
-            }
-        });
+        jLabel14.setText("Scan QR Code");
         jpBackground.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCOI.setBackground(new java.awt.Color(13, 76, 146));
-        btnCOI.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCOIMouseClicked(evt);
+        jLabel12.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
+        jLabel12.setText("<html>Start processing documents by scanning resident QR code.</html>");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 550, -1));
+
+        jLabel15.setFont(new java.awt.Font("Microsoft YaHei", 1, 23)); // NOI18N
+        jLabel15.setText("<html>Simulan ang pag-proseso ng mga dokumento sa pag-scan ng QR code ng residente.</html>");
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 550, -1));
+
+        btnscanqrcode.setBackground(new java.awt.Color(13, 76, 146));
+        btnscanqrcode.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 20)); // NOI18N
+        btnscanqrcode.setForeground(new java.awt.Color(255, 255, 255));
+        btnscanqrcode.setText("Scan QR Code");
+        btnscanqrcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnscanqrcodeActionPerformed(evt);
             }
         });
+        jPanel5.add(btnscanqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 307, 70));
 
-        lblCOI.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
-        lblCOI.setForeground(new java.awt.Color(255, 255, 255));
-        lblCOI.setText("Certificate of Indigency");
+        btnuploadqrcode.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 20)); // NOI18N
+        btnuploadqrcode.setForeground(new java.awt.Color(13, 76, 146));
+        btnuploadqrcode.setText("Upload QR Code Image");
+        btnuploadqrcode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(13, 76, 146), 3, true));
+        jPanel5.add(btnuploadqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 307, 70));
 
-        javax.swing.GroupLayout btnCOILayout = new javax.swing.GroupLayout(btnCOI);
-        btnCOI.setLayout(btnCOILayout);
-        btnCOILayout.setHorizontalGroup(
-            btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCOILayout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
-                .addComponent(lblCOI)
-                .addGap(92, 92, 92))
-        );
-        btnCOILayout.setVerticalGroup(
-            btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCOILayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblCOI)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        jLabel16.setText("Upload QR code if camera is unavailable");
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
 
-        jPanel3.add(btnCOI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 90));
-
-        btnCOR.setBackground(new java.awt.Color(255, 255, 255));
-        btnCOR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(13, 76, 146), 3));
-        btnCOR.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCORMouseClicked(evt);
-            }
-        });
-
-        lblCOR.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
-        lblCOR.setForeground(new java.awt.Color(13, 76, 146));
-        lblCOR.setText("Certificate of Residency");
-
-        javax.swing.GroupLayout btnCORLayout = new javax.swing.GroupLayout(btnCOR);
-        btnCOR.setLayout(btnCORLayout);
-        btnCORLayout.setHorizontalGroup(
-            btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCORLayout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addComponent(lblCOR)
-                .addGap(92, 92, 92))
-        );
-        btnCORLayout.setVerticalGroup(
-            btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCORLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lblCOR)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(btnCOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 590, 90));
-
-        btnBC.setBackground(new java.awt.Color(13, 76, 146));
-        btnBC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBCMouseClicked(evt);
-            }
-        });
-
-        lblBC.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 35)); // NOI18N
-        lblBC.setForeground(new java.awt.Color(255, 255, 255));
-        lblBC.setText("Barangay Clearance");
-
-        javax.swing.GroupLayout btnBCLayout = new javax.swing.GroupLayout(btnBC);
-        btnBC.setLayout(btnBCLayout);
-        btnBCLayout.setHorizontalGroup(
-            btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-            .addGroup(btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(btnBCLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblBC)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        btnBCLayout.setVerticalGroup(
-            btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(btnBCLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblBC)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jPanel3.add(btnBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 590, 90));
-
-        jpBackground.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 590, 270));
+        jpBackground.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 413, 590, 456));
 
         jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(3, 87, 122));
@@ -251,7 +175,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -262,9 +186,9 @@ public class DashboardForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(userTable);
+        jScrollPane1.setViewportView(jTable1);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 490));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 640));
 
         jpBackground.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 750, 670));
 
@@ -294,42 +218,21 @@ public class DashboardForm extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_lblResidentsDataMouseClicked
-    private JFrame logout;
+
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
-        logout = new JFrame("Log Out");
-        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Message",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-        {
-            LogInForm lif = new LogInForm();
-            lif.show();
-            
-            dispose();
-        }
+        LogInForm lif = new LogInForm();
+        lif.show();
+        
+        dispose();
         
     }//GEN-LAST:event_lblLogoutMouseClicked
 
-    private void btnCOIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCOIMouseClicked
+    private void btnscanqrcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnscanqrcodeActionPerformed
         // TODO add your handling code here:
         CameraScanForm csf = new CameraScanForm();
         csf.show();
-    }//GEN-LAST:event_btnCOIMouseClicked
-
-    private void btnCORMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCORMouseClicked
-        // TODO add your handling code here:
-        CameraScanForm csf = new CameraScanForm();
-        csf.show();
-    }//GEN-LAST:event_btnCORMouseClicked
-
-    private void btnBCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBCMouseClicked
-        // TODO add your handling code here:
-        CameraScanForm csf = new CameraScanForm();
-        csf.show();
-    }//GEN-LAST:event_btnBCMouseClicked
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_btnscanqrcodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,32 +270,31 @@ public class DashboardForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnBC;
-    private javax.swing.JPanel btnCOI;
-    private javax.swing.JPanel btnCOR;
+    private javax.swing.JButton btnscanqrcode;
+    private javax.swing.JButton btnuploadqrcode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpBackground;
-    private javax.swing.JLabel lblBC;
-    private javax.swing.JLabel lblCOI;
-    private javax.swing.JLabel lblCOR;
     private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblQr;
     private javax.swing.JLabel lblResidentsData;
-    private javax.swing.JTable userTable;
     // End of variables declaration//GEN-END:variables
 }

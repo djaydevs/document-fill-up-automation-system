@@ -385,7 +385,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnGenerate.setText("Generate I.D");
         tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 140, 40));
 
-        tblResidents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
+        tblResidents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 1, true));
         tblResidents.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         tblResidents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -622,10 +622,9 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             ps.setString(10, txtPlaceofbirth.getText());
             ps.setString(11, txtContact.getText());
             ps.setBytes(12, resident_image);
-            
             ps.execute();
             JOptionPane.showMessageDialog(null, "Resident Data Added !");
-            
+  
             txtLname.setText("");
             txtFname.setText("");
             txtInitial.setText("");
@@ -646,6 +645,21 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please fill up all the fields !");   
         }
         residentTbl();
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+            String sql = "SELECT COUNT(info_id) FROM ROOT.TBL_RESIDENTS";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+               int sum = rs.getInt(1);
+               String str = String.valueOf(sum);
+               lblPopulation.setText(str);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -782,8 +796,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
        DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
        tblResidents.setRowSorter(tr);
-       tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));
-       
+       tr.setRowFilter(RowFilter.regexFilter(txtSearch.getText().trim()));   
     }//GEN-LAST:event_txtSearchKeyReleased
 
     /**

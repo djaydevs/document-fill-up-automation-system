@@ -40,6 +40,15 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        brdchoosereason = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        rdreason6 = new javax.swing.JRadioButton();
+        rdreason5 = new javax.swing.JRadioButton();
+        rdreason4 = new javax.swing.JRadioButton();
+        rdreason3 = new javax.swing.JRadioButton();
+        rdreason2 = new javax.swing.JRadioButton();
+        rdreason1 = new javax.swing.JRadioButton();
         brdchoosedoc = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -53,14 +62,39 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         printpanel = new javax.swing.JPanel();
         indigencypanel = new javax.swing.JPanel();
-        COIeditfor = new javax.swing.JTextField();
+        COIeditdate = new javax.swing.JTextField();
+        COIedityear = new javax.swing.JTextField();
+        COIeditday = new javax.swing.JTextField();
+        COIeditmonth = new javax.swing.JTextField();
+        COIeditreason = new javax.swing.JTextField();
         COIeditaddress = new javax.swing.JTextField();
         COIeditage = new javax.swing.JTextField();
         COIeditname = new javax.swing.JTextField();
         docindigency = new javax.swing.JLabel();
         residencypanel = new javax.swing.JPanel();
+        COReditname3 = new javax.swing.JTextField();
+        COReditdate = new javax.swing.JTextField();
+        CORedityear = new javax.swing.JTextField();
+        COReditday = new javax.swing.JTextField();
+        COReditmonth = new javax.swing.JTextField();
+        COReditreason = new javax.swing.JTextField();
+        COReditname2 = new javax.swing.JTextField();
+        COReditaddress = new javax.swing.JTextField();
+        COReditstay = new javax.swing.JTextField();
+        COReditage = new javax.swing.JTextField();
+        COReditname1 = new javax.swing.JTextField();
         docresidency = new javax.swing.JLabel();
         clearancepanel = new javax.swing.JPanel();
+        COCeditname2 = new javax.swing.JTextField();
+        COCeditdate = new javax.swing.JTextField();
+        COCedityear = new javax.swing.JTextField();
+        COCeditday = new javax.swing.JTextField();
+        COCeditmonth = new javax.swing.JTextField();
+        COCeditreason = new javax.swing.JTextField();
+        COCeditstay = new javax.swing.JTextField();
+        COCeditaddress = new javax.swing.JTextField();
+        COCeditage = new javax.swing.JTextField();
+        COCeditname1 = new javax.swing.JTextField();
         docclearance = new javax.swing.JLabel();
         btnPrint = new javax.swing.JButton();
 
@@ -84,6 +118,54 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, -1));
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 85));
+
+        brdchoosereason.setBackground(new java.awt.Color(255, 255, 255));
+        brdchoosereason.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        brdchoosereason.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Microsoft YaHei", 1, 20)); // NOI18N
+        jLabel12.setText("<html>Pumili ng rason kung para saan ang dokumento ng residente.</html>");
+        brdchoosereason.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, -1));
+
+        jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
+        jLabel13.setText("<html>Choose a reason why the resident needs the document.</html>");
+        brdchoosereason.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 430, -1));
+
+        rdreason6.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
+        rdreason6.setText("EMPLOYMENT");
+        rdreason6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdreason6ActionPerformed(evt);
+            }
+        });
+        brdchoosereason.add(rdreason6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        rdreason5.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
+        rdreason5.setText("POLICE CLEARANCE");
+        rdreason5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdreason5ActionPerformed(evt);
+            }
+        });
+        brdchoosereason.add(rdreason5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        rdreason4.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
+        rdreason4.setText("CASH ASSISTANCE");
+        brdchoosereason.add(rdreason4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        rdreason3.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
+        rdreason3.setText("MEDICAL ASSISTANCE");
+        brdchoosereason.add(rdreason3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        rdreason2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 15)); // NOI18N
+        rdreason2.setText("FOOD ASSISTANCE");
+        brdchoosereason.add(rdreason2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        rdreason1.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
+        rdreason1.setText("SCHOLARSHIP");
+        brdchoosereason.add(rdreason1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jPanel1.add(brdchoosereason, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 470, 390));
 
         brdchoosedoc.setBackground(new java.awt.Color(255, 255, 255));
         brdchoosedoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
@@ -193,7 +275,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         brdchoosedoc.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 270));
 
-        jPanel1.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 470, 390));
+        jPanel1.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 95, 470, 390));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -203,16 +285,60 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         indigencypanel.setBackground(new java.awt.Color(255, 255, 255));
         indigencypanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        COIeditfor.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
-        COIeditfor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        COIeditfor.setText("For");
-        COIeditfor.setBorder(null);
-        COIeditfor.addActionListener(new java.awt.event.ActionListener() {
+        COIeditdate.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        COIeditdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditdate.setText("00/00/0000");
+        COIeditdate.setBorder(null);
+        COIeditdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditforActionPerformed(evt);
+                COIeditdateActionPerformed(evt);
             }
         });
-        indigencypanel.add(COIeditfor, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 544, 220, 20));
+        indigencypanel.add(COIeditdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 772, 70, 10));
+
+        COIedityear.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COIedityear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIedityear.setText("0000");
+        COIedityear.setBorder(null);
+        COIedityear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIedityearActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 587, 40, 15));
+
+        COIeditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COIeditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditday.setText("00");
+        COIeditday.setBorder(null);
+        COIeditday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIeditdayActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 587, 30, 15));
+
+        COIeditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COIeditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditmonth.setText("Month");
+        COIeditmonth.setBorder(null);
+        COIeditmonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIeditmonthActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIeditmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 587, 110, 15));
+
+        COIeditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COIeditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditreason.setText("Reason");
+        COIeditreason.setBorder(null);
+        COIeditreason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIeditreasonActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIeditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 544, 220, 20));
 
         COIeditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIeditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -234,7 +360,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COIeditageActionPerformed(evt);
             }
         });
-        indigencypanel.add(COIeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, 30, 20));
+        indigencypanel.add(COIeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 355, 30, 15));
 
         COIeditname.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COIeditname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -246,7 +372,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COIeditnameActionPerformed(evt);
             }
         });
-        indigencypanel.add(COIeditname, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 240, 20));
+        indigencypanel.add(COIeditname, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 355, 240, 15));
 
         docindigency.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/indigency.png"))); // NOI18N
         indigencypanel.add(docindigency, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -256,6 +382,130 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         residencypanel.setBackground(new java.awt.Color(255, 255, 255));
         residencypanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        COReditname3.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COReditname3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditname3.setText("NAME");
+        COReditname3.setAlignmentY(1.0F);
+        COReditname3.setBorder(null);
+        COReditname3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditname3ActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditname3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 822, 210, 15));
+
+        COReditdate.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        COReditdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditdate.setText("00/00/0000");
+        COReditdate.setBorder(null);
+        COReditdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditdateActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 685, 70, 10));
+
+        CORedityear.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        CORedityear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CORedityear.setText("0000");
+        CORedityear.setBorder(null);
+        CORedityear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CORedityearActionPerformed(evt);
+            }
+        });
+        residencypanel.add(CORedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 517, 40, 15));
+
+        COReditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COReditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditday.setText("00");
+        COReditday.setBorder(null);
+        COReditday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditdayActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 517, 30, 15));
+
+        COReditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COReditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditmonth.setText("Month");
+        COReditmonth.setBorder(null);
+        COReditmonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditmonthActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 517, 110, 15));
+
+        COReditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COReditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditreason.setText("Reason");
+        COReditreason.setBorder(null);
+        COReditreason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditreasonActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 467, 240, 20));
+
+        COReditname2.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COReditname2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditname2.setText("Name");
+        COReditname2.setAlignmentY(1.0F);
+        COReditname2.setBorder(null);
+        COReditname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditname2ActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 427, 220, 15));
+
+        COReditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COReditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditaddress.setText("Address");
+        COReditaddress.setBorder(null);
+        COReditaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditaddressActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 322, 200, 15));
+
+        COReditstay.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COReditstay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditstay.setText("0000");
+        COReditstay.setBorder(null);
+        COReditstay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditstayActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 345, 47, 15));
+
+        COReditage.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COReditage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditage.setText("00");
+        COReditage.setBorder(null);
+        COReditage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditageActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 299, 30, 15));
+
+        COReditname1.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COReditname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COReditname1.setText("Name");
+        COReditname1.setAlignmentY(1.0F);
+        COReditname1.setBorder(null);
+        COReditname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COReditname1ActionPerformed(evt);
+            }
+        });
+        residencypanel.add(COReditname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 299, 230, 15));
+
         docresidency.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/residency.png"))); // NOI18N
         residencypanel.add(docresidency, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -263,6 +513,118 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         clearancepanel.setBackground(new java.awt.Color(255, 255, 255));
         clearancepanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        COCeditname2.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COCeditname2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditname2.setText("NAME");
+        COCeditname2.setAlignmentY(1.0F);
+        COCeditname2.setBorder(null);
+        COCeditname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditname2ActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 839, 210, 15));
+
+        COCeditdate.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        COCeditdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditdate.setText("00/00/0000");
+        COCeditdate.setBorder(null);
+        COCeditdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditdateActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 712, 70, 10));
+
+        COCedityear.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COCedityear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCedityear.setText("0000");
+        COCedityear.setBorder(null);
+        COCedityear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCedityearActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 534, 50, 15));
+
+        COCeditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COCeditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditday.setText("00");
+        COCeditday.setBorder(null);
+        COCeditday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditdayActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 534, 40, 15));
+
+        COCeditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COCeditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditmonth.setText("Month");
+        COCeditmonth.setBorder(null);
+        COCeditmonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditmonthActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 534, 92, 15));
+
+        COCeditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COCeditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditreason.setText("Reason");
+        COCeditreason.setBorder(null);
+        COCeditreason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditreasonActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 497, 240, 20));
+
+        COCeditstay.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COCeditstay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditstay.setText("0000");
+        COCeditstay.setBorder(null);
+        COCeditstay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditstayActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 375, 49, 15));
+
+        COCeditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COCeditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditaddress.setText("Address");
+        COCeditaddress.setBorder(null);
+        COCeditaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditaddressActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 352, 208, 15));
+
+        COCeditage.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COCeditage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditage.setText("00");
+        COCeditage.setBorder(null);
+        COCeditage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditageActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 307, 30, 15));
+
+        COCeditname1.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COCeditname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COCeditname1.setText("Name");
+        COCeditname1.setAlignmentY(1.0F);
+        COCeditname1.setBorder(null);
+        COCeditname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COCeditname1ActionPerformed(evt);
+            }
+        });
+        clearancepanel.add(COCeditname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 307, 235, 15));
 
         docclearance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/clearance.png"))); // NOI18N
         clearancepanel.add(docclearance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -336,9 +698,117 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_COIeditaddressActionPerformed
 
-    private void COIeditforActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditforActionPerformed
+    private void COIeditreasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditreasonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditforActionPerformed
+    }//GEN-LAST:event_COIeditreasonActionPerformed
+
+    private void rdreason5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdreason5ActionPerformed
+
+    private void rdreason6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdreason6ActionPerformed
+
+    private void COIeditdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditdayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIeditdayActionPerformed
+
+    private void COIeditmonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditmonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIeditmonthActionPerformed
+
+    private void COIedityearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIedityearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIedityearActionPerformed
+
+    private void COIeditdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIeditdateActionPerformed
+
+    private void COReditdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditdateActionPerformed
+
+    private void CORedityearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CORedityearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CORedityearActionPerformed
+
+    private void COReditdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditdayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditdayActionPerformed
+
+    private void COReditmonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditmonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditmonthActionPerformed
+
+    private void COReditreasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditreasonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditreasonActionPerformed
+
+    private void COReditaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditaddressActionPerformed
+
+    private void COReditageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditageActionPerformed
+
+    private void COReditname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditname1ActionPerformed
+
+    private void COReditstayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditstayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditstayActionPerformed
+
+    private void COReditname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditname2ActionPerformed
+
+    private void COReditname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditname3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COReditname3ActionPerformed
+
+    private void COCeditname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditname2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditname2ActionPerformed
+
+    private void COCeditdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditdateActionPerformed
+
+    private void COCedityearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCedityearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCedityearActionPerformed
+
+    private void COCeditdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditdayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditdayActionPerformed
+
+    private void COCeditmonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditmonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditmonthActionPerformed
+
+    private void COCeditreasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditreasonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditreasonActionPerformed
+
+    private void COCeditaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditaddressActionPerformed
+
+    private void COCeditstayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditstayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditstayActionPerformed
+
+    private void COCeditageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditageActionPerformed
+
+    private void COCeditname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COCeditname1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,11 +846,37 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField COCeditaddress;
+    private javax.swing.JTextField COCeditage;
+    private javax.swing.JTextField COCeditdate;
+    private javax.swing.JTextField COCeditday;
+    private javax.swing.JTextField COCeditmonth;
+    private javax.swing.JTextField COCeditname1;
+    private javax.swing.JTextField COCeditname2;
+    private javax.swing.JTextField COCeditreason;
+    private javax.swing.JTextField COCeditstay;
+    private javax.swing.JTextField COCedityear;
     private javax.swing.JTextField COIeditaddress;
     private javax.swing.JTextField COIeditage;
-    private javax.swing.JTextField COIeditfor;
+    private javax.swing.JTextField COIeditdate;
+    private javax.swing.JTextField COIeditday;
+    private javax.swing.JTextField COIeditmonth;
     private javax.swing.JTextField COIeditname;
+    private javax.swing.JTextField COIeditreason;
+    private javax.swing.JTextField COIedityear;
+    private javax.swing.JTextField COReditaddress;
+    private javax.swing.JTextField COReditage;
+    private javax.swing.JTextField COReditdate;
+    private javax.swing.JTextField COReditday;
+    private javax.swing.JTextField COReditmonth;
+    private javax.swing.JTextField COReditname1;
+    private javax.swing.JTextField COReditname2;
+    private javax.swing.JTextField COReditname3;
+    private javax.swing.JTextField COReditreason;
+    private javax.swing.JTextField COReditstay;
+    private javax.swing.JTextField CORedityear;
     private javax.swing.JPanel brdchoosedoc;
+    private javax.swing.JPanel brdchoosereason;
     private javax.swing.JPanel btnBC;
     private javax.swing.JPanel btnCOI;
     private javax.swing.JPanel btnCOR;
@@ -393,6 +889,8 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -403,6 +901,12 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblCOI;
     private javax.swing.JLabel lblCOR;
     private javax.swing.JPanel printpanel;
+    private javax.swing.JRadioButton rdreason1;
+    private javax.swing.JRadioButton rdreason2;
+    private javax.swing.JRadioButton rdreason3;
+    private javax.swing.JRadioButton rdreason4;
+    private javax.swing.JRadioButton rdreason5;
+    private javax.swing.JRadioButton rdreason6;
     private javax.swing.JPanel residencypanel;
     // End of variables declaration//GEN-END:variables
     

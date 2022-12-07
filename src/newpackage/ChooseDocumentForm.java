@@ -19,9 +19,8 @@ import javax.swing.JPanel;
  */
 public class ChooseDocumentForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ChooseDocumentForm
-     */
+    String reason;
+
     public ChooseDocumentForm() {
         initComponents();
     }
@@ -43,6 +42,10 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         brdchoosereason = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelchoose = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        rdreason7 = new javax.swing.JRadioButton();
         rdreason6 = new javax.swing.JRadioButton();
         rdreason5 = new javax.swing.JRadioButton();
         rdreason4 = new javax.swing.JRadioButton();
@@ -131,39 +134,83 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         jLabel13.setText("<html>Choose a reason why the resident needs the document.</html>");
         brdchoosereason.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 430, -1));
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 185, 225)));
+        jScrollPane1.setHorizontalScrollBar(null);
+
+        panelchoose.setBackground(new java.awt.Color(255, 255, 255));
+        panelchoose.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rdreason7.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
+        rdreason7.setText("EMPLOYMENT");
+        rdreason7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdreason7ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rdreason7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 200, -1));
+
         rdreason6.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
-        rdreason6.setText("EMPLOYMENT");
+        rdreason6.setText("POLICE CLEARANCE");
         rdreason6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdreason6ActionPerformed(evt);
             }
         });
-        brdchoosereason.add(rdreason6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        jPanel2.add(rdreason6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         rdreason5.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
-        rdreason5.setText("POLICE CLEARANCE");
+        rdreason5.setText("EDUCATIONAL ASSISTANCE");
         rdreason5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdreason5ActionPerformed(evt);
             }
         });
-        brdchoosereason.add(rdreason5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        jPanel2.add(rdreason5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         rdreason4.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
         rdreason4.setText("CASH ASSISTANCE");
-        brdchoosereason.add(rdreason4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        rdreason4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdreason4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rdreason4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         rdreason3.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
         rdreason3.setText("MEDICAL ASSISTANCE");
-        brdchoosereason.add(rdreason3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        rdreason3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdreason3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rdreason3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         rdreason2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 15)); // NOI18N
         rdreason2.setText("FOOD ASSISTANCE");
-        brdchoosereason.add(rdreason2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        rdreason2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdreason2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rdreason2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         rdreason1.setFont(new java.awt.Font("Microsoft YaHei", 1, 15)); // NOI18N
         rdreason1.setText("SCHOLARSHIP");
-        brdchoosereason.add(rdreason1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        rdreason1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdreason1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rdreason1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        panelchoose.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 310));
+
+        jScrollPane1.setViewportView(panelchoose);
+
+        brdchoosereason.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 430, 240));
 
         jPanel1.add(brdchoosereason, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 470, 390));
 
@@ -277,6 +324,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         jPanel1.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 95, 470, 390));
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 185, 225)));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
@@ -636,9 +684,9 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, -1, 720));
 
         btnPrint.setBackground(new java.awt.Color(13, 76, 146));
-        btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrint.setText("Print");
+        btnPrint.setText("PRINT");
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);
@@ -704,10 +752,36 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
     private void rdreason5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason5ActionPerformed
         // TODO add your handling code here:
+        reason = "EDUCATIONAL ASSISTANCE";
+        if(rdreason5.isSelected()){
+            rdreason1.setSelected(false);
+            rdreason2.setSelected(false);
+            rdreason3.setSelected(false);
+            rdreason4.setSelected(false);
+            rdreason6.setSelected(false);
+            rdreason7.setSelected(false);
+
+            COIeditreason.setText(reason);
+            COReditreason.setText(reason);
+            COCeditreason.setText(reason);
+        }
     }//GEN-LAST:event_rdreason5ActionPerformed
 
     private void rdreason6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason6ActionPerformed
         // TODO add your handling code here:
+        reason = "POLICE CLEARANCE";
+        if(rdreason6.isSelected()){
+            rdreason1.setSelected(false);
+            rdreason2.setSelected(false);
+            rdreason3.setSelected(false);
+            rdreason4.setSelected(false);
+            rdreason5.setSelected(false);
+            rdreason7.setSelected(false);
+
+            COIeditreason.setText(reason);
+            COReditreason.setText(reason);
+            COCeditreason.setText(reason);
+        }
     }//GEN-LAST:event_rdreason6ActionPerformed
 
     private void COIeditdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditdayActionPerformed
@@ -810,6 +884,91 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_COCeditname1ActionPerformed
 
+    private void rdreason1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason1ActionPerformed
+        // TODO add your handling code here:
+        reason = "SCHOLARSHIP";
+        if(rdreason1.isSelected()){
+            rdreason2.setSelected(false);
+            rdreason3.setSelected(false);
+            rdreason4.setSelected(false);
+            rdreason5.setSelected(false);
+            rdreason6.setSelected(false);
+            rdreason7.setSelected(false);
+
+            COIeditreason.setText(reason);
+            COReditreason.setText(reason);
+            COCeditreason.setText(reason);
+        }
+    }//GEN-LAST:event_rdreason1ActionPerformed
+
+    private void rdreason2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason2ActionPerformed
+        // TODO add your handling code here:
+        reason = "FOOD ASSISTANCE";
+        if(rdreason2.isSelected()){
+            rdreason1.setSelected(false);
+            rdreason3.setSelected(false);
+            rdreason4.setSelected(false);
+            rdreason5.setSelected(false);
+            rdreason6.setSelected(false);
+            rdreason7.setSelected(false);
+
+            COIeditreason.setText(reason);
+            COReditreason.setText(reason);
+            COCeditreason.setText(reason);
+        }
+    }//GEN-LAST:event_rdreason2ActionPerformed
+
+    private void rdreason3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason3ActionPerformed
+        // TODO add your handling code here:
+        reason = "MEDICAL ASSISTANCE";
+        if(rdreason3.isSelected()){
+            rdreason1.setSelected(false);
+            rdreason2.setSelected(false);
+            rdreason4.setSelected(false);
+            rdreason5.setSelected(false);
+            rdreason6.setSelected(false);
+            rdreason7.setSelected(false);
+
+            COIeditreason.setText(reason);
+            COReditreason.setText(reason);
+            COCeditreason.setText(reason);
+        }
+    }//GEN-LAST:event_rdreason3ActionPerformed
+
+    private void rdreason4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason4ActionPerformed
+        // TODO add your handling code here:
+        reason = "CASH ASSISTANCE";
+        if(rdreason4.isSelected()){
+            rdreason1.setSelected(false);
+            rdreason2.setSelected(false);
+            rdreason3.setSelected(false);
+            rdreason5.setSelected(false);
+            rdreason6.setSelected(false);
+            rdreason7.setSelected(false);
+
+            COIeditreason.setText(reason);
+            COReditreason.setText(reason);
+            COCeditreason.setText(reason);
+        }
+    }//GEN-LAST:event_rdreason4ActionPerformed
+
+    private void rdreason7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason7ActionPerformed
+        // TODO add your handling code here:
+        reason = "EMPLOYMENT";
+        if(rdreason7.isSelected()){
+            rdreason1.setSelected(false);
+            rdreason2.setSelected(false);
+            rdreason3.setSelected(false);
+            rdreason4.setSelected(false);
+            rdreason5.setSelected(false);
+            rdreason6.setSelected(false);
+
+            COIeditreason.setText(reason);
+            COReditreason.setText(reason);
+            COCeditreason.setText(reason);
+        }
+    }//GEN-LAST:event_rdreason7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -894,12 +1053,15 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBC;
     private javax.swing.JLabel lblCOI;
     private javax.swing.JLabel lblCOR;
+    private javax.swing.JPanel panelchoose;
     private javax.swing.JPanel printpanel;
     private javax.swing.JRadioButton rdreason1;
     private javax.swing.JRadioButton rdreason2;
@@ -907,6 +1069,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdreason4;
     private javax.swing.JRadioButton rdreason5;
     private javax.swing.JRadioButton rdreason6;
+    private javax.swing.JRadioButton rdreason7;
     private javax.swing.JPanel residencypanel;
     // End of variables declaration//GEN-END:variables
     

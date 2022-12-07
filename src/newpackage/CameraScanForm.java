@@ -19,6 +19,7 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -182,20 +183,38 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
             Result result = null;
             BufferedImage image = null;
 
-            if (webcam.isOpen()) {
+            /*if (webcam.isOpen()) {
                 if ((image = webcam.getImage()) == null) {
                     continue;
                 } 
+            }else {
+                webcam.close();
+            } */
+            
+            try {
+                if (webcam.isOpen()) {
+                    if ((image = webcam.getImage()) == null) 
+                    {
+                    continue;  } 
+                 LuminanceSource source = new BufferedImageLuminanceSource(image);
+                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+                 
+                 result = new MultiFormatReader().decode(bitmap);
+                }
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+            finally {
+                webcam.close();
             }
             
-            LuminanceSource source = new BufferedImageLuminanceSource(image);
-            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            
 
-            try {
+            /*try {
                 result = new MultiFormatReader().decode(bitmap);
             } catch (NotFoundException e) {
                 //No result
-            }
+            } */
 
             if (result != null) {
                 result_field.setText(result.getText());

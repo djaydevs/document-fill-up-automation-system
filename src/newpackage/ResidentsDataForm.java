@@ -424,7 +424,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnDelete.setBackground(new java.awt.Color(13, 76, 146));
         btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Delete");
+        btnDelete.setText("Delete (Table)");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);

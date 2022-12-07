@@ -305,7 +305,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COIedityearActionPerformed(evt);
             }
         });
-        indigencypanel.add(COIedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 587, 40, 15));
+        indigencypanel.add(COIedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 582, 40, 20));
 
         COIeditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIeditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -316,7 +316,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COIeditdayActionPerformed(evt);
             }
         });
-        indigencypanel.add(COIeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 587, 30, 15));
+        indigencypanel.add(COIeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 582, 30, 20));
 
         COIeditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIeditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -360,7 +360,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COIeditageActionPerformed(evt);
             }
         });
-        indigencypanel.add(COIeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 355, 30, 15));
+        indigencypanel.add(COIeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, 30, 20));
 
         COIeditname.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COIeditname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -414,7 +414,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 CORedityearActionPerformed(evt);
             }
         });
-        residencypanel.add(CORedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 517, 40, 15));
+        residencypanel.add(CORedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 512, 40, 20));
 
         COReditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -425,7 +425,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COReditdayActionPerformed(evt);
             }
         });
-        residencypanel.add(COReditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 517, 30, 15));
+        residencypanel.add(COReditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 512, 30, 20));
 
         COReditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -481,7 +481,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COReditstayActionPerformed(evt);
             }
         });
-        residencypanel.add(COReditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 345, 47, 15));
+        residencypanel.add(COReditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 340, 47, 20));
 
         COReditage.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -492,7 +492,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COReditageActionPerformed(evt);
             }
         });
-        residencypanel.add(COReditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 299, 30, 15));
+        residencypanel.add(COReditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 294, 30, 20));
 
         COReditname1.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COReditname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -524,7 +524,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COCeditname2ActionPerformed(evt);
             }
         });
-        clearancepanel.add(COCeditname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 839, 210, 15));
+        clearancepanel.add(COCeditname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 834, 210, 20));
 
         COCeditdate.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         COCeditdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -546,7 +546,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COCedityearActionPerformed(evt);
             }
         });
-        clearancepanel.add(COCedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 534, 50, 15));
+        clearancepanel.add(COCedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 529, 50, 20));
 
         COCeditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -557,7 +557,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COCeditdayActionPerformed(evt);
             }
         });
-        clearancepanel.add(COCeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 534, 40, 15));
+        clearancepanel.add(COCeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 529, 40, 20));
 
         COCeditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -590,7 +590,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COCeditstayActionPerformed(evt);
             }
         });
-        clearancepanel.add(COCeditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 375, 49, 15));
+        clearancepanel.add(COCeditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 370, 49, 20));
 
         COCeditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -612,7 +612,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
                 COCeditageActionPerformed(evt);
             }
         });
-        clearancepanel.add(COCeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 307, 30, 15));
+        clearancepanel.add(COCeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 302, 30, 20));
 
         COCeditname1.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COCeditname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);

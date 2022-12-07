@@ -21,7 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.*;
-import net.proteanit.sql.DbUtils;
+import java.io.File;
+import java.io.FileInputStream;
 
 public class ResidentsDataForm extends javax.swing.JFrame {
     Connection conn;
@@ -34,7 +35,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     public ResidentsDataForm() {
         initComponents();
         show_resident();
-        UpdateInSearch();
         populationCount();
     }  
     @SuppressWarnings("unchecked")
@@ -92,8 +92,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         lastname1 = new javax.swing.JLabel();
-        lastname2 = new javax.swing.JLabel();
-        txtRIN = new javax.swing.JTextField();
+        txtSearchtable = new javax.swing.JTextField();
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
 
@@ -390,19 +389,19 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 txtSearchKeyReleased(evt);
             }
         });
-        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 170, 30));
+        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 590, 170, 30));
 
         lastname1.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
         lastname1.setText("Search");
-        tableborder.add(lastname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        tableborder.add(lastname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, -1, -1));
 
-        lastname2.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
-        lastname2.setText("Residents ID Number");
-        tableborder.add(lastname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 200, -1));
-
-        txtRIN.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
-        txtRIN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
-        tableborder.add(txtRIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 170, 30));
+        txtSearchtable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
+        txtSearchtable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchtableKeyReleased(evt);
+            }
+        });
+        tableborder.add(txtSearchtable, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 130, 30));
 
         jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 830, 690));
 
@@ -544,22 +543,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             model.addRow(row);
         }
     }
-    public void UpdateInSearch(){
-        try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            int row = tblResidents.getSelectedRow();
-            String value = (tblResidents.getModel().getValueAt(row,0)).toString();
-            //String value = txtRIN.getText().toString();
-            String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,"
-                    + "street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,"
-                    + "contact_number = ?, profile = ? WHERE rin ="+value;
-            ps = conn.prepareStatement(sql);
-            
-        }catch(Exception e){
-            
-        }
-    }
     private void populationCount(){
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -649,7 +632,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         txtPlaceofbirth.setText("");
         txtContact.setText("");
         lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
-        txtRIN.setText("");
+        
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
@@ -674,20 +657,20 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_txtContactKeyPressed
     
-private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\\temp_qrCode";    
+private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\temp_qrCode";    
         
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
         try{
-             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
-             QRCodeWriter writer = new QRCodeWriter();
-             BitMatrix bitMatrix = writer.encode(txtLname.getText() + txtFname.getText() + txtInitial.getText() + txtHousenum.getText() + txtStreet.getText(), BarcodeFormat.QR_CODE, 200, 200);
-             Path path = FileSystems.getDefault().getPath(qrCode);
-             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+            String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
+            QRCodeWriter writer = new QRCodeWriter();
+            BitMatrix bitMatrix = writer.encode(txtLname.getText() + txtFname.getText() + txtInitial.getText() + txtHousenum.getText() + txtStreet.getText(), BarcodeFormat.QR_CODE, 200, 200);
+            Path path = FileSystems.getDefault().getPath(qrCode);
+            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
              
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "INSERT INTO ROOT.TBL_RESIDENTS (l_name,f_name,mi,house_number,street,gender,age,year_of_stay,birthday,birthplace,contact_number,profile. qr_code) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO ROOT.TBL_RESIDENTS (l_name,f_name,mi,house_number,street,gender,age,year_of_stay,birthday,birthplace,contact_number,profile,qr_code) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtLname.getText());
             ps.setString(2, txtFname.getText());
@@ -726,6 +709,7 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
             DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
             model.setRowCount(0);
             show_resident();
+            populationCount();
             JOptionPane.showMessageDialog(null, "Resident Data Added !");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -761,7 +745,7 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
             txtPlaceofbirth.setText("");
             txtContact.setText("");
             lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
-            txtRIN.setText("");
+            
             
          }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -772,7 +756,6 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
     private void tblResidentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResidentsMouseClicked
          int row = tblResidents.getSelectedRow();
         TableModel model = tblResidents.getModel();
-        txtRIN.setText(model.getValueAt(row,0).toString());
         txtLname.setText(model.getValueAt(row,1).toString());
         txtFname.setText(model.getValueAt(row,2).toString());
         txtInitial.setText(model.getValueAt(row,3).toString());
@@ -841,7 +824,7 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
             txtPlaceofbirth.setText("");
             txtContact.setText("");
             lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
-            txtRIN.setText("");
+            
             
             ps.executeUpdate();
             DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
@@ -864,11 +847,6 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
             ps.setString(1, txtSearch.getText().toString());
             rs = ps.executeQuery();
             if(rs.next()){
-               String setid = rs.getString("rin");
-               txtRIN.setText(setid);
-               
-               UpdateInSearch();
-                
                 String setLname = rs.getString("l_name");
                 txtLname.setText(setLname);
                 String setFname = rs.getString("f_name");
@@ -903,6 +881,14 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void txtSearchtableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchtableKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel)tblResidents.getModel();
+        String search = txtSearchtable.getText().toLowerCase();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtSearchtableKeyReleased
 
    
     /**
@@ -958,7 +944,6 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
     private javax.swing.JPanel jpRD;
     private javax.swing.JPanel jpTopnavbg;
     private javax.swing.JLabel lastname1;
-    private javax.swing.JLabel lastname2;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblContact;
@@ -992,8 +977,8 @@ private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\
     private javax.swing.JTextField txtInitial;
     private javax.swing.JTextField txtLname;
     private javax.swing.JTextField txtPlaceofbirth;
-    private javax.swing.JTextField txtRIN;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearchtable;
     private javax.swing.JTextField txtStreet;
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables

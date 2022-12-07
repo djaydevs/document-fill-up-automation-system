@@ -4,11 +4,19 @@
  */
 package newpackage;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import java.awt.Color;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.nio.file.FileSystems;
+import static java.nio.file.Files.write;
+import java.nio.file.Path;
 import java.sql.*;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -569,6 +577,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }   
     }
+    
     private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked
         // TODO add your handling code here:
         DashboardForm df = new DashboardForm();
@@ -664,12 +673,21 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             }
         }  
     }//GEN-LAST:event_txtContactKeyPressed
-
+    
+private String filepath = "E:\\JavaPrograms\\document-fill-up-automation-system\\temp_qrCode";    
+        
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-         try{
+
+        try{
+             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
+             QRCodeWriter writer = new QRCodeWriter();
+             BitMatrix bitMatrix = writer.encode(txtLname.getText() + txtFname.getText() + txtInitial.getText() + txtHousenum.getText() + txtStreet.getText(), BarcodeFormat.QR_CODE, 200, 200);
+             Path path = FileSystems.getDefault().getPath(qrCode);
+             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+             
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "INSERT INTO ROOT.TBL_RESIDENTS (l_name,f_name,mi,house_number,street,gender,age,year_of_stay,birthday,birthplace,contact_number,profile) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO ROOT.TBL_RESIDENTS (l_name,f_name,mi,house_number,street,gender,age,year_of_stay,birthday,birthplace,contact_number,profile. qr_code) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtLname.getText());
             ps.setString(2, txtFname.getText());
@@ -685,6 +703,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             ps.setString(10, txtPlaceofbirth.getText());
             ps.setString(11, txtContact.getText());
             ps.setBytes(12,resident_image);
+            
+            File imgFile = new File(qrCode);
+            FileInputStream fin = new FileInputStream(imgFile);
+            ps.setBinaryStream(13, fin, (int) imgFile.length());  
             
             txtLname.setText("");
             txtFname.setText("");
@@ -882,6 +904,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
+   
     /**
      * @param args the command line arguments
      */

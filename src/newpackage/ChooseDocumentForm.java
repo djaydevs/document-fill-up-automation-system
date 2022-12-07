@@ -4,6 +4,15 @@
  */
 package newpackage;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author DJay
@@ -31,7 +40,7 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        brdwebcam = new javax.swing.JPanel();
+        brdchoosedoc = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -42,10 +51,18 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         btnBC = new javax.swing.JPanel();
         lblBC = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
+        printpanel = new javax.swing.JPanel();
         indigencypanel = new javax.swing.JPanel();
+        COIeditfor = new javax.swing.JTextField();
+        COIeditaddress = new javax.swing.JTextField();
+        COIeditage = new javax.swing.JTextField();
+        COIeditname = new javax.swing.JTextField();
+        docindigency = new javax.swing.JLabel();
         residencypanel = new javax.swing.JPanel();
+        docresidency = new javax.swing.JLabel();
         clearancepanel = new javax.swing.JPanel();
+        docclearance = new javax.swing.JLabel();
+        btnPrint = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,17 +85,17 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 85));
 
-        brdwebcam.setBackground(new java.awt.Color(255, 255, 255));
-        brdwebcam.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
-        brdwebcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        brdchoosedoc.setBackground(new java.awt.Color(255, 255, 255));
+        brdchoosedoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        brdchoosedoc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 20)); // NOI18N
         jLabel11.setText("<html>Pumili ng dokumento na kailangan ng residente.</html>");
-        brdwebcam.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, -1));
+        brdchoosedoc.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, -1));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         jLabel10.setText("<html>Choose a document that the resident needs.</html>");
-        brdwebcam.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 550, -1));
+        brdchoosedoc.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 550, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -174,63 +191,98 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
 
         jPanel3.add(btnBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 430, 90));
 
-        brdwebcam.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 270));
+        brdchoosedoc.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 270));
 
-        jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 470, 390));
+        jPanel1.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 470, 390));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        printpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        indigencypanel.setBackground(new java.awt.Color(102, 255, 255));
+        indigencypanel.setBackground(new java.awt.Color(255, 255, 255));
+        indigencypanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout indigencypanelLayout = new javax.swing.GroupLayout(indigencypanel);
-        indigencypanel.setLayout(indigencypanelLayout);
-        indigencypanelLayout.setHorizontalGroup(
-            indigencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 816, Short.MAX_VALUE)
-        );
-        indigencypanelLayout.setVerticalGroup(
-            indigencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
+        COIeditfor.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COIeditfor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditfor.setText("For");
+        COIeditfor.setBorder(null);
+        COIeditfor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIeditforActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIeditfor, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 544, 220, 20));
 
-        jPanel4.add(indigencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
+        COIeditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COIeditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditaddress.setText("Address");
+        COIeditaddress.setBorder(null);
+        COIeditaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIeditaddressActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIeditaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 230, 15));
 
-        residencypanel.setBackground(new java.awt.Color(255, 51, 204));
+        COIeditage.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        COIeditage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditage.setText("00");
+        COIeditage.setBorder(null);
+        COIeditage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIeditageActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, 30, 20));
 
-        javax.swing.GroupLayout residencypanelLayout = new javax.swing.GroupLayout(residencypanel);
-        residencypanel.setLayout(residencypanelLayout);
-        residencypanelLayout.setHorizontalGroup(
-            residencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 816, Short.MAX_VALUE)
-        );
-        residencypanelLayout.setVerticalGroup(
-            residencypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
+        COIeditname.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        COIeditname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        COIeditname.setText("Name");
+        COIeditname.setAlignmentY(1.0F);
+        COIeditname.setBorder(null);
+        COIeditname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COIeditnameActionPerformed(evt);
+            }
+        });
+        indigencypanel.add(COIeditname, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 240, 20));
 
-        jPanel4.add(residencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
+        docindigency.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/indigency.png"))); // NOI18N
+        indigencypanel.add(docindigency, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        clearancepanel.setBackground(new java.awt.Color(0, 255, 0));
+        printpanel.add(indigencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
 
-        javax.swing.GroupLayout clearancepanelLayout = new javax.swing.GroupLayout(clearancepanel);
-        clearancepanel.setLayout(clearancepanelLayout);
-        clearancepanelLayout.setHorizontalGroup(
-            clearancepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 816, Short.MAX_VALUE)
-        );
-        clearancepanelLayout.setVerticalGroup(
-            clearancepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
+        residencypanel.setBackground(new java.awt.Color(255, 255, 255));
+        residencypanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.add(clearancepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
+        docresidency.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/residency.png"))); // NOI18N
+        residencypanel.add(docresidency, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jScrollPane2.setViewportView(jPanel4);
+        printpanel.add(residencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, -1, 800));
+        clearancepanel.setBackground(new java.awt.Color(255, 255, 255));
+        clearancepanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        docclearance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/clearance.png"))); // NOI18N
+        clearancepanel.add(docclearance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        printpanel.add(clearancepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 816, 1056));
+
+        jScrollPane2.setViewportView(printpanel);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, -1, 720));
+
+        btnPrint.setBackground(new java.awt.Color(13, 76, 146));
+        btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        btnPrint.setForeground(new java.awt.Color(255, 255, 255));
+        btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 830, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,6 +318,27 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
         residencypanel.setVisible(false);
         clearancepanel.setVisible(true);
     }//GEN-LAST:event_btnBCMouseClicked
+
+    private void COIeditnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIeditnameActionPerformed
+
+    private void COIeditageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIeditageActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        // TODO add your handling code here:
+        printDocument(printpanel);//call print method
+    }//GEN-LAST:event_btnPrintActionPerformed
+
+    private void COIeditaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIeditaddressActionPerformed
+
+    private void COIeditforActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditforActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_COIeditforActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,11 +376,19 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel brdwebcam;
+    private javax.swing.JTextField COIeditaddress;
+    private javax.swing.JTextField COIeditage;
+    private javax.swing.JTextField COIeditfor;
+    private javax.swing.JTextField COIeditname;
+    private javax.swing.JPanel brdchoosedoc;
     private javax.swing.JPanel btnBC;
     private javax.swing.JPanel btnCOI;
     private javax.swing.JPanel btnCOR;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JPanel clearancepanel;
+    private javax.swing.JLabel docclearance;
+    private javax.swing.JLabel docindigency;
+    private javax.swing.JLabel docresidency;
     private javax.swing.JPanel indigencypanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -316,12 +397,44 @@ public class ChooseDocumentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBC;
     private javax.swing.JLabel lblCOI;
     private javax.swing.JLabel lblCOR;
+    private javax.swing.JPanel printpanel;
     private javax.swing.JPanel residencypanel;
     // End of variables declaration//GEN-END:variables
+    
+    private void printDocument(JPanel panel){
+        PrinterJob printerJob = PrinterJob.getPrinterJob();
+        printerJob.setJobName("Print Document");
+
+        printerJob.setPrintable(new Printable() {
+            /*@Override*/
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if(pageIndex > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+            
+            Graphics2D graphics2D = (Graphics2D) graphics;
+            graphics2D.translate(pageFormat.getImageableX()*2, pageFormat.getImageableY()*2);
+            graphics2D.scale(0.75, 0.75);
+
+            panel.paint(graphics2D);
+
+            return Printable.PAGE_EXISTS;
+            }
+        });
+        
+        boolean returningResult = printerJob.printDialog();
+
+        if(returningResult) {
+            try{
+                printerJob.print();
+            }catch (PrinterException printerException){
+                JOptionPane.showMessageDialog(this, "Print Error: " + printerException.getMessage());
+            }
+        }
+    }
 }

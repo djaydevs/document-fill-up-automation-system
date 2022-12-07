@@ -128,7 +128,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setText("Residents Data");
-        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 3, -1, 80));
+        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(957, 3, 220, 80));
 
         jpRD.setBackground(new java.awt.Color(104, 185, 225));
         jpRD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

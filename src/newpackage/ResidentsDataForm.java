@@ -662,11 +662,12 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
         try{
-            String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
-            QRCodeWriter writer = new QRCodeWriter();
-            BitMatrix bitMatrix = writer.encode(txtLname.getText() + txtFname.getText() + txtInitial.getText() + txtHousenum.getText() + txtStreet.getText(), BarcodeFormat.QR_CODE, 200, 200);
-            Path path = FileSystems.getDefault().getPath(qrCode);
-            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+            //generate the qr code and save it to temporay file
+             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
+             QRCodeWriter writer = new QRCodeWriter();
+             BitMatrix bitMatrix = writer.encode(txtFname.getText() + txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + "\n" + txtHousenum.getText() + txtStreet.getText() + "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
+             Path path = FileSystems.getDefault().getPath(qrCode);
+             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
              
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
@@ -786,6 +787,13 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
          try{
+             //generate the qr code and save it to temporay file
+             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
+             QRCodeWriter writer = new QRCodeWriter();
+             BitMatrix bitMatrix = writer.encode(txtFname.getText() + txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + "\n" + txtHousenum.getText() + txtStreet.getText() + "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
+             Path path = FileSystems.getDefault().getPath(qrCode);
+             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+             
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
             int row = tblResidents.getSelectedRow();
@@ -793,7 +801,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
             //String value = txtRIN.getText().toString();
             String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,"
                     + "street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,"
-                    + "contact_number = ?, profile = ? WHERE rin ="+value;
+                    + "contact_number = ?, profile = ?, qr_code = ? WHERE rin ="+value;
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtLname.getText());
             ps.setString(2, txtFname.getText());
@@ -810,6 +818,10 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
             ps.setString(11, txtContact.getText());
             byte [] img = resident_image;
             ps.setBytes(12,img);
+            
+            File imgFile = new File(qrCode);
+            FileInputStream fin = new FileInputStream(imgFile);
+            ps.setBinaryStream(13, fin, (int) imgFile.length());
             
             txtLname.setText("");
             txtFname.setText("");

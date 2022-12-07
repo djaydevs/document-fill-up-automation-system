@@ -78,13 +78,13 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
         btnUpload = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblDefaultimage = new javax.swing.JLabel();
         invalid = new javax.swing.JLabel();
         date_chooser = new com.toedter.calendar.JDateChooser();
+        btnUpdateRIN = new javax.swing.JButton();
+        btnDeleteRIN = new javax.swing.JButton();
         tableborder = new javax.swing.JPanel();
-        btnDelete = new javax.swing.JButton();
         btnGenerate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResidents = new javax.swing.JTable();
@@ -93,6 +93,9 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         txtSearch = new javax.swing.JTextField();
         lastname1 = new javax.swing.JLabel();
         txtSearchtable = new javax.swing.JTextField();
+        lblSearch = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
 
@@ -278,7 +281,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        registerborder.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 140, 40));
+        registerborder.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 660, 140, 40));
 
         btnUpload.setBackground(new java.awt.Color(13, 76, 146));
         btnUpload.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -300,18 +303,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 140, 40));
-
-        btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
-        btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 140, 40));
+        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 610, 140, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
@@ -328,28 +320,39 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         date_chooser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
         registerborder.add(date_chooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 190, 30));
 
-        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 690));
+        btnUpdateRIN.setBackground(new java.awt.Color(13, 76, 146));
+        btnUpdateRIN.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        btnUpdateRIN.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdateRIN.setText("Update (RIN)");
+        btnUpdateRIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateRINActionPerformed(evt);
+            }
+        });
+        registerborder.add(btnUpdateRIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 140, 40));
+
+        btnDeleteRIN.setBackground(new java.awt.Color(13, 76, 146));
+        btnDeleteRIN.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        btnDeleteRIN.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteRIN.setText("Delete (RIN)");
+        btnDeleteRIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteRINActionPerformed(evt);
+            }
+        });
+        registerborder.add(btnDeleteRIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, 140, 40));
+
+        jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 720));
 
         tableborder.setBackground(new java.awt.Color(255, 255, 255));
         tableborder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         tableborder.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnDelete.setBackground(new java.awt.Color(13, 76, 146));
-        btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 620, 140, 40));
-
         btnGenerate.setBackground(new java.awt.Color(13, 76, 146));
         btnGenerate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnGenerate.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerate.setText("Generate I.D");
-        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 140, 40));
+        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 140, 40));
 
         tblResidents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 1, true));
         tblResidents.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
@@ -370,17 +373,17 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         tableborder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 810, 530));
 
-        lblPopulation.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        lblPopulation.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         lblPopulation.setForeground(new java.awt.Color(0, 102, 153));
         lblPopulation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPopulation.setToolTipText("");
-        tableborder.add(lblPopulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 30, 40));
+        tableborder.add(lblPopulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 690, 30, 20));
 
-        jLabel4.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
         jLabel4.setText("POPULATION :");
         jLabel4.setToolTipText("");
-        tableborder.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 190, 40));
+        tableborder.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 680, 110, 40));
 
         txtSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
@@ -389,11 +392,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 txtSearchKeyReleased(evt);
             }
         });
-        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 590, 170, 30));
+        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 170, 30));
 
         lastname1.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
-        lastname1.setText("Search");
-        tableborder.add(lastname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, -1, -1));
+        lastname1.setText("Enter RIN :");
+        tableborder.add(lastname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         txtSearchtable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
         txtSearchtable.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -403,7 +406,33 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         });
         tableborder.add(txtSearchtable, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 130, 30));
 
-        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 830, 690));
+        lblSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
+        lblSearch.setText("Search");
+        tableborder.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
+
+        btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
+        btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update (Table)");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        tableborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 600, 140, 40));
+
+        btnDelete.setBackground(new java.awt.Color(13, 76, 146));
+        btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 600, 140, 40));
+
+        jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 830, 720));
 
         jpFooter.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -745,7 +774,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
             txtPlaceofbirth.setText("");
             txtContact.setText("");
             lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
-            
+            JOptionPane.showMessageDialog(null, "Resident Data Deleted!");
             
          }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -839,7 +868,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        try{
+        /*try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
             String sql = "SELECT *FROM ROOT.TBL_RESIDENTS WHERE rin = ?";
@@ -879,7 +908,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
             }    
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
-        }
+        }*/
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void txtSearchtableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchtableKeyReleased
@@ -887,8 +916,100 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
         DefaultTableModel table = (DefaultTableModel)tblResidents.getModel();
         String search = txtSearchtable.getText().toLowerCase();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-        tr.setRowFilter(RowFilter.regexFilter(search));
+        tblResidents.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search)); 
     }//GEN-LAST:event_txtSearchtableKeyReleased
+
+    private void btnUpdateRINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRINActionPerformed
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+            String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,contact_number = ?, profile = ? WHERE rin =?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(13, txtSearch.getText().toString());
+            ps.setString(1, txtLname.getText());
+            ps.setString(2, txtFname.getText());
+            ps.setString(3, txtInitial.getText());
+            ps.setString(4, txtHousenum.getText());
+            ps.setString(5, txtStreet.getText());
+            ps.setString(6, gender);
+            ps.setString(7, txtAge.getText());
+            ps.setString(8, txtYearstay.getText());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String date = sdf.format(date_chooser.getDate());
+            ps.setString(9, date);
+            ps.setString(10, txtPlaceofbirth.getText());
+            ps.setString(11, txtContact.getText());
+            byte [] img = resident_image;
+            ps.setBytes(12,img);
+            
+            txtSearch.setText("");
+            txtLname.setText("");
+            txtFname.setText("");
+            txtInitial.setText("");
+            txtHousenum.setText("");
+            txtStreet.setText("");
+            rbtnMale.setSelected(false);
+            rbtnFemale.setSelected(false);
+            txtAge.setText("");
+            txtYearstay.setText("");
+            date_chooser.setCalendar(null);
+            txtPlaceofbirth.setText("");
+            txtContact.setText("");
+            lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
+            
+            
+            ps.executeUpdate();
+            DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
+            model.setRowCount(0);
+            show_resident();
+            JOptionPane.showMessageDialog(null, "Resident Data Updated using RIN !");
+         }catch(Exception e){
+             JOptionPane.showMessageDialog(null, e);
+         }
+    }//GEN-LAST:event_btnUpdateRINActionPerformed
+
+    private void btnDeleteRINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRINActionPerformed
+         int ask = JOptionPane.showConfirmDialog(null, "Do you really want to delete?","Message",
+            JOptionPane.YES_NO_OPTION);
+        if(ask == 0){
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+            int row = tblResidents.getSelectedRow();
+            //String value = (tblResidents.getModel().getValueAt(row,0)).toString();
+            //String value = txtRIN.getText();
+            String sql = "DELETE FROM ROOT.TBL_RESIDENTSS WHERE rin=?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, txtSearch.getText());
+            ps.executeUpdate();
+            
+            
+            DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
+            model.setRowCount(0);
+            show_resident();
+            
+            txtSearch.setText("");
+            txtLname.setText("");
+            txtFname.setText("");
+            txtInitial.setText("");
+            txtHousenum.setText("");
+            txtStreet.setText("");
+            rbtnMale.setSelected(false);
+            rbtnFemale.setSelected(false);
+            txtAge.setText("");
+            txtYearstay.setText("");
+            date_chooser.setCalendar(null);
+            txtPlaceofbirth.setText("");
+            txtContact.setText("");
+            lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
+            JOptionPane.showMessageDialog(null, "Resident Data Deleted!");
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+         } 
+        }
+    }//GEN-LAST:event_btnDeleteRINActionPerformed
 
    
     /**
@@ -930,8 +1051,10 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDeleteRIN;
     private javax.swing.JButton btnGenerate;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnUpdateRIN;
     private javax.swing.JButton btnUpload;
     private com.toedter.calendar.JDateChooser date_chooser;
     private javax.swing.JLabel invalid;
@@ -963,6 +1086,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
     private javax.swing.JLabel lblRegistration;
     private javax.swing.JLabel lblResidentsData;
     private javax.swing.JLabel lblResidentsDataTitle;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblStreet;
     private javax.swing.JLabel lblYearstay;
     private javax.swing.JRadioButton rbtnFemale;

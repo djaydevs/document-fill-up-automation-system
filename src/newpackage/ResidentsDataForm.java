@@ -686,7 +686,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_txtContactKeyPressed
     
-private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\temp_qrCode";    
+private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\qr_code_folder\\";    
         
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
@@ -939,7 +939,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
             String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,contact_number = ?, profile = ? WHERE rin =?";
             
             ps = conn.prepareStatement(sql);
-            ps.setString(13, txtSearch.getText().toString());
+            ps.setString(13, txtSearch.getText());
             ps.setString(1, txtLname.getText());
             ps.setString(2, txtFname.getText());
             ps.setString(3, txtInitial.getText());
@@ -989,10 +989,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            int row = tblResidents.getSelectedRow();
-            //String value = (tblResidents.getModel().getValueAt(row,0)).toString();
-            //String value = txtRIN.getText();
-            String sql = "DELETE FROM ROOT.TBL_RESIDENTSS WHERE rin=?";
+            String sql = "DELETE FROM ROOT.TBL_RESIDENTS WHERE rin=?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, txtSearch.getText());
             ps.executeUpdate();
@@ -1003,19 +1000,6 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
             show_resident();
             
             txtSearch.setText("");
-            txtLname.setText("");
-            txtFname.setText("");
-            txtInitial.setText("");
-            txtHousenum.setText("");
-            txtStreet.setText("");
-            rbtnMale.setSelected(false);
-            rbtnFemale.setSelected(false);
-            txtAge.setText("");
-            txtYearstay.setText("");
-            date_chooser.setCalendar(null);
-            txtPlaceofbirth.setText("");
-            txtContact.setText("");
-            lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
             JOptionPane.showMessageDialog(null, "Resident Data Deleted!");
          }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

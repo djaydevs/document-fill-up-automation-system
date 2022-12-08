@@ -74,7 +74,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 lblResidentsDataMouseClicked(evt);
             }
         });
-        jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 23, -1, -1));
+        jPanel6.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 3, -1, 80));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/topnavlogo.png"))); // NOI18N
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -87,7 +87,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 lblLogoutMouseClicked(evt);
             }
         });
-        jPanel6.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 23, -1, -1));
+        jPanel6.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1271, 3, -1, 80));
 
         lblDashboard.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 30)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 255, 255));

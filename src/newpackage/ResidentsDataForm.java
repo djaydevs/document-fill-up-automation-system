@@ -19,6 +19,7 @@ import java.sql.*;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.io.File;
@@ -468,7 +469,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    class Resident{
+    public class Resident {
         private int rin;
         private String l_name, f_name, mi, house_number, street, gender, age,
                 year_of_stay,birthday, birthplace, contact_number;
@@ -495,41 +496,105 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         public int getrin(){
             return rin;
         }
+
+        public void setrin(int Rin) {
+            rin = Rin;
+        }
+
         public String getl_name(){
             return l_name;
         }
+
+        public void setl_name (String l_Name) {
+            l_name = l_Name;
+        }
+
         public String getf_name(){
             return f_name;
         }
+
+        public void setf_name (String f_Name) {
+            f_name = f_Name;
+        }
+
         public String getmi(){
             return mi;
         }
+
+        public void setmi (String MI) {
+            mi = MI;
+        }
+
         public String gethouse_number(){
             return house_number;
         }
+
+        public void sethouse_number (String house_Number) {
+            house_number = house_Number;
+        }
+
         public String getstreet(){
             return street;
         }
+
+        public void setstreet (String Street) {
+            street = Street;
+        }
+
         public String getgender(){
             return gender;
         }
+
+        public void setgender (String Gender) {
+            gender = Gender;
+        }
+
         public String getage(){
             return age;
         }
+
+        public void setage (String Age) {
+            age = Age;
+        }
+
         public String getyear_of_stay(){
             return year_of_stay;
         }
+
+        public void setyear_of_stay (String Year_Of_Stay) {
+            year_of_stay = Year_Of_Stay;
+        }
+
         public String getbirthday(){
             return birthday;
         }
+
+        public void setbirthday (String Birthday) {
+            birthday = Birthday;
+        }
+
         public String getbirthplace(){
             return birthplace;
         }
+
+        public void setbirthplace (String BirthPlace) {
+            birthplace = BirthPlace;
+        }
+
         public String getcontact_number(){
             return contact_number;
         }
+
+        public void setcontact_number (String Contact_Number) {
+            contact_number = Contact_Number;
+        }
+
         public byte[] getImage(){
             return picture;
+        }
+
+        public void setImage (byte[] Image) {
+            picture = Image;
         }
     }
     public ArrayList<Resident> residentList(){
@@ -660,7 +725,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         date_chooser.setCalendar(null);
         txtPlaceofbirth.setText("");
         txtContact.setText("");
-        lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
+        lblDefaultimage.setIcon(new ImageIcon ("D:\\Documents\\NetbeansProject\\DocFillUpAutomationSystem\\src\\assets\\defaultimage.png"));
         
     }//GEN-LAST:event_btnClearActionPerformed
 
@@ -686,7 +751,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_txtContactKeyPressed
     
-private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\qr_code_folder\\";    
+private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationSystem\\generated_qr";    
         
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 

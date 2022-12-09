@@ -58,7 +58,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         brdwebcam = new javax.swing.JPanel();
         lbinstruction = new javax.swing.JLabel();
         panelwebcam = new javax.swing.JPanel();
-        result_field = new javax.swing.JLabel();
+        result_field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Scan QR Code");
@@ -96,7 +96,11 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         panelwebcam.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         brdwebcam.add(panelwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 511, 310));
-        brdwebcam.add(result_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 300, 50));
+
+        result_field.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        result_field.setText("Result");
+        result_field.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        brdwebcam.add(result_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 510, 50));
 
         jPanel1.add(brdwebcam, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 500));
 
@@ -155,10 +159,10 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lbinstruction;
     private javax.swing.JPanel panelwebcam;
-    private javax.swing.JLabel result_field;
+    private javax.swing.JTextField result_field;
     // End of variables declaration//GEN-END:variables
     
-    private void initWebcam() {
+    public void initWebcam() {
         Dimension size = WebcamResolution.QVGA.getSize();
         webcam = Webcam.getWebcams().get(0);
         webcam.setViewSize(size);
@@ -173,53 +177,53 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }
     @Override
     public void run() {
+        Result result = null;
+        BufferedImage image = null;
+
         do {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            
-            Result result = null;
-            BufferedImage image = null;
 
-            /*if (webcam.isOpen()) {
-                if ((image = webcam.getImage()) == null) {
-                    continue;
-                } 
-            }else {
-                webcam.close();
-            } */
-            
+//            if (webcam.isOpen()) {
+//                if ((image = webcam.getImage()) == null) {
+//                    continue;
+//                } 
+//            }else {
+//                webcam.close();
+//            }
+//
+//            LuminanceSource source = new BufferedImageLuminanceSource(image);
+//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
             try {
                 if (webcam.isOpen()) {
-                    if ((image = webcam.getImage()) == null) 
-                    {
-                    continue;  } 
-                 LuminanceSource source = new BufferedImageLuminanceSource(image);
-                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-                 
-                 result = new MultiFormatReader().decode(bitmap);
-                }
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-            finally {
-                webcam.close();
-            }
-            
-            
+                    if ((image = webcam.getImage()) == null) {
+                        continue;  
+                    }
+                    LuminanceSource source = new BufferedImageLuminanceSource(image);
+                    BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
-            /*try {
-                result = new MultiFormatReader().decode(bitmap);
+                    result = new MultiFormatReader().decode(bitmap);
+                }
             } catch (NotFoundException e) {
-                //No result
-            } */
+                //JOptionPane.showMessageDialog(null, e);
+            } finally {
+                //webcam.close();
+            } 
+//            try {
+//                result = new MultiFormatReader().decode(bitmap);
+//            } catch (NotFoundException e) {
+//                //No result
+//            }
 
             if (result != null) {
+                //ChooseDocumentForm cdf = new ChooseDocumentForm();
+                //cdf.show();
                 result_field.setText(result.getText());
             }
-        } while (true);
+        } while(true);
     }
 
     @Override

@@ -102,6 +102,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jpBG.setBackground(new java.awt.Color(255, 255, 255));
         jpBG.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,7 +111,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jpTopnavbg.setPreferredSize(new java.awt.Dimension(1440, 90));
         jpTopnavbg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 30)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Barangay Fatima 1");
         jpTopnavbg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
@@ -129,7 +130,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblResidentsData.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
         lblResidentsData.setForeground(new java.awt.Color(255, 255, 255));
         lblResidentsData.setText("Residents Data");
-        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(957, 3, 220, 80));
+        jpTopnavbg.add(lblResidentsData, new org.netbeans.lib.awtextra.AbsoluteConstraints(962, 3, 220, 80));
 
         jpRD.setBackground(new java.awt.Color(104, 185, 225));
         jpRD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -757,11 +758,15 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
 
         try{
             //generate the qr code and save it to temporay file
-             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
-             QRCodeWriter writer = new QRCodeWriter();
-             BitMatrix bitMatrix = writer.encode(txtFname.getText() + txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + "\n" + txtHousenum.getText() + txtStreet.getText() + "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
-             Path path = FileSystems.getDefault().getPath(qrCode);
-             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+            String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
+            QRCodeWriter writer = new QRCodeWriter();
+            BitMatrix bitMatrix = writer.encode(txtFname.getText() + 
+               txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + 
+               "\n" + txtHousenum.getText() + txtStreet.getText() + 
+               "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
+
+            Path path = FileSystems.getDefault().getPath(qrCode);
+            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
              
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
@@ -884,7 +889,11 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
              //generate the qr code and save it to temporay file
              String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
              QRCodeWriter writer = new QRCodeWriter();
-             BitMatrix bitMatrix = writer.encode(txtFname.getText() + txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + "\n" + txtHousenum.getText() + txtStreet.getText() + "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
+             BitMatrix bitMatrix = writer.encode(txtFname.getText() + 
+                txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + 
+                "\n" + txtHousenum.getText() + txtStreet.getText() + 
+                "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
+
              Path path = FileSystems.getDefault().getPath(qrCode);
              MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
              

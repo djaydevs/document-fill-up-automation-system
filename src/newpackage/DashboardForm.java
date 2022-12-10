@@ -45,8 +45,6 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         btnscanqrcode = new javax.swing.JButton();
-        btnuploadqrcode = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -145,7 +143,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 550, -1));
 
         btnscanqrcode.setBackground(new java.awt.Color(13, 76, 146));
-        btnscanqrcode.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 20)); // NOI18N
+        btnscanqrcode.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
         btnscanqrcode.setForeground(new java.awt.Color(255, 255, 255));
         btnscanqrcode.setText("Scan QR Code");
         btnscanqrcode.addActionListener(new java.awt.event.ActionListener() {
@@ -153,17 +151,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 btnscanqrcodeActionPerformed(evt);
             }
         });
-        jPanel5.add(btnscanqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 307, 70));
-
-        btnuploadqrcode.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 20)); // NOI18N
-        btnuploadqrcode.setForeground(new java.awt.Color(13, 76, 146));
-        btnuploadqrcode.setText("Upload QR Code Image");
-        btnuploadqrcode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(13, 76, 146), 3, true));
-        jPanel5.add(btnuploadqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 307, 70));
-
-        jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        jLabel16.setText("Upload QR code if camera is unavailable");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, -1, -1));
+        jPanel5.add(btnscanqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 310, 90));
 
         jpBackground.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 413, 590, 456));
 
@@ -272,7 +260,6 @@ public class DashboardForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnscanqrcode;
-    private javax.swing.JButton btnuploadqrcode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -280,7 +267,6 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;

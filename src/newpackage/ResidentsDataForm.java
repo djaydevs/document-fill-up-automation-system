@@ -760,10 +760,10 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
             //generate the qr code and save it to temporay file
             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
             QRCodeWriter writer = new QRCodeWriter();
-            BitMatrix bitMatrix = writer.encode(txtFname.getText() + 
-               txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + 
-               "\n" + txtHousenum.getText() + txtStreet.getText() + 
-               "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
+            BitMatrix bitMatrix = writer.encode(txtFname.getText() + " " +
+               txtInitial.getText() + ". " + txtLname.getText() + ";" + txtAge.getText() + 
+               ";" + txtHousenum.getText() + " " + txtStreet.getText() + 
+               ";" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
 
             Path path = FileSystems.getDefault().getPath(qrCode);
             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
@@ -886,13 +886,13 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
          try{
-             //generate the qr code and save it to temporay file
-             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
-             QRCodeWriter writer = new QRCodeWriter();
-             BitMatrix bitMatrix = writer.encode(txtFname.getText() + 
-                txtInitial.getText() + txtLname.getText() + "\n" + txtAge.getText() + 
-                "\n" + txtHousenum.getText() + txtStreet.getText() + 
-                "\n" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
+            //generate the qr code and save it to temporay file
+            String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
+            QRCodeWriter writer = new QRCodeWriter();
+            BitMatrix bitMatrix = writer.encode(txtFname.getText() + " " +
+               txtInitial.getText() + ". " + txtLname.getText() + ";" + txtAge.getText() + 
+               ";" + txtHousenum.getText() + " " + txtStreet.getText() + 
+               ";" + txtYearstay.getText(), BarcodeFormat.QR_CODE, 200, 200);
 
              Path path = FileSystems.getDefault().getPath(qrCode);
              MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);

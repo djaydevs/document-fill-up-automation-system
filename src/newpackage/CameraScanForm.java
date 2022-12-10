@@ -37,7 +37,8 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     
     private WebcamPanel panel = null;
     private Webcam webcam = null;
-    String reason;
+    String reason, infoname, infoage, infoaddress, infoyearstay;
+    String[] residentinfo;
 
     //private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
@@ -127,6 +128,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COCeditage = new javax.swing.JTextField();
         COCeditname1 = new javax.swing.JTextField();
         docclearance = new javax.swing.JLabel();
+        changetext = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
         scanqrpanel = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -481,6 +483,13 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COIeditname.setText("Name");
         COIeditname.setAlignmentY(1.0F);
         COIeditname.setBorder(null);
+        COIeditname.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                COIeditnameInputMethodTextChanged(evt);
+            }
+        });
         COIeditname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 COIeditnameActionPerformed(evt);
@@ -749,6 +758,17 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         choosedocpanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, -1, 720));
 
+        changetext.setBackground(new java.awt.Color(13, 76, 146));
+        changetext.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        changetext.setForeground(new java.awt.Color(255, 255, 255));
+        changetext.setText("CHANGE TEXT");
+        changetext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changetextActionPerformed(evt);
+            }
+        });
+        choosedocpanel.add(changetext, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 830, 200, 50));
+
         btnPrint.setBackground(new java.awt.Color(13, 76, 146));
         btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
@@ -795,6 +815,116 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    public void initWebcam() {
+        Dimension size = WebcamResolution.QVGA.getSize();
+        webcam = Webcam.getWebcams().get(0);
+        webcam.setViewSize(size);
+
+        panel = new WebcamPanel(webcam);
+        panel.setPreferredSize(size);
+        panel.setFPSDisplayed(true);
+
+        panelwebcam.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 310));
+
+        executor.execute(this);
+    }
+    @Override
+    public void run() {
+        Result result = null;
+        BufferedImage image = null;
+
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+//            if (webcam.isOpen()) {
+//                if ((image = webcam.getImage()) == null) {
+//                    continue;
+//                } 
+//            }else {
+//                webcam.close();
+//            }
+//
+//            LuminanceSource source = new BufferedImageLuminanceSource(image);
+//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            try {
+                if (webcam.isOpen()) {
+                    if ((image = webcam.getImage()) == null) {
+                        continue;  
+                    }
+                    LuminanceSource source = new BufferedImageLuminanceSource(image);
+                    BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+                    result = new MultiFormatReader().decode(bitmap);
+                }
+            } catch (NotFoundException e) {
+                //JOptionPane.showMessageDialog(null, e);
+            } finally {
+                //webcam.close();
+            } 
+//            try {
+//                result = new MultiFormatReader().decode(bitmap);
+//            } catch (NotFoundException e) {
+//                //No result
+//            }
+
+            if (result != null) {
+                //result_field.setText(result.getText());
+                result.getText();
+                String text = result.toString();
+                residentinfo = text.split(";");
+                infoname = residentinfo[0];
+                infoage = residentinfo[1];
+                infoaddress = residentinfo[2];
+                infoyearstay = residentinfo[3];
+                
+                choosedocpanel.setVisible(true);
+                scanqrpanel.setVisible(false);
+            }
+        } while(true);
+    }
+
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, "My Thread");
+        t.setDaemon(true);
+        return t;
+    }
+
+    private void printDocument(JPanel panel){
+        PrinterJob printerJob = PrinterJob.getPrinterJob();
+        printerJob.setJobName("Print Document");
+
+        printerJob.setPrintable(new Printable() {
+            /*@Override*/
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if(pageIndex > 0) {
+                    return Printable.NO_SUCH_PAGE;
+                }
+            
+            Graphics2D graphics2D = (Graphics2D) graphics;
+            graphics2D.translate(pageFormat.getImageableX()*2, pageFormat.getImageableY()*2);
+            graphics2D.scale(0.75, 0.75);
+
+            panel.paint(graphics2D);
+
+            return Printable.PAGE_EXISTS;
+            }
+        });
+        
+        boolean returningResult = printerJob.printDialog();
+
+        if(returningResult) {
+            try{
+                printerJob.print();
+            }catch (PrinterException printerException){
+                JOptionPane.showMessageDialog(this, "Print Error: " + printerException.getMessage());
+            }
+        }
+    }
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         // TODO add your handling code here:
@@ -1081,6 +1211,31 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         dispose();
     }//GEN-LAST:event_lblDashboardMouseClicked
 
+    private void COIeditnameInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_COIeditnameInputMethodTextChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_COIeditnameInputMethodTextChanged
+
+    private void changetextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changetextActionPerformed
+        // TODO add your handling code here:
+        COIeditname.setText(infoname);
+        COIeditage.setText(infoage);
+        COIeditaddress.setText(infoaddress);
+
+        COReditname1.setText(infoname);
+        COReditname2.setText(infoname);
+        COReditname3.setText(infoname);
+        COReditage.setText(infoage);
+        COReditaddress.setText(infoaddress);
+        COReditstay.setText(infoyearstay);
+
+        COCeditname1.setText(infoname);
+        COCeditname2.setText(infoname);
+        COCeditage.setText(infoage);
+        COCeditaddress.setText(infoaddress);
+        COCeditstay.setText(infoyearstay);
+    }//GEN-LAST:event_changetextActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1149,6 +1304,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private javax.swing.JPanel btnCOI;
     private javax.swing.JPanel btnCOR;
     private javax.swing.JButton btnPrint;
+    private javax.swing.JButton changetext;
     private javax.swing.JPanel choosedocpanel;
     private javax.swing.JPanel clearancepanel;
     private javax.swing.JLabel docclearance;
@@ -1189,109 +1345,4 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private javax.swing.JTextField result_field;
     private javax.swing.JPanel scanqrpanel;
     // End of variables declaration//GEN-END:variables
-    
-    public void initWebcam() {
-        Dimension size = WebcamResolution.QVGA.getSize();
-        webcam = Webcam.getWebcams().get(0);
-        webcam.setViewSize(size);
-
-        panel = new WebcamPanel(webcam);
-        panel.setPreferredSize(size);
-        panel.setFPSDisplayed(true);
-
-        panelwebcam.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 310));
-
-        executor.execute(this);
-    }
-    @Override
-    public void run() {
-        Result result = null;
-        BufferedImage image = null;
-
-        do {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-//            if (webcam.isOpen()) {
-//                if ((image = webcam.getImage()) == null) {
-//                    continue;
-//                } 
-//            }else {
-//                webcam.close();
-//            }
-//
-//            LuminanceSource source = new BufferedImageLuminanceSource(image);
-//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-            try {
-                if (webcam.isOpen()) {
-                    if ((image = webcam.getImage()) == null) {
-                        continue;  
-                    }
-                    LuminanceSource source = new BufferedImageLuminanceSource(image);
-                    BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
-                    result = new MultiFormatReader().decode(bitmap);
-                }
-            } catch (NotFoundException e) {
-                //JOptionPane.showMessageDialog(null, e);
-            } finally {
-                //webcam.close();
-            } 
-//            try {
-//                result = new MultiFormatReader().decode(bitmap);
-//            } catch (NotFoundException e) {
-//                //No result
-//            }
-
-            if (result != null) {
-                //ChooseDocumentForm cdf = new ChooseDocumentForm();
-                //cdf.show();
-                //result_field.setText(result.getText());
-                choosedocpanel.setVisible(true);
-                scanqrpanel.setVisible(false);
-            }
-        } while(true);
-    }
-
-    @Override
-    public Thread newThread(Runnable r) {
-        Thread t = new Thread(r, "My Thread");
-        t.setDaemon(true);
-        return t;
-    }
-
-    private void printDocument(JPanel panel){
-        PrinterJob printerJob = PrinterJob.getPrinterJob();
-        printerJob.setJobName("Print Document");
-
-        printerJob.setPrintable(new Printable() {
-            /*@Override*/
-            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
-                if(pageIndex > 0) {
-                    return Printable.NO_SUCH_PAGE;
-                }
-            
-            Graphics2D graphics2D = (Graphics2D) graphics;
-            graphics2D.translate(pageFormat.getImageableX()*2, pageFormat.getImageableY()*2);
-            graphics2D.scale(0.75, 0.75);
-
-            panel.paint(graphics2D);
-
-            return Printable.PAGE_EXISTS;
-            }
-        });
-        
-        boolean returningResult = printerJob.printDialog();
-
-        if(returningResult) {
-            try{
-                printerJob.print();
-            }catch (PrinterException printerException){
-                JOptionPane.showMessageDialog(this, "Print Error: " + printerException.getMessage());
-            }
-        }
-    }
 }

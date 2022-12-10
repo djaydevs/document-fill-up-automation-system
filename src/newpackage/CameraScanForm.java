@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package newpackage;
 
 import com.github.sarxos.webcam.Webcam;
@@ -25,27 +21,35 @@ import java.awt.print.PrinterJob;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-import java.util.prefs.Preferences;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author DJay
  */
 public class CameraScanForm extends javax.swing.JFrame implements Runnable, ThreadFactory {
-    
+    //declare variables
     private WebcamPanel panel = null;
     private Webcam webcam = null;
     String reason, infoname, infoage, infoaddress, infoyearstay;
     String[] residentinfo;
-
     //private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
+
+    //Create current date for documents
+    Date thisDate = new Date();
+    SimpleDateFormat dateForm = new SimpleDateFormat("MM/dd/Y");
+    SimpleDateFormat month = new SimpleDateFormat("MMMM");
+    SimpleDateFormat day = new SimpleDateFormat("dd");
+    SimpleDateFormat year = new SimpleDateFormat("Y");
+    
     /**
      * Creates new form CameraScanForm
      */
-    public CameraScanForm() {
+    public CameraScanForm() { //call necesarry methods
         initComponents();
         initWebcam();
         choosedocpanel.setVisible(false);
@@ -128,7 +132,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COCeditage = new javax.swing.JTextField();
         COCeditname1 = new javax.swing.JTextField();
         docclearance = new javax.swing.JLabel();
-        changetext = new javax.swing.JButton();
+        btnChangeText = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
         scanqrpanel = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -188,6 +192,11 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         jPanel7.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         choosedocpanel.setBackground(new java.awt.Color(255, 255, 255));
+        choosedocpanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                choosedocpanelComponentShown(evt);
+            }
+        });
         choosedocpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         brdchoosereason.setBackground(new java.awt.Color(255, 255, 255));
@@ -195,11 +204,11 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         brdchoosereason.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Microsoft YaHei", 1, 20)); // NOI18N
-        jLabel12.setText("<html>Pumili ng rason kung para saan ang dokumento ng residente.</html>");
-        brdchoosereason.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, -1));
+        jLabel12.setText("<html>Ano ang layunin ng residente sa pagkuha ng dokumento?</html>");
+        brdchoosereason.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 430, -1));
 
         jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
-        jLabel14.setText("<html>Choose a reason why the resident needs the document.</html>");
+        jLabel14.setText("<html>What is the resident's purpose in obtaining the document?</html>");
         brdchoosereason.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 430, -1));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 185, 225)));
@@ -287,14 +296,15 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         brdchoosedoc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 20)); // NOI18N
-        jLabel11.setText("<html>Pumili ng dokumento na kailangan ng residente.</html>");
+        jLabel11.setText("<html>Ano ang dokumento na kailangan ng residente?</html>");
         brdchoosedoc.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 410, -1));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
-        jLabel10.setText("<html>Choose a document that the resident needs.</html>");
-        brdchoosedoc.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 550, -1));
+        jLabel10.setText("<html>What document does the resident need?</html>");
+        brdchoosedoc.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 430, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCOI.setBackground(new java.awt.Color(13, 76, 146));
@@ -405,96 +415,49 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COIeditdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIeditdate.setText("00/00/0000");
         COIeditdate.setBorder(null);
-        COIeditdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditdateActionPerformed(evt);
-            }
-        });
         indigencypanel.add(COIeditdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 772, 70, 10));
 
         COIedityear.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIedityear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIedityear.setText("0000");
         COIedityear.setBorder(null);
-        COIedityear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIedityearActionPerformed(evt);
-            }
-        });
-        indigencypanel.add(COIedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 582, 40, 20));
+        indigencypanel.add(COIedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 587, 40, 15));
 
         COIeditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIeditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIeditday.setText("00");
         COIeditday.setBorder(null);
-        COIeditday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditdayActionPerformed(evt);
-            }
-        });
-        indigencypanel.add(COIeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 582, 30, 20));
+        indigencypanel.add(COIeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 587, 30, 15));
 
         COIeditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIeditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIeditmonth.setText("Month");
         COIeditmonth.setBorder(null);
-        COIeditmonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditmonthActionPerformed(evt);
-            }
-        });
         indigencypanel.add(COIeditmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 587, 110, 15));
 
         COIeditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COIeditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIeditreason.setText("Reason");
         COIeditreason.setBorder(null);
-        COIeditreason.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditreasonActionPerformed(evt);
-            }
-        });
         indigencypanel.add(COIeditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 544, 220, 20));
 
         COIeditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIeditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIeditaddress.setText("Address");
         COIeditaddress.setBorder(null);
-        COIeditaddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditaddressActionPerformed(evt);
-            }
-        });
         indigencypanel.add(COIeditaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 230, 15));
 
         COIeditage.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COIeditage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIeditage.setText("00");
         COIeditage.setBorder(null);
-        COIeditage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditageActionPerformed(evt);
-            }
-        });
-        indigencypanel.add(COIeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, 30, 20));
+        indigencypanel.add(COIeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 355, 30, 15));
 
         COIeditname.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COIeditname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COIeditname.setText("Name");
         COIeditname.setAlignmentY(1.0F);
         COIeditname.setBorder(null);
-        COIeditname.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                COIeditnameInputMethodTextChanged(evt);
-            }
-        });
-        COIeditname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COIeditnameActionPerformed(evt);
-            }
-        });
         indigencypanel.add(COIeditname, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 355, 240, 15));
 
         docindigency.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/indigency.png"))); // NOI18N
@@ -510,66 +473,36 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COReditname3.setText("NAME");
         COReditname3.setAlignmentY(1.0F);
         COReditname3.setBorder(null);
-        COReditname3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditname3ActionPerformed(evt);
-            }
-        });
         residencypanel.add(COReditname3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 822, 210, 15));
 
         COReditdate.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         COReditdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditdate.setText("00/00/0000");
         COReditdate.setBorder(null);
-        COReditdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditdateActionPerformed(evt);
-            }
-        });
         residencypanel.add(COReditdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 685, 70, 10));
 
         CORedityear.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         CORedityear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CORedityear.setText("0000");
         CORedityear.setBorder(null);
-        CORedityear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CORedityearActionPerformed(evt);
-            }
-        });
-        residencypanel.add(CORedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 512, 40, 20));
+        residencypanel.add(CORedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 517, 40, 15));
 
         COReditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditday.setText("00");
         COReditday.setBorder(null);
-        COReditday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditdayActionPerformed(evt);
-            }
-        });
-        residencypanel.add(COReditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 512, 30, 20));
+        residencypanel.add(COReditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 517, 30, 15));
 
         COReditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditmonth.setText("Month");
         COReditmonth.setBorder(null);
-        COReditmonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditmonthActionPerformed(evt);
-            }
-        });
         residencypanel.add(COReditmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 517, 110, 15));
 
         COReditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COReditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditreason.setText("Reason");
         COReditreason.setBorder(null);
-        COReditreason.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditreasonActionPerformed(evt);
-            }
-        });
         residencypanel.add(COReditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 467, 240, 20));
 
         COReditname2.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
@@ -577,56 +510,31 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COReditname2.setText("Name");
         COReditname2.setAlignmentY(1.0F);
         COReditname2.setBorder(null);
-        COReditname2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditname2ActionPerformed(evt);
-            }
-        });
         residencypanel.add(COReditname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 427, 220, 15));
 
         COReditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditaddress.setText("Address");
         COReditaddress.setBorder(null);
-        COReditaddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditaddressActionPerformed(evt);
-            }
-        });
         residencypanel.add(COReditaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 322, 200, 15));
 
         COReditstay.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditstay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditstay.setText("0000");
         COReditstay.setBorder(null);
-        COReditstay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditstayActionPerformed(evt);
-            }
-        });
-        residencypanel.add(COReditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 340, 47, 20));
+        residencypanel.add(COReditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(696, 345, 47, 15));
 
         COReditage.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COReditage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditage.setText("00");
         COReditage.setBorder(null);
-        COReditage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditageActionPerformed(evt);
-            }
-        });
-        residencypanel.add(COReditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 294, 30, 20));
+        residencypanel.add(COReditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 300, 30, 15));
 
         COReditname1.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COReditname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COReditname1.setText("Name");
         COReditname1.setAlignmentY(1.0F);
         COReditname1.setBorder(null);
-        COReditname1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COReditname1ActionPerformed(evt);
-            }
-        });
         residencypanel.add(COReditname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 299, 230, 15));
 
         docresidency.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/residency.png"))); // NOI18N
@@ -642,111 +550,61 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COCeditname2.setText("NAME");
         COCeditname2.setAlignmentY(1.0F);
         COCeditname2.setBorder(null);
-        COCeditname2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditname2ActionPerformed(evt);
-            }
-        });
         clearancepanel.add(COCeditname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 834, 210, 20));
 
         COCeditdate.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
         COCeditdate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditdate.setText("00/00/0000");
         COCeditdate.setBorder(null);
-        COCeditdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditdateActionPerformed(evt);
-            }
-        });
         clearancepanel.add(COCeditdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 712, 70, 10));
 
         COCedityear.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCedityear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCedityear.setText("0000");
         COCedityear.setBorder(null);
-        COCedityear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCedityearActionPerformed(evt);
-            }
-        });
-        clearancepanel.add(COCedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 529, 50, 20));
+        clearancepanel.add(COCedityear, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 534, 50, 15));
 
         COCeditday.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditday.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditday.setText("00");
         COCeditday.setBorder(null);
-        COCeditday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditdayActionPerformed(evt);
-            }
-        });
-        clearancepanel.add(COCeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 529, 40, 20));
+        clearancepanel.add(COCeditday, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 534, 40, 15));
 
         COCeditmonth.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditmonth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditmonth.setText("Month");
         COCeditmonth.setBorder(null);
-        COCeditmonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditmonthActionPerformed(evt);
-            }
-        });
         clearancepanel.add(COCeditmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 534, 92, 15));
 
         COCeditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COCeditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditreason.setText("Reason");
         COCeditreason.setBorder(null);
-        COCeditreason.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditreasonActionPerformed(evt);
-            }
-        });
         clearancepanel.add(COCeditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 497, 240, 20));
 
         COCeditstay.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditstay.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditstay.setText("0000");
         COCeditstay.setBorder(null);
-        COCeditstay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditstayActionPerformed(evt);
-            }
-        });
-        clearancepanel.add(COCeditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 370, 49, 20));
+        clearancepanel.add(COCeditstay, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 375, 49, 15));
 
         COCeditaddress.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditaddress.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditaddress.setText("Address");
         COCeditaddress.setBorder(null);
-        COCeditaddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditaddressActionPerformed(evt);
-            }
-        });
         clearancepanel.add(COCeditaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 352, 208, 15));
 
         COCeditage.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         COCeditage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditage.setText("00");
         COCeditage.setBorder(null);
-        COCeditage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditageActionPerformed(evt);
-            }
-        });
-        clearancepanel.add(COCeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 302, 30, 20));
+        clearancepanel.add(COCeditage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 307, 30, 15));
 
         COCeditname1.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COCeditname1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         COCeditname1.setText("Name");
         COCeditname1.setAlignmentY(1.0F);
         COCeditname1.setBorder(null);
-        COCeditname1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                COCeditname1ActionPerformed(evt);
-            }
-        });
         clearancepanel.add(COCeditname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 307, 235, 15));
 
         docclearance.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/clearance.png"))); // NOI18N
@@ -758,27 +616,27 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         choosedocpanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, -1, 720));
 
-        changetext.setBackground(new java.awt.Color(13, 76, 146));
-        changetext.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        changetext.setForeground(new java.awt.Color(255, 255, 255));
-        changetext.setText("CHANGE TEXT");
-        changetext.addActionListener(new java.awt.event.ActionListener() {
+        btnChangeText.setBackground(new java.awt.Color(13, 76, 146));
+        btnChangeText.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        btnChangeText.setForeground(new java.awt.Color(255, 255, 255));
+        btnChangeText.setText("CHANGE TEXT");
+        btnChangeText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changetextActionPerformed(evt);
+                btnChangeTextActionPerformed(evt);
             }
         });
-        choosedocpanel.add(changetext, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 830, 200, 50));
+        choosedocpanel.add(btnChangeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 830, 200, 50));
 
         btnPrint.setBackground(new java.awt.Color(13, 76, 146));
         btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrint.setText("PRINT");
+        btnPrint.setText("SAVE OR PRINT DOCUMENT");
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);
             }
         });
-        choosedocpanel.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 830, 140, 50));
+        choosedocpanel.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 830, 340, 50));
 
         jPanel7.add(choosedocpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 900));
 
@@ -815,7 +673,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    public void initWebcam() {
+    public void initWebcam() { //execute webcam
         Dimension size = WebcamResolution.QVGA.getSize();
         webcam = Webcam.getWebcams().get(0);
         webcam.setViewSize(size);
@@ -829,7 +687,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         executor.execute(this);
     }
     @Override
-    public void run() {
+    public void run() { //scan and get data from QR code
         Result result = null;
         BufferedImage image = null;
 
@@ -840,16 +698,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 e.printStackTrace();
             }
 
-//            if (webcam.isOpen()) {
-//                if ((image = webcam.getImage()) == null) {
-//                    continue;
-//                } 
-//            }else {
-//                webcam.close();
-//            }
-//
-//            LuminanceSource source = new BufferedImageLuminanceSource(image);
-//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
             try {
                 if (webcam.isOpen()) {
                     if ((image = webcam.getImage()) == null) {
@@ -865,13 +713,24 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
             } finally {
                 //webcam.close();
             } 
+//            if (webcam.isOpen()) {
+//                if ((image = webcam.getImage()) == null) {
+//                    continue;
+//                } 
+//            }else {
+//                webcam.close();
+//            }
+//
+//            LuminanceSource source = new BufferedImageLuminanceSource(image);
+//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+//
 //            try {
 //                result = new MultiFormatReader().decode(bitmap);
 //            } catch (NotFoundException e) {
 //                //No result
 //            }
-
-            if (result != null) {
+            
+            if (result != null) { //split data from QR code
                 //result_field.setText(result.getText());
                 result.getText();
                 String text = result.toString();
@@ -894,7 +753,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         return t;
     }
 
-    private void printDocument(JPanel panel){
+    private void printDocument(JPanel panel){ //save or print document
         PrinterJob printerJob = PrinterJob.getPrinterJob();
         printerJob.setJobName("Print Document");
 
@@ -927,149 +786,33 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        // TODO add your handling code here:
-        printDocument(printpanel);//call print method
+        //call print method
+        printDocument(printpanel);
     }//GEN-LAST:event_btnPrintActionPerformed
 
-    private void COCeditname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditname1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditname1ActionPerformed
-
-    private void COCeditageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditageActionPerformed
-
-    private void COCeditaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditaddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditaddressActionPerformed
-
-    private void COCeditstayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditstayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditstayActionPerformed
-
-    private void COCeditreasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditreasonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditreasonActionPerformed
-
-    private void COCeditmonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditmonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditmonthActionPerformed
-
-    private void COCeditdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditdayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditdayActionPerformed
-
-    private void COCedityearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCedityearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCedityearActionPerformed
-
-    private void COCeditdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditdateActionPerformed
-
-    private void COCeditname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COCeditname2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COCeditname2ActionPerformed
-
-    private void COReditname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditname1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditname1ActionPerformed
-
-    private void COReditageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditageActionPerformed
-
-    private void COReditstayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditstayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditstayActionPerformed
-
-    private void COReditaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditaddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditaddressActionPerformed
-
-    private void COReditname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditname2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditname2ActionPerformed
-
-    private void COReditreasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditreasonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditreasonActionPerformed
-
-    private void COReditmonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditmonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditmonthActionPerformed
-
-    private void COReditdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditdayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditdayActionPerformed
-
-    private void CORedityearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CORedityearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CORedityearActionPerformed
-
-    private void COReditdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditdateActionPerformed
-
-    private void COReditname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COReditname3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COReditname3ActionPerformed
-
-    private void COIeditnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditnameActionPerformed
-
-    private void COIeditageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditageActionPerformed
-
-    private void COIeditaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditaddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditaddressActionPerformed
-
-    private void COIeditreasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditreasonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditreasonActionPerformed
-
-    private void COIeditmonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditmonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditmonthActionPerformed
-
-    private void COIeditdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditdayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditdayActionPerformed
-
-    private void COIedityearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIedityearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIedityearActionPerformed
-
-    private void COIeditdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COIeditdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_COIeditdateActionPerformed
-
     private void btnBCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBCMouseClicked
-        // TODO add your handling code here:
+        //show clearance panel
         indigencypanel.setVisible(false);
         residencypanel.setVisible(false);
         clearancepanel.setVisible(true);
     }//GEN-LAST:event_btnBCMouseClicked
 
     private void btnCORMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCORMouseClicked
-        // TODO add your handling code here:
+        //show residency panel
         indigencypanel.setVisible(false);
         residencypanel.setVisible(true);
         clearancepanel.setVisible(false);
     }//GEN-LAST:event_btnCORMouseClicked
 
     private void btnCOIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCOIMouseClicked
-        // TODO add your handling code here:
+        //show indigency panel
         indigencypanel.setVisible(true);
         residencypanel.setVisible(false);
         clearancepanel.setVisible(false);
     }//GEN-LAST:event_btnCOIMouseClicked
 
     private void rdreason1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason1ActionPerformed
-        // TODO add your handling code here:
+        //set text to SCHOLARSHIP if radio1 was clicked
         reason = "SCHOLARSHIP";
         if(rdreason1.isSelected()){
             rdreason2.setSelected(false);
@@ -1086,7 +829,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_rdreason1ActionPerformed
 
     private void rdreason2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason2ActionPerformed
-        // TODO add your handling code here:
+        //set text to FOOD ASSISTANCE if radio2 was clicked
         reason = "FOOD ASSISTANCE";
         if(rdreason2.isSelected()){
             rdreason1.setSelected(false);
@@ -1103,7 +846,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_rdreason2ActionPerformed
 
     private void rdreason3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason3ActionPerformed
-        // TODO add your handling code here:
+        //set text to MEDICAL ASSISTANCE if radio3 was clicked
         reason = "MEDICAL ASSISTANCE";
         if(rdreason3.isSelected()){
             rdreason1.setSelected(false);
@@ -1120,7 +863,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_rdreason3ActionPerformed
 
     private void rdreason4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason4ActionPerformed
-        // TODO add your handling code here:
+        //set text to CASH ASSISTANCE if radio4 was clicked
         reason = "CASH ASSISTANCE";
         if(rdreason4.isSelected()){
             rdreason1.setSelected(false);
@@ -1137,7 +880,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_rdreason4ActionPerformed
 
     private void rdreason5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason5ActionPerformed
-        // TODO add your handling code here:
+        //set text to EDUCATIONAL ASSISTANCE if radio5 was clicked
         reason = "EDUCATIONAL ASSISTANCE";
         if(rdreason5.isSelected()){
             rdreason1.setSelected(false);
@@ -1154,7 +897,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_rdreason5ActionPerformed
 
     private void rdreason6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason6ActionPerformed
-        // TODO add your handling code here:
+        //set text to POLICE CLEARANCE if radio6 was clicked
         reason = "POLICE CLEARANCE";
         if(rdreason6.isSelected()){
             rdreason1.setSelected(false);
@@ -1171,7 +914,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_rdreason6ActionPerformed
 
     private void rdreason7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason7ActionPerformed
-        // TODO add your handling code here:
+        //set text to EMPLOYMENT if radio7 was clicked
         reason = "EMPLOYMENT";
         if(rdreason7.isSelected()){
             rdreason1.setSelected(false);
@@ -1188,7 +931,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_rdreason7ActionPerformed
 
     private void lblResidentsDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResidentsDataMouseClicked
-        // TODO add your handling code here:
+        //topbar navigation
         ResidentsDataForm rdf = new ResidentsDataForm();
         rdf.show();
 
@@ -1196,7 +939,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_lblResidentsDataMouseClicked
 
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
-        // TODO add your handling code here:
+        //topbar navigation
         LogInForm lif = new LogInForm();
         lif.show();
 
@@ -1204,20 +947,15 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     }//GEN-LAST:event_lblLogoutMouseClicked
 
     private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked
-        // TODO add your handling code here:
+        //topbar navigation
         DashboardForm dbf = new DashboardForm();
         dbf.show();
 
         dispose();
     }//GEN-LAST:event_lblDashboardMouseClicked
 
-    private void COIeditnameInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_COIeditnameInputMethodTextChanged
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_COIeditnameInputMethodTextChanged
-
-    private void changetextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changetextActionPerformed
-        // TODO add your handling code here:
+    private void btnChangeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTextActionPerformed
+        //automatic fill-up if CHANGE TEXT button was clicked
         COIeditname.setText(infoname);
         COIeditage.setText(infoage);
         COIeditaddress.setText(infoaddress);
@@ -1234,7 +972,29 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COCeditage.setText(infoage);
         COCeditaddress.setText(infoaddress);
         COCeditstay.setText(infoyearstay);
-    }//GEN-LAST:event_changetextActionPerformed
+
+        COIeditmonth.setText(month.format(thisDate));
+        COReditmonth.setText(month.format(thisDate));
+        COCeditmonth.setText(month.format(thisDate));
+
+        COIeditday.setText(day.format(thisDate));
+        COReditday.setText(day.format(thisDate));
+        COCeditday.setText(day.format(thisDate));
+
+        COIedityear.setText(year.format(thisDate));
+        CORedityear.setText(year.format(thisDate));
+        COCedityear.setText(year.format(thisDate));
+
+        COIeditdate.setText(dateForm.format(thisDate));
+        COReditdate.setText(dateForm.format(thisDate));
+        COCeditdate.setText(dateForm.format(thisDate));
+    }//GEN-LAST:event_btnChangeTextActionPerformed
+
+    private void choosedocpanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_choosedocpanelComponentShown
+        //show this message dialog if QR code was scanned successfully
+        JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully.\n"
+            + "Click CHANGE TEXT button to automatically fill-up the document.");
+    }//GEN-LAST:event_choosedocpanelComponentShown
 
     /**
      * @param args the command line arguments
@@ -1303,8 +1063,8 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private javax.swing.JPanel btnBC;
     private javax.swing.JPanel btnCOI;
     private javax.swing.JPanel btnCOR;
+    private javax.swing.JButton btnChangeText;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JButton changetext;
     private javax.swing.JPanel choosedocpanel;
     private javax.swing.JPanel clearancepanel;
     private javax.swing.JLabel docclearance;

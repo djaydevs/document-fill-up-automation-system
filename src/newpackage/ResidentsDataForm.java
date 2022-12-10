@@ -11,6 +11,10 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.awt.Color;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.*;
 import java.nio.file.FileSystems;
 import static java.nio.file.Files.write;
@@ -32,11 +36,12 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     String gender;
     String filename = null;
     byte[] resident_image;
-    
+
     public ResidentsDataForm() {
         initComponents();
         show_resident();
         populationCount();
+        generateIDPanel.setVisible(false);
     }  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -85,6 +90,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         date_chooser = new com.toedter.calendar.JDateChooser();
         btnUpdateRIN = new javax.swing.JButton();
         btnDeleteRIN = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         tableborder = new javax.swing.JPanel();
         btnGenerate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -97,8 +103,35 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblSearch = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
+        generateIDPanel = new javax.swing.JPanel();
+        printPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtSearchtable1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        printID = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -325,7 +358,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnUpdateRIN.setBackground(new java.awt.Color(13, 76, 146));
         btnUpdateRIN.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         btnUpdateRIN.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdateRIN.setText("Update (RIN)");
+        btnUpdateRIN.setText("Update ");
         btnUpdateRIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateRINActionPerformed(evt);
@@ -336,13 +369,16 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnDeleteRIN.setBackground(new java.awt.Color(13, 76, 146));
         btnDeleteRIN.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         btnDeleteRIN.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteRIN.setText("Delete (RIN)");
+        btnDeleteRIN.setText("Delete");
         btnDeleteRIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteRINActionPerformed(evt);
             }
         });
         registerborder.add(btnDeleteRIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, 140, 40));
+
+        jLabel12.setText("Update and Delete using RIN");
+        registerborder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, -1, -1));
 
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 720));
 
@@ -354,6 +390,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnGenerate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnGenerate.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerate.setText("Generate I.D");
+        btnGenerate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateActionPerformed(evt);
+            }
+        });
         tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 140, 40));
 
         tblResidents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 1, true));
@@ -415,7 +456,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
         btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Update (Table)");
+        btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -426,13 +467,16 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         btnDelete.setBackground(new java.awt.Color(13, 76, 146));
         btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Delete (Table)");
+        btnDelete.setText("Delete ");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
         tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 600, 140, 40));
+
+        jLabel22.setText("Update and Delete using table click");
+        tableborder.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, -1, -1));
 
         jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 830, 720));
 
@@ -456,6 +500,169 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblResidentsDataTitle.setText("| Residents Data");
         jpBG.add(lblResidentsDataTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
+        generateIDPanel.setBackground(new java.awt.Color(255, 255, 255));
+        generateIDPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
+        generateIDPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        generateIDPanel.setPreferredSize(new java.awt.Dimension(1440, 815));
+        generateIDPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        printPanel.setBackground(new java.awt.Color(255, 255, 255));
+        printPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
+        printPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("QR CODE");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        printPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 200));
+
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Contact :");
+        printPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 80, 30));
+
+        jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 1, 20)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Barangay Fatima 1, CSJDM Bulacan, Philippines");
+        printPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 580, 30));
+
+        jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 0, 20)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Resident Profiling Identification Card");
+        printPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 30));
+
+        jLabel8.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("RIN");
+        printPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, 30));
+
+        jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("Sex :");
+        printPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 80, 30));
+
+        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("Age :");
+        printPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 80, 30));
+
+        jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Address");
+        printPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 80, 30));
+
+        jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText("Name :");
+        printPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 80, 30));
+
+        jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("mi");
+        printPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 210, 30));
+
+        jLabel15.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel15.setText("text here");
+        printPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 170, 30));
+
+        jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("text here");
+        printPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, 30));
+
+        jLabel17.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setText("text here");
+        printPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 170, 30));
+
+        jLabel18.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText("text here");
+        printPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 170, 30));
+
+        jLabel19.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("lname");
+        printPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 100, 30));
+
+        jLabel21.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel21.setText("fname");
+        printPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 210, 30));
+
+        jLabel20.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText(",");
+        printPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 10, 30));
+
+        generateIDPanel.add(printPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 580, 340));
+
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
+        jLabel2.setText("Enter RIN :");
+        generateIDPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
+
+        txtSearchtable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
+        txtSearchtable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchtable1KeyReleased(evt);
+            }
+        });
+        generateIDPanel.add(txtSearchtable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 240, 30));
+
+        jButton1.setBackground(new java.awt.Color(13, 76, 146));
+        jButton1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Clear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        generateIDPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 130, 85, 30));
+
+        jButton2.setBackground(new java.awt.Color(13, 76, 146));
+        jButton2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        generateIDPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 660, 85, 30));
+
+        printID.setBackground(new java.awt.Color(13, 76, 146));
+        printID.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        printID.setForeground(new java.awt.Color(255, 255, 255));
+        printID.setText("Print");
+        printID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printIDActionPerformed(evt);
+            }
+        });
+        generateIDPanel.add(printID, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, 85, 30));
+
+        jButton4.setBackground(new java.awt.Color(13, 76, 146));
+        jButton4.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Search");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        generateIDPanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 85, 30));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(14, 69, 96), 2, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        generateIDPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 900, 660));
+
+        jpBG.add(generateIDPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1440, 820));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -464,7 +671,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -712,7 +919,35 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnUploadActionPerformed
-
+    
+    private void printID (JPanel panel){
+        PrinterJob printerJob = PrinterJob.getPrinterJob();
+        printerJob.setJobName("Print ID");
+        printerJob.setPrintable(new Printable(){
+            @Override
+            public int print (Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                if(pageIndex > 0){
+                    return Printable.NO_SUCH_PAGE;
+                }
+                Graphics2D graphics2D = (Graphics2D)graphics;
+                graphics2D.translate(pageFormat.getImageableX()*3, pageFormat.getImageableY()*3);
+                graphics2D.scale(0.5,0.5);
+                
+                panel.paint(graphics2D);
+                
+                return Printable.PAGE_EXISTS;
+            }
+         });
+        
+        boolean returningResult = printerJob.printDialog();
+        if(returningResult){
+            try{
+                printerJob.print();
+            }catch(PrinterException printerException){
+                JOptionPane.showMessageDialog(this, "Print Error:" + printerException.getMessage());
+            }
+        }   
+    }
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         txtLname.setText("");
         txtFname.setText("");
@@ -767,7 +1002,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
 
             Path path = FileSystems.getDefault().getPath(qrCode);
             MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
-             
+          
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
             String sql = "INSERT INTO ROOT.TBL_RESIDENTS (l_name,f_name,mi,house_number,street,gender,age,year_of_stay,birthday,birthplace,contact_number,profile,qr_code) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -854,7 +1089,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tblResidentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResidentsMouseClicked
-         int row = tblResidents.getSelectedRow();
+        int row = tblResidents.getSelectedRow();
         TableModel model = tblResidents.getModel();
         txtLname.setText(model.getValueAt(row,1).toString());
         txtFname.setText(model.getValueAt(row,2).toString());
@@ -977,7 +1212,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
                 rbtnMale.setSelected(true);
                 }else {
                 rbtnFemale.setSelected(true);
-                }
+                } 
                 String setAge = rs.getString("age");
                 txtAge.setText(setAge);
                 String setYearstay = rs.getString("year_of_stay");
@@ -991,7 +1226,8 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
                 ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(lblDefaultimage.getWidth(),lblDefaultimage.getHeight(),Image.SCALE_SMOOTH));
                 lblDefaultimage.setIcon(imageIcon);
                 resident_image = img;
-            }    
+            } 
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }*/
@@ -999,19 +1235,19 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
 
     private void txtSearchtableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchtableKeyReleased
         // TODO add your handling code here:
-        DefaultTableModel table = (DefaultTableModel)tblResidents.getModel();
-        String search = txtSearchtable.getText().toLowerCase();
+        DefaultTableModel table = (DefaultTableModel)this.tblResidents.getModel();
+        String search =this.txtSearchtable.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
         tblResidents.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search)); 
     }//GEN-LAST:event_txtSearchtableKeyReleased
 
     private void btnUpdateRINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRINActionPerformed
+
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,contact_number = ?, profile = ? WHERE rin =?";
-            
+            String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,contact_number = ?, profile = ? WHERE rin=?";
             ps = conn.prepareStatement(sql);
             ps.setString(13, txtSearch.getText());
             ps.setString(1, txtLname.getText());
@@ -1081,7 +1317,39 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         }
     }//GEN-LAST:event_btnDeleteRINActionPerformed
 
-   
+    private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
+        // TODO add your handling code here:
+        generateIDPanel.setVisible(true);
+        registerborder.setVisible(false);
+        tableborder.setVisible(false);
+        
+        
+        
+    }//GEN-LAST:event_btnGenerateActionPerformed
+
+    private void txtSearchtable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchtable1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchtable1KeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        generateIDPanel.setVisible(false);
+        registerborder.setVisible(true);
+        tableborder.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void printIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printIDActionPerformed
+        printID(printPanel);
+    }//GEN-LAST:event_printIDActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+ 
     /**
      * @param args the command line arguments
      */
@@ -1127,10 +1395,35 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JButton btnUpdateRIN;
     private javax.swing.JButton btnUpload;
     private com.toedter.calendar.JDateChooser date_chooser;
+    private javax.swing.JPanel generateIDPanel;
     private javax.swing.JLabel invalid;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBG;
     private javax.swing.JPanel jpFooter;
@@ -1159,6 +1452,8 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblStreet;
     private javax.swing.JLabel lblYearstay;
+    private javax.swing.JButton printID;
+    private javax.swing.JPanel printPanel;
     private javax.swing.JRadioButton rbtnFemale;
     private javax.swing.JRadioButton rbtnMale;
     private javax.swing.JPanel registerborder;
@@ -1173,6 +1468,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JTextField txtPlaceofbirth;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearchtable;
+    private javax.swing.JTextField txtSearchtable1;
     private javax.swing.JTextField txtStreet;
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables

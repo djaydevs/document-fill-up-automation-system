@@ -11,6 +11,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.awt.Color;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -28,6 +29,8 @@ import javax.swing.*;
 import javax.swing.table.*;
 import java.io.File;
 import java.io.FileInputStream;
+import static java.lang.String.format;
+import javax.imageio.ImageIO;
 
 public class ResidentsDataForm extends javax.swing.JFrame {
     Connection conn;
@@ -36,6 +39,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     String gender;
     String filename = null;
     byte[] resident_image;
+    private ImageIcon format = null;
 
     public ResidentsDataForm() {
         initComponents();
@@ -108,7 +112,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblResidentsDataTitle = new javax.swing.JLabel();
         generateIDPanel = new javax.swing.JPanel();
         printPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblQrCode = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -507,13 +511,13 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         printPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
         printPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("QR CODE");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        printPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 200));
+        lblQrCode.setBackground(new java.awt.Color(102, 102, 102));
+        lblQrCode.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        lblQrCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQrCode.setText("QR CODE");
+        lblQrCode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        lblQrCode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        printPanel.add(lblQrCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 200));
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -938,8 +942,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         date_chooser.setCalendar(null);
         txtPlaceofbirth.setText("");
         txtContact.setText("");
-        lblDefaultimage.setIcon(new ImageIcon ("D:\\Documents\\NetbeansProject\\DocFillUpAutomationSystem\\src\\assets\\defaultimage.png"));
-        
+        lblDefaultimage.setIcon(new ImageIcon ("D:\\Documents\\NetbeansProject\\DocFillUpAutomationSystem\\src\\assets\\defaultimage.png"));       
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
@@ -963,7 +966,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             }
         }  
     }//GEN-LAST:event_txtContactKeyPressed
-    
+//Change the filepath     
 private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationSystem\\generated_qr";    
         
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -1298,10 +1301,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         // TODO add your handling code here:
         generateIDPanel.setVisible(true);
         registerborder.setVisible(false);
-        tableborder.setVisible(false);
-        
-        
-        
+        tableborder.setVisible(false);              
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void txtSearch2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch2KeyReleased
@@ -1317,6 +1317,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         lblSex.setText("");
         lblAge2.setText("");
         lblContact2.setText("");
+        lblQrCode.setText("");
     }//GEN-LAST:event_btnClear2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1354,7 +1355,8 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
                 String setAge = rs.getString("age");
                 lblAge2.setText(setAge);
                 String setContact = rs.getString("contact_number");
-                lblContact2.setText(setContact);
+                lblContact2.setText(setContact);  
+                LoadImage();
             } 
             
         }catch(Exception e){
@@ -1362,6 +1364,19 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         }
     }//GEN-LAST:event_btnSearchActionPerformed
  
+    public void LoadImage() {
+        try {
+            byte[] qrCode = rs.getBytes("qr_code");
+            format = new ImageIcon(qrCode);
+            Image qr = format.getImage();
+            Image qrcode = qr.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+            ImageIcon img = new ImageIcon(qrcode);
+            
+            lblQrCode.setIcon(img);
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -1413,7 +1428,6 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JPanel generateIDPanel;
     private javax.swing.JLabel invalid;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1453,6 +1467,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JLabel lblNavbg;
     private javax.swing.JLabel lblPlaceofbirth;
     private javax.swing.JLabel lblPopulation;
+    private javax.swing.JLabel lblQrCode;
     private javax.swing.JLabel lblRegistration;
     private javax.swing.JLabel lblResidentsData;
     private javax.swing.JLabel lblResidentsDataTitle;

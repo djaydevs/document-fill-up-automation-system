@@ -112,25 +112,22 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        rinLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        lblSex = new javax.swing.JLabel();
+        lblAge2 = new javax.swing.JLabel();
+        lblContact2 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        addressLbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtSearchtable1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtSearch2 = new javax.swing.JTextField();
+        btnClear2 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         printID = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -533,10 +530,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel7.setText("Resident Profiling Identification Card");
         printPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 580, 30));
 
-        jLabel8.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("RIN");
-        printPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, 30));
+        rinLabel.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        rinLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rinLabel.setText("RIN");
+        printPanel.add(rinLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, 30));
 
         jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -558,45 +555,25 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel13.setText("Name :");
         printPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 80, 30));
 
-        jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("mi");
-        printPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 210, 30));
+        lblSex.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblSex.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        printPanel.add(lblSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 170, 30));
 
-        jLabel15.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText("text here");
-        printPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 170, 30));
+        lblAge2.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblAge2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        printPanel.add(lblAge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, 30));
 
-        jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel16.setText("text here");
-        printPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, 30));
+        lblContact2.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblContact2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        printPanel.add(lblContact2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 220, 30));
 
-        jLabel17.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText("text here");
-        printPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 170, 30));
+        lblName.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        printPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 200, 30));
 
-        jLabel18.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel18.setText("text here");
-        printPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 170, 30));
-
-        jLabel19.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel19.setText("lname");
-        printPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 100, 30));
-
-        jLabel21.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel21.setText("fname");
-        printPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 210, 30));
-
-        jLabel20.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel20.setText(",");
-        printPanel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 10, 30));
+        addressLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        addressLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        printPanel.add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 210, 30));
 
         generateIDPanel.add(printPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 580, 340));
 
@@ -604,24 +581,24 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel2.setText("Enter RIN :");
         generateIDPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
-        txtSearchtable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
-        txtSearchtable1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
+        txtSearch2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchtable1KeyReleased(evt);
+                txtSearch2KeyReleased(evt);
             }
         });
-        generateIDPanel.add(txtSearchtable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 240, 30));
+        generateIDPanel.add(txtSearch2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 240, 30));
 
-        jButton1.setBackground(new java.awt.Color(13, 76, 146));
-        jButton1.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Clear");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnClear2.setBackground(new java.awt.Color(13, 76, 146));
+        btnClear2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        btnClear2.setForeground(new java.awt.Color(255, 255, 255));
+        btnClear2.setText("Clear");
+        btnClear2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnClear2ActionPerformed(evt);
             }
         });
-        generateIDPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 130, 85, 30));
+        generateIDPanel.add(btnClear2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 130, 85, 30));
 
         jButton2.setBackground(new java.awt.Color(13, 76, 146));
         jButton2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
@@ -645,16 +622,16 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         });
         generateIDPanel.add(printID, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, 85, 30));
 
-        jButton4.setBackground(new java.awt.Color(13, 76, 146));
-        jButton4.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Search");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setBackground(new java.awt.Color(13, 76, 146));
+        btnSearch.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
-        generateIDPanel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 85, 30));
+        generateIDPanel.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 85, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(14, 69, 96), 2, true));
@@ -1327,13 +1304,20 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         
     }//GEN-LAST:event_btnGenerateActionPerformed
 
-    private void txtSearchtable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchtable1KeyReleased
+    private void txtSearch2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch2KeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchtable1KeyReleased
+    }//GEN-LAST:event_txtSearch2KeyReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnClear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        txtSearch2.setText("");
+        rinLabel.setText("");
+        lblName.setText("");
+        addressLbl.setText("");
+        lblSex.setText("");
+        lblAge2.setText("");
+        lblContact2.setText("");
+    }//GEN-LAST:event_btnClear2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -1346,9 +1330,37 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         printID(printPanel);
     }//GEN-LAST:event_printIDActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+            String sql = "SELECT *FROM ROOT.TBL_RESIDENTS WHERE rin = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, txtSearch2.getText().toString());
+            rs = ps.executeQuery();
+            if(rs.next()){
+                String setRin = rs.getString("rin");
+                rinLabel.setText(setRin);
+                String setLname = rs.getString("l_name");
+                String setFname = rs.getString("f_name");
+                String setMi = rs.getString("mi");
+                lblName.setText(setLname + "," +"  "+ setFname + "  " +setMi);
+                String setHousenum = rs.getString("house_number");
+                String setStreet = rs.getString("street");
+                addressLbl.setText(setHousenum + "  " + setStreet);
+                String sex = rs.getString("gender");
+                lblSex.setText(sex);
+                String setAge = rs.getString("age");
+                lblAge2.setText(setAge);
+                String setContact = rs.getString("contact_number");
+                lblContact2.setText(setContact);
+            } 
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
  
     /**
      * @param args the command line arguments
@@ -1386,41 +1398,33 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addressLbl;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnClear2;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteRIN;
     private javax.swing.JButton btnGenerate;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpdateRIN;
     private javax.swing.JButton btnUpload;
     private com.toedter.calendar.JDateChooser date_chooser;
     private javax.swing.JPanel generateIDPanel;
     private javax.swing.JLabel invalid;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -1432,7 +1436,9 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JLabel lastname1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblAge2;
     private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblContact2;
     private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblDateofbirth;
     private javax.swing.JLabel lblDefaultimage;
@@ -1443,6 +1449,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JLabel lblLastname;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogout;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNavbg;
     private javax.swing.JLabel lblPlaceofbirth;
     private javax.swing.JLabel lblPopulation;
@@ -1450,6 +1457,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JLabel lblResidentsData;
     private javax.swing.JLabel lblResidentsDataTitle;
     private javax.swing.JLabel lblSearch;
+    private javax.swing.JLabel lblSex;
     private javax.swing.JLabel lblStreet;
     private javax.swing.JLabel lblYearstay;
     private javax.swing.JButton printID;
@@ -1457,6 +1465,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JRadioButton rbtnFemale;
     private javax.swing.JRadioButton rbtnMale;
     private javax.swing.JPanel registerborder;
+    private javax.swing.JLabel rinLabel;
     private javax.swing.JPanel tableborder;
     private javax.swing.JTable tblResidents;
     private javax.swing.JTextField txtAge;
@@ -1467,8 +1476,8 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JTextField txtLname;
     private javax.swing.JTextField txtPlaceofbirth;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearch2;
     private javax.swing.JTextField txtSearchtable;
-    private javax.swing.JTextField txtSearchtable1;
     private javax.swing.JTextField txtStreet;
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables

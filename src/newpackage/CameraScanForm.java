@@ -978,9 +978,9 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
     private void choosedocpanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_choosedocpanelComponentShown
         //show this message dialog if QR code was scanned successfully
+        webcam.close();
         JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully.\n"
             + "Click CHANGE TEXT button to automatically fill-up the document.");
-        webcam.close();
     }//GEN-LAST:event_choosedocpanelComponentShown
 
     /**

@@ -1363,7 +1363,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnSearchActionPerformed
- 
+    //retrive the qr_code on database and display in jlabel
     public void LoadImage() {
         try {
             byte[] qrCode = rs.getBytes("qr_code");

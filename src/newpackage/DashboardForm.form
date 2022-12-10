@@ -228,7 +228,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft YaHei" size="17" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;This application processes document by using QR code technology.&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;This application processes documents by using QR code technology.&lt;/html&gt;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -241,7 +241,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft YaHei" size="23" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;Ang application na ito ay nagpo-proseso ng mga dokumento sa pamamagitan ng QR code.&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;Pinoproseso ng application na ito ang mga dokumento sa pamamagitan ng QR code.&lt;/html&gt;"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

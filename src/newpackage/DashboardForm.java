@@ -118,11 +118,11 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 150, 150));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
-        jLabel10.setText("<html>This application processes document by using QR code technology.</html>");
+        jLabel10.setText("<html>This application processes documents by using QR code technology.</html>");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 420, -1));
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 23)); // NOI18N
-        jLabel11.setText("<html>Ang application na ito ay nagpo-proseso ng mga dokumento sa pamamagitan ng QR code.</html>");
+        jLabel11.setText("<html>Pinoproseso ng application na ito ang mga dokumento sa pamamagitan ng QR code.</html>");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 420, -1));
 
         jpBackground.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 180));

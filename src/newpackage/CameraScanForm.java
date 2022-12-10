@@ -289,7 +289,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         brdchoosereason.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 430, 240));
 
-        choosedocpanel.add(brdchoosereason, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 470, 390));
+        choosedocpanel.add(brdchoosereason, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 500, 470, 390));
 
         brdchoosedoc.setBackground(new java.awt.Color(255, 255, 255));
         brdchoosedoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
@@ -400,7 +400,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         brdchoosedoc.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 270));
 
-        choosedocpanel.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 95, 470, 390));
+        choosedocpanel.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 95, 470, 390));
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 185, 225)));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -625,7 +625,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 btnChangeTextActionPerformed(evt);
             }
         });
-        choosedocpanel.add(btnChangeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 830, 200, 50));
+        choosedocpanel.add(btnChangeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 830, 200, 50));
 
         btnPrint.setBackground(new java.awt.Color(13, 76, 146));
         btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
@@ -710,26 +710,8 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 }
             } catch (NotFoundException e) {
                 //JOptionPane.showMessageDialog(null, e);
-            } finally {
-                //webcam.close();
-            } 
-//            if (webcam.isOpen()) {
-//                if ((image = webcam.getImage()) == null) {
-//                    continue;
-//                } 
-//            }else {
-//                webcam.close();
-//            }
-//
-//            LuminanceSource source = new BufferedImageLuminanceSource(image);
-//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-//
-//            try {
-//                result = new MultiFormatReader().decode(bitmap);
-//            } catch (NotFoundException e) {
-//                //No result
-//            }
-            
+            }
+
             if (result != null) { //split data from QR code
                 //result_field.setText(result.getText());
                 result.getText();
@@ -742,6 +724,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 
                 choosedocpanel.setVisible(true);
                 scanqrpanel.setVisible(false);
+                
             }
         } while(true);
     }
@@ -934,6 +917,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //topbar navigation
         ResidentsDataForm rdf = new ResidentsDataForm();
         rdf.show();
+        webcam.close();
 
         dispose();
     }//GEN-LAST:event_lblResidentsDataMouseClicked
@@ -942,6 +926,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //topbar navigation
         LogInForm lif = new LogInForm();
         lif.show();
+        webcam.close();
 
         dispose();
     }//GEN-LAST:event_lblLogoutMouseClicked
@@ -950,6 +935,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //topbar navigation
         DashboardForm dbf = new DashboardForm();
         dbf.show();
+        webcam.close();
 
         dispose();
     }//GEN-LAST:event_lblDashboardMouseClicked
@@ -994,6 +980,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //show this message dialog if QR code was scanned successfully
         JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully.\n"
             + "Click CHANGE TEXT button to automatically fill-up the document.");
+        webcam.close();
     }//GEN-LAST:event_choosedocpanelComponentShown
 
     /**

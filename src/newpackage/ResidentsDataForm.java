@@ -111,6 +111,13 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
         generateIDPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtSearch2 = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnClear2 = new javax.swing.JButton();
+        printID = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         printPanel = new javax.swing.JPanel();
         lblQrCode = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -126,13 +133,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblContact2 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         addressLbl = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtSearch2 = new javax.swing.JTextField();
-        btnClear2 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        printID = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -502,10 +502,70 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jpBG.add(lblResidentsDataTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         generateIDPanel.setBackground(new java.awt.Color(255, 255, 255));
-        generateIDPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
         generateIDPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         generateIDPanel.setPreferredSize(new java.awt.Dimension(1440, 815));
         generateIDPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
+        jLabel2.setText("Enter RIN :");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 40));
+
+        txtSearch2.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        txtSearch2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
+        txtSearch2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearch2KeyReleased(evt);
+            }
+        });
+        jPanel3.add(txtSearch2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 190, 40));
+
+        btnSearch.setBackground(new java.awt.Color(13, 76, 146));
+        btnSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 120, 40));
+
+        btnClear2.setBackground(new java.awt.Color(13, 76, 146));
+        btnClear2.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        btnClear2.setForeground(new java.awt.Color(255, 255, 255));
+        btnClear2.setText("Clear");
+        btnClear2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClear2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnClear2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 110, 40));
+
+        printID.setBackground(new java.awt.Color(13, 76, 146));
+        printID.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        printID.setForeground(new java.awt.Color(255, 255, 255));
+        printID.setText("SAVE OR PRINT ID");
+        printID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printIDActionPerformed(evt);
+            }
+        });
+        jPanel3.add(printID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 230, 40));
+
+        jButton2.setBackground(new java.awt.Color(13, 76, 146));
+        jButton2.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 110, 40));
 
         printPanel.setBackground(new java.awt.Color(255, 255, 255));
         printPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
@@ -514,12 +574,11 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblQrCode.setBackground(new java.awt.Color(102, 102, 102));
         lblQrCode.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         lblQrCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblQrCode.setText("QR CODE");
         lblQrCode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         lblQrCode.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         printPanel.add(lblQrCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 200));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 1, 17)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Contact :");
         printPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 80, 30));
@@ -539,110 +598,51 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         rinLabel.setText("RIN");
         printPanel.add(rinLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 200, 30));
 
-        jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 1, 17)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Sex :");
         printPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 80, 30));
 
-        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 1, 17)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Age :");
         printPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 80, 30));
 
-        jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 17)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Address");
         printPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 80, 30));
 
-        jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 1, 17)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Name :");
         printPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 80, 30));
 
-        lblSex.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblSex.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         lblSex.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        printPanel.add(lblSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 170, 30));
+        printPanel.add(lblSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 190, 30));
 
-        lblAge2.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblAge2.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         lblAge2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        printPanel.add(lblAge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 170, 30));
+        printPanel.add(lblAge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 190, 30));
 
-        lblContact2.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblContact2.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         lblContact2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        printPanel.add(lblContact2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 220, 30));
+        printPanel.add(lblContact2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 240, 30));
 
-        lblName.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        lblName.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        printPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 200, 30));
+        printPanel.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 220, 30));
 
-        addressLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        addressLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         addressLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        printPanel.add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 210, 30));
+        printPanel.add(addressLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 230, 30));
 
-        generateIDPanel.add(printPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 580, 340));
+        jPanel3.add(printPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 340));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 0, 24)); // NOI18N
-        jLabel2.setText("Enter RIN :");
-        generateIDPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
+        generateIDPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 620, 480));
 
-        txtSearch2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
-        txtSearch2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearch2KeyReleased(evt);
-            }
-        });
-        generateIDPanel.add(txtSearch2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 240, 30));
-
-        btnClear2.setBackground(new java.awt.Color(13, 76, 146));
-        btnClear2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        btnClear2.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear2.setText("Clear");
-        btnClear2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClear2ActionPerformed(evt);
-            }
-        });
-        generateIDPanel.add(btnClear2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 130, 85, 30));
-
-        jButton2.setBackground(new java.awt.Color(13, 76, 146));
-        jButton2.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        generateIDPanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 660, 85, 30));
-
-        printID.setBackground(new java.awt.Color(13, 76, 146));
-        printID.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        printID.setForeground(new java.awt.Color(255, 255, 255));
-        printID.setText("Print");
-        printID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printIDActionPerformed(evt);
-            }
-        });
-        generateIDPanel.add(printID, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, 85, 30));
-
-        btnSearch.setBackground(new java.awt.Color(13, 76, 146));
-        btnSearch.setFont(new java.awt.Font("Microsoft JhengHei", 0, 14)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-        generateIDPanel.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 85, 30));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(14, 69, 96), 2, true));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        generateIDPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 900, 660));
-
-        jpBG.add(generateIDPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1440, 820));
+        jpBG.add(generateIDPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 85, 1440, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -289,7 +289,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         brdchoosereason.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 430, 240));
 
-        choosedocpanel.add(brdchoosereason, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 470, 390));
+        choosedocpanel.add(brdchoosereason, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 500, 470, 390));
 
         brdchoosedoc.setBackground(new java.awt.Color(255, 255, 255));
         brdchoosedoc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
@@ -400,7 +400,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         brdchoosedoc.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 270));
 
-        choosedocpanel.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 95, 470, 390));
+        choosedocpanel.add(brdchoosedoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 95, 470, 390));
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(104, 185, 225)));
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -625,7 +625,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 btnChangeTextActionPerformed(evt);
             }
         });
-        choosedocpanel.add(btnChangeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 830, 200, 50));
+        choosedocpanel.add(btnChangeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 830, 200, 50));
 
         btnPrint.setBackground(new java.awt.Color(13, 76, 146));
         btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N

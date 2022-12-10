@@ -710,26 +710,8 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 }
             } catch (NotFoundException e) {
                 //JOptionPane.showMessageDialog(null, e);
-            } finally {
-                //webcam.close();
-            } 
-//            if (webcam.isOpen()) {
-//                if ((image = webcam.getImage()) == null) {
-//                    continue;
-//                } 
-//            }else {
-//                webcam.close();
-//            }
-//
-//            LuminanceSource source = new BufferedImageLuminanceSource(image);
-//            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-//
-//            try {
-//                result = new MultiFormatReader().decode(bitmap);
-//            } catch (NotFoundException e) {
-//                //No result
-//            }
-            
+            }
+
             if (result != null) { //split data from QR code
                 //result_field.setText(result.getText());
                 result.getText();
@@ -742,6 +724,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 
                 choosedocpanel.setVisible(true);
                 scanqrpanel.setVisible(false);
+                
             }
         } while(true);
     }
@@ -934,6 +917,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //topbar navigation
         ResidentsDataForm rdf = new ResidentsDataForm();
         rdf.show();
+        webcam.close();
 
         dispose();
     }//GEN-LAST:event_lblResidentsDataMouseClicked
@@ -942,6 +926,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //topbar navigation
         LogInForm lif = new LogInForm();
         lif.show();
+        webcam.close();
 
         dispose();
     }//GEN-LAST:event_lblLogoutMouseClicked
@@ -950,6 +935,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //topbar navigation
         DashboardForm dbf = new DashboardForm();
         dbf.show();
+        webcam.close();
 
         dispose();
     }//GEN-LAST:event_lblDashboardMouseClicked
@@ -994,6 +980,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         //show this message dialog if QR code was scanned successfully
         JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully.\n"
             + "Click CHANGE TEXT button to automatically fill-up the document.");
+        webcam.close();
     }//GEN-LAST:event_choosedocpanelComponentShown
 
     /**

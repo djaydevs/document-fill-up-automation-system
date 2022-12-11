@@ -89,12 +89,9 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        btnCOI = new javax.swing.JPanel();
-        lblCOI = new javax.swing.JLabel();
-        btnCOR = new javax.swing.JPanel();
-        lblCOR = new javax.swing.JLabel();
-        btnBC = new javax.swing.JPanel();
-        lblBC = new javax.swing.JLabel();
+        btnCOC = new javax.swing.JButton();
+        btnCOR = new javax.swing.JButton();
+        btnCOI = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         printpanel = new javax.swing.JPanel();
         indigencypanel = new javax.swing.JPanel();
@@ -307,96 +304,40 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCOI.setBackground(new java.awt.Color(13, 76, 146));
-        btnCOI.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCOIMouseClicked(evt);
+        btnCOC.setBackground(new java.awt.Color(13, 76, 146));
+        btnCOC.setFont(new java.awt.Font("Microsoft YaHei", 0, 25)); // NOI18N
+        btnCOC.setForeground(new java.awt.Color(255, 255, 255));
+        btnCOC.setText("Barangay Clearance");
+        btnCOC.setBorder(null);
+        btnCOC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCOCActionPerformed(evt);
             }
         });
+        jPanel4.add(btnCOC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 430, 90));
 
-        lblCOI.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 28)); // NOI18N
-        lblCOI.setForeground(new java.awt.Color(255, 255, 255));
-        lblCOI.setText("Certificate of Indigency");
-
-        javax.swing.GroupLayout btnCOILayout = new javax.swing.GroupLayout(btnCOI);
-        btnCOI.setLayout(btnCOILayout);
-        btnCOILayout.setHorizontalGroup(
-            btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCOILayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(lblCOI)
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-        btnCOILayout.setVerticalGroup(
-            btnCOILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCOILayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(lblCOI)
-                .addGap(25, 25, 25))
-        );
-
-        jPanel4.add(btnCOI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
-
-        btnCOR.setBackground(new java.awt.Color(255, 255, 255));
+        btnCOR.setFont(new java.awt.Font("Microsoft YaHei", 0, 25)); // NOI18N
+        btnCOR.setForeground(new java.awt.Color(13, 76, 146));
+        btnCOR.setText("Certificate of Residency");
         btnCOR.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(13, 76, 146), 3));
-        btnCOR.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCORMouseClicked(evt);
+        btnCOR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCORActionPerformed(evt);
             }
         });
-
-        lblCOR.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 28)); // NOI18N
-        lblCOR.setForeground(new java.awt.Color(13, 76, 146));
-        lblCOR.setText("Certificate of Residency");
-
-        javax.swing.GroupLayout btnCORLayout = new javax.swing.GroupLayout(btnCOR);
-        btnCOR.setLayout(btnCORLayout);
-        btnCORLayout.setHorizontalGroup(
-            btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCORLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(lblCOR)
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        btnCORLayout.setVerticalGroup(
-            btnCORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCORLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblCOR)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
         jPanel4.add(btnCOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 430, 90));
 
-        btnBC.setBackground(new java.awt.Color(13, 76, 146));
-        btnBC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBCMouseClicked(evt);
+        btnCOI.setBackground(new java.awt.Color(13, 76, 146));
+        btnCOI.setFont(new java.awt.Font("Microsoft YaHei", 0, 25)); // NOI18N
+        btnCOI.setForeground(new java.awt.Color(255, 255, 255));
+        btnCOI.setText("Certificate of Indigency");
+        btnCOI.setBorder(null);
+        btnCOI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCOIActionPerformed(evt);
             }
         });
-
-        lblBC.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 28)); // NOI18N
-        lblBC.setForeground(new java.awt.Color(255, 255, 255));
-        lblBC.setText("Barangay Clearance");
-
-        javax.swing.GroupLayout btnBCLayout = new javax.swing.GroupLayout(btnBC);
-        btnBC.setLayout(btnBCLayout);
-        btnBCLayout.setHorizontalGroup(
-            btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnBCLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(lblBC)
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        btnBCLayout.setVerticalGroup(
-            btnBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnBCLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblBC)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(btnBC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 430, 90));
+        jPanel4.add(btnCOI, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 90));
 
         brdchoosedoc.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 270));
 
@@ -773,27 +714,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         printDocument(printpanel);
     }//GEN-LAST:event_btnPrintActionPerformed
 
-    private void btnBCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBCMouseClicked
-        //show clearance panel
-        indigencypanel.setVisible(false);
-        residencypanel.setVisible(false);
-        clearancepanel.setVisible(true);
-    }//GEN-LAST:event_btnBCMouseClicked
-
-    private void btnCORMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCORMouseClicked
-        //show residency panel
-        indigencypanel.setVisible(false);
-        residencypanel.setVisible(true);
-        clearancepanel.setVisible(false);
-    }//GEN-LAST:event_btnCORMouseClicked
-
-    private void btnCOIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCOIMouseClicked
-        //show indigency panel
-        indigencypanel.setVisible(true);
-        residencypanel.setVisible(false);
-        clearancepanel.setVisible(false);
-    }//GEN-LAST:event_btnCOIMouseClicked
-
     private void rdreason1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason1ActionPerformed
         //set text to SCHOLARSHIP if radio1 was clicked
         reason = "SCHOLARSHIP";
@@ -983,6 +903,27 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
             + "Click CHANGE TEXT button to automatically fill-up the document.");
     }//GEN-LAST:event_choosedocpanelComponentShown
 
+    private void btnCOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOIActionPerformed
+        // TODO add your handling code here:
+        indigencypanel.setVisible(true);
+        residencypanel.setVisible(false);
+        clearancepanel.setVisible(false);
+    }//GEN-LAST:event_btnCOIActionPerformed
+
+    private void btnCORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCORActionPerformed
+        // TODO add your handling code here:
+        indigencypanel.setVisible(false);
+        residencypanel.setVisible(true);
+        clearancepanel.setVisible(false);
+    }//GEN-LAST:event_btnCORActionPerformed
+
+    private void btnCOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOCActionPerformed
+        // TODO add your handling code here:
+        indigencypanel.setVisible(false);
+        residencypanel.setVisible(false);
+        clearancepanel.setVisible(true);
+    }//GEN-LAST:event_btnCOCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1047,9 +988,9 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private javax.swing.JPanel brdchoosedoc;
     private javax.swing.JPanel brdchoosereason;
     private javax.swing.JPanel brdwebcam;
-    private javax.swing.JPanel btnBC;
-    private javax.swing.JPanel btnCOI;
-    private javax.swing.JPanel btnCOR;
+    private javax.swing.JButton btnCOC;
+    private javax.swing.JButton btnCOI;
+    private javax.swing.JButton btnCOR;
     private javax.swing.JButton btnChangeText;
     private javax.swing.JButton btnPrint;
     private javax.swing.JPanel choosedocpanel;
@@ -1072,9 +1013,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbinstruction;
-    private javax.swing.JLabel lblBC;
-    private javax.swing.JLabel lblCOI;
-    private javax.swing.JLabel lblCOR;
     private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblResidentsData;

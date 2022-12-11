@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 
 /**
  *
@@ -840,14 +841,19 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         dispose();
     }//GEN-LAST:event_lblResidentsDataMouseClicked
-
+    
+    private JFrame logout;
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         //topbar navigation
-        LogInForm lif = new LogInForm();
-        lif.show();
-        webcam.close();
-
-        dispose();
+         logout = new JFrame("Log Out");
+        if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Message",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
+            LogInForm lif = new LogInForm();
+            lif.show();
+            dispose();
+            webcam.close();
+        }
     }//GEN-LAST:event_lblLogoutMouseClicked
 
     private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked

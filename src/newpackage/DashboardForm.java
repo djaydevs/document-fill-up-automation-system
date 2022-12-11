@@ -4,6 +4,13 @@
  */
 package newpackage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DJay
@@ -15,6 +22,7 @@ public class DashboardForm extends javax.swing.JFrame {
      */
     public DashboardForm() {
         initComponents();
+        fetch();
     }
 
     /**
@@ -48,7 +56,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_trans = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,7 +172,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_trans.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -175,7 +183,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_trans);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 640));
 
@@ -200,6 +208,32 @@ public class DashboardForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void fetch() {
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
+            String sql = "SELECT *FROM ROOT.TBL_HISTORY";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql); 
+            
+            DefaultTableModel tblModel = (DefaultTableModel)tbl_trans.getModel();
+            tblModel.setRowCount(0);
+            
+            while(rs.next()) {
+                String transID = String.valueOf(rs.getInt("trans_id"));
+                String infoID = rs.getString("info_id");
+                String brgy_docs = rs.getString("brgy_docs");
+                String dateTime = rs.getString("date_time");
+                
+                String tbData[] = {transID, infoID, brgy_docs, dateTime};
+                tblModel.addRow(tbData); 
+            }
+            
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
     private void lblResidentsDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResidentsDataMouseClicked
         // TODO add your handling code here:
         ResidentsDataForm rdf = new ResidentsDataForm();
@@ -277,11 +311,11 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpBackground;
     private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblQr;
     private javax.swing.JLabel lblResidentsData;
+    private javax.swing.JTable tbl_trans;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,7 +24,9 @@ import java.util.concurrent.ThreadFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -45,6 +47,10 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     SimpleDateFormat month = new SimpleDateFormat("MMMM");
     SimpleDateFormat day = new SimpleDateFormat("dd");
     SimpleDateFormat year = new SimpleDateFormat("Y");
+    
+    //arrayLIst for setters and getters
+    List<history> tran = new ArrayList<history>();  
+    history trans = new history(0, 0, 0, "", "", "");
     
     /**
      * Creates new form CameraScanForm

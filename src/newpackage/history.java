@@ -10,14 +10,13 @@ package newpackage;
  */
 public class history {
 
-   private int transID, infoID;
-   private String brgyDocs, date, time;
+   private int transID;
+   private String infoID, brgyDocs, time;
    
-   public history (int transID, int infoID, String brgyDocs, String date, String time){
+   public history (int transID, String infoID, String brgyDocs, String time){
        this.transID = transID;
        this.infoID = infoID;
        this.brgyDocs = brgyDocs;
-       this.date = date;
        this.time = time;       
    }
    
@@ -29,11 +28,11 @@ public class history {
        transID = trans;
     }
     
-    public int getInfoID() {
+    public String getInfoID() {
         return infoID;
     }
     
-    public void setInfoId(int info) {
+    public void setInfoId(String info) {
         infoID = info;
     }
     
@@ -43,14 +42,6 @@ public class history {
     
     public void setBrgyDocs(String docs) {
         brgyDocs = docs;
-    }
-    
-    public String getDate() {
-        return date;
-    }
-    
-    public void setDate(String petsa) {
-        date = petsa;
     }
     
     public String getTime() {

@@ -4,13 +4,6 @@
  */
 package newpackage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author DJay
@@ -22,7 +15,6 @@ public class DashboardForm extends javax.swing.JFrame {
      */
     public DashboardForm() {
         initComponents();
-        fetch();
     }
 
     /**
@@ -53,11 +45,8 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         btnscanqrcode = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_trans = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Document Fill-Up Automation System - Dashboard");
@@ -111,35 +100,35 @@ public class DashboardForm extends javax.swing.JFrame {
         jpBackground.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 85));
 
         jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 1, 32)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(3, 87, 122));
+        jLabel13.setForeground(new java.awt.Color(22, 23, 48));
         jLabel13.setText("| Dashboard");
         jpBackground.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(13, 76, 146), 3, true));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblQr.setBackground(new java.awt.Color(102, 102, 102));
         lblQr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/qrlogo.png"))); // NOI18N
-        jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 150, 150));
+        jPanel2.add(lblQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 150));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
         jLabel10.setText("<html>This application processes documents by using QR code technology.</html>");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 420, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 570, -1));
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 23)); // NOI18N
         jLabel11.setText("<html>Pinoproseso ng application na ito ang mga dokumento sa pamamagitan ng QR code.</html>");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 420, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 560, -1));
 
-        jpBackground.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 590, 180));
+        jpBackground.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 740, 170));
 
         jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(3, 87, 122));
+        jLabel14.setForeground(new java.awt.Color(22, 23, 48));
         jLabel14.setText("Scan QR Code");
-        jpBackground.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+        jpBackground.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 230, -1));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
+        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(13, 76, 146), 3, true));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setFont(new java.awt.Font("Microsoft YaHei", 0, 17)); // NOI18N
@@ -148,7 +137,7 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Microsoft YaHei", 1, 23)); // NOI18N
         jLabel15.setText("<html>Simulan ang pag-proseso ng mga dokumento sa pag-scan ng QR code ng residente.</html>");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 550, -1));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 710, -1));
 
         btnscanqrcode.setBackground(new java.awt.Color(13, 76, 146));
         btnscanqrcode.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
@@ -159,39 +148,15 @@ public class DashboardForm extends javax.swing.JFrame {
                 btnscanqrcodeActionPerformed(evt);
             }
         });
-        jPanel5.add(btnscanqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 310, 90));
+        jPanel5.add(btnscanqrcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 310, 90));
 
-        jpBackground.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 413, 590, 456));
+        jpBackground.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 740, 350));
 
-        jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 0, 30)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(3, 87, 122));
-        jLabel7.setText("Transaction History");
-        jpBackground.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, -1, 50));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logovector.png"))); // NOI18N
+        jpBackground.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 3, true));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tbl_trans.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tbl_trans);
-
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 730, 640));
-
-        jpBackground.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 750, 670));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jpBackground.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 870, 1440, 30));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashboardbg.png"))); // NOI18N
+        jpBackground.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,38 +166,12 @@ public class DashboardForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fetch() {
-        try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "SELECT *FROM ROOT.TBL_HISTORY";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql); 
-            
-            DefaultTableModel tblModel = (DefaultTableModel)tbl_trans.getModel();
-            tblModel.setRowCount(0);
-            
-            while(rs.next()) {
-                String transID = String.valueOf(rs.getInt("trans_id"));
-                String infoID = rs.getString("info_id");
-                String brgy_docs = rs.getString("brgy_docs");
-                String dateTime = rs.getString("date_time");
-                
-                String tbData[] = {transID, infoID, brgy_docs, dateTime};
-                tblModel.addRow(tbData); 
-            }
-            
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
     
     private void lblResidentsDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResidentsDataMouseClicked
         // TODO add your handling code here:
@@ -302,20 +241,17 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel jpBackground;
     private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblQr;
     private javax.swing.JLabel lblResidentsData;
-    private javax.swing.JTable tbl_trans;
     // End of variables declaration//GEN-END:variables
 }

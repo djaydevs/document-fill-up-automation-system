@@ -18,23 +18,13 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Locale;
 
 /**
  *
@@ -55,10 +45,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     SimpleDateFormat month = new SimpleDateFormat("MMMM");
     SimpleDateFormat day = new SimpleDateFormat("dd");
     SimpleDateFormat year = new SimpleDateFormat("Y");
-    
-    //arrayLIst for setters and getters
-    List<history> tran = new ArrayList<history>();  
-    history trans = new history(0, "", "", "");
     
     /**
      * Creates new form CameraScanForm
@@ -725,50 +711,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         //call print method
         printDocument(printpanel);
-        
-        DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "INSERT INTO ROOT.TBL_HISTORY (hin, info_id, brgy_docs, date_time)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-           
-            if(btnCOI.getModel().isPressed()) {
-                trans.setInfoId(infoname);
-                trans.setBrgyDocs("Certificate of Indigiency" + " - " + reason);
-                trans.setTime(dft.format(now));
-                
-                ps.setString(1, infoname);
-                ps.setString(2,"Certificate of Indigiency" + " - " + reason);
-                ps.setString(3, dft.format(now));
-                ps.executeUpdate();
-            }else if(btnCOR.getModel().isPressed()) {
-                trans.setInfoId(infoname);
-                trans.setBrgyDocs("Certificate of Residency" + " - " + reason);
-                trans.setTime(dft.format(now));
-                
-                ps.setString(1, infoname);
-                ps.setString(2,"Certificate of Residency" + " - " + reason);
-                ps.setString(3, dft.format(now));
-                ps.executeUpdate();
-            }else if(btnCOC.getModel().isPressed()) {
-                trans.setInfoId(infoname);
-                trans.setBrgyDocs("Barangay Certificate" + " - " + reason);
-                trans.setTime(dft.format(now));
-                
-                ps.setString(1, infoname);
-                ps.setString(2,"Barangay Clearance" + " - " + reason);
-                ps.setString(3, dft.format(now));
-                ps.executeUpdate();
-            }else {
-                //some codes here
-            } 
-            ps.executeUpdate();
-            
-        }catch(Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void rdreason1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdreason1ActionPerformed

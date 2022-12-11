@@ -143,6 +143,11 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         setTitle("Scan QR Code and Print Document");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -928,6 +933,11 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         residencypanel.setVisible(false);
         clearancepanel.setVisible(true);
     }//GEN-LAST:event_btnCOCActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        webcam.close();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

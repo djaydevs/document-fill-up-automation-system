@@ -410,6 +410,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel4.setToolTipText("");
         tableborder.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 680, 110, 40));
 
+        txtSearchtable.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         txtSearchtable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
         txtSearchtable.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -919,8 +920,8 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_txtContactKeyPressed
 //Change the filepath     
-private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\generated_qr";    
-//private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationSystem\\generated_qr";       
+//private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\generated_qr";    
+private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationSystem\\generated_qr";       
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         //Add Residents Data
         try{
@@ -975,6 +976,7 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
             ps.executeUpdate();
             DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
             model.setRowCount(0);
+            show_resident();
             populationCount();
             JOptionPane.showMessageDialog(null, "Resident Data Added !");
         }catch(Exception e){
@@ -1319,4 +1321,25 @@ private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-
     private javax.swing.JTextField txtYearstay;
     // End of variables declaration//GEN-END:variables
 }
+/*
+CREATE TABLE tbl_residents
 
+(  
+   rin INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
+   l_name VARCHAR(500),
+   f_name VARCHAR(500),
+   mi VARCHAR(100),
+   house_number VARCHAR(100),
+   street VARCHAR(100),
+   gender VARCHAR(100),
+   age VARCHAR(100),
+   year_of_stay VARCHAR(100),
+   birthday VARCHAR(500),
+   birthplace VARCHAR(500),
+   contact_number VARCHAR(500),
+   profile BLOB,
+   qr_code BLOB
+);
+*/

@@ -153,7 +153,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         result_field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Scan QR Code");
+        setTitle("Scan QR Code and Print Document");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -696,7 +696,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         printerJob.setJobName("Print Document");
 
         printerJob.setPrintable(new Printable() {
-            /*@Override*/
+            @Override
             public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
                 if(pageIndex > 0) {
                     return Printable.NO_SUCH_PAGE;
@@ -923,13 +923,13 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         COReditname1.setText(infoname);
         COReditname2.setText(infoname);
-        COReditname3.setText(infoname);
+        COReditname3.setText(infoname.toUpperCase());
         COReditage.setText(infoage);
         COReditaddress.setText(infoaddress);
         COReditstay.setText(infoyearstay);
 
         COCeditname1.setText(infoname);
-        COCeditname2.setText(infoname);
+        COCeditname2.setText(infoname.toUpperCase());
         COCeditage.setText(infoage);
         COCeditaddress.setText(infoaddress);
         COCeditstay.setText(infoyearstay);

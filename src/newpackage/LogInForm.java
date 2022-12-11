@@ -54,6 +54,7 @@ public class LogInForm extends javax.swing.JFrame {
         etpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Document Fill-Up Automation System - Log In");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -169,7 +170,7 @@ public class LogInForm extends javax.swing.JFrame {
            ResultSet rs = pst.executeQuery();
                
                if (rs.next()) {
-                   JOptionPane.showMessageDialog(this, "login Succesfully");
+                   JOptionPane.showMessageDialog(this, "Login Succesfully");
                    new DashboardForm().show();
                    this.dispose();
                }else {
@@ -198,7 +199,7 @@ public class LogInForm extends javax.swing.JFrame {
                ResultSet rs = pst.executeQuery();
 
                    if (rs.next()) {
-                       JOptionPane.showMessageDialog(this, "login Succesfully");
+                       JOptionPane.showMessageDialog(this, "Login Succesfully");
                        new DashboardForm().show();
                        this.dispose();
                    }else {

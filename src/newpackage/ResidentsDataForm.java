@@ -92,22 +92,16 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblDefaultimage = new javax.swing.JLabel();
         invalid = new javax.swing.JLabel();
         date_chooser = new com.toedter.calendar.JDateChooser();
-        btnUpdateRIN = new javax.swing.JButton();
-        btnDeleteRIN = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
         tableborder = new javax.swing.JPanel();
         btnGenerate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResidents = new javax.swing.JTable();
         lblPopulation = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
-        lastname1 = new javax.swing.JLabel();
         txtSearchtable = new javax.swing.JTextField();
         lblSearch = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
         jpFooter = new javax.swing.JPanel();
         lblResidentsDataTitle = new javax.swing.JLabel();
         generateIDPanel = new javax.swing.JPanel();
@@ -318,7 +312,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        registerborder.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 660, 140, 40));
+        registerborder.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 610, 140, 40));
 
         btnUpload.setBackground(new java.awt.Color(13, 76, 146));
         btnUpload.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
@@ -340,7 +334,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 610, 140, 40));
+        registerborder.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 140, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 2, true));
@@ -357,30 +351,16 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         date_chooser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
         registerborder.add(date_chooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 190, 30));
 
-        btnUpdateRIN.setBackground(new java.awt.Color(13, 76, 146));
-        btnUpdateRIN.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
-        btnUpdateRIN.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdateRIN.setText("Update ");
-        btnUpdateRIN.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
+        btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateRINActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        registerborder.add(btnUpdateRIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, 140, 40));
-
-        btnDeleteRIN.setBackground(new java.awt.Color(13, 76, 146));
-        btnDeleteRIN.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
-        btnDeleteRIN.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteRIN.setText("Delete");
-        btnDeleteRIN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteRINActionPerformed(evt);
-            }
-        });
-        registerborder.add(btnDeleteRIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, 140, 40));
-
-        jLabel12.setText("Update and Delete using RIN");
-        registerborder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 590, -1, -1));
+        registerborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, 140, 40));
 
         jpBG.add(registerborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 540, 720));
 
@@ -397,7 +377,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
                 btnGenerateActionPerformed(evt);
             }
         });
-        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 140, 40));
+        tableborder.add(btnGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 140, 40));
 
         tblResidents.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 185, 225), 1, true));
         tblResidents.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
@@ -430,19 +410,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         jLabel4.setToolTipText("");
         tableborder.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 680, 110, 40));
 
-        txtSearch.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
-        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 98, 130), 2));
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchKeyReleased(evt);
-            }
-        });
-        tableborder.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 170, 30));
-
-        lastname1.setFont(new java.awt.Font("Microsoft YaHei", 0, 19)); // NOI18N
-        lastname1.setText("Enter RIN :");
-        tableborder.add(lastname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         txtSearchtable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
         txtSearchtable.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -455,17 +422,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         lblSearch.setText("Search");
         tableborder.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
 
-        btnUpdate.setBackground(new java.awt.Color(13, 76, 146));
-        btnUpdate.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        tableborder.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 600, 140, 40));
-
         btnDelete.setBackground(new java.awt.Color(13, 76, 146));
         btnDelete.setFont(new java.awt.Font("Microsoft YaHei", 0, 15)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
@@ -476,9 +432,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
             }
         });
         tableborder.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 600, 140, 40));
-
-        jLabel22.setText("Update and Delete using table click");
-        tableborder.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, -1, -1));
 
         jpBG.add(tableborder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 830, 720));
 
@@ -517,11 +470,6 @@ public class ResidentsDataForm extends javax.swing.JFrame {
 
         txtSearch2.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
         txtSearch2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(19, 98, 130), 2, true));
-        txtSearch2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearch2KeyReleased(evt);
-            }
-        });
         jPanel3.add(txtSearch2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 190, 40));
 
         btnSearch.setBackground(new java.awt.Color(13, 76, 146));
@@ -828,6 +776,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }
     }
     private void populationCount(){
+        //Display residents population
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
@@ -846,14 +795,14 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }
     
     private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked
-        // TODO add your handling code here:
+        
         DashboardForm df = new DashboardForm();
         df.show();
         dispose();
     }//GEN-LAST:event_lblDashboardMouseClicked
 
     private void rbtnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMaleActionPerformed
-        // TODO add your handling code here:
+        
         gender = "Male";
         if(rbtnMale.isSelected()){
             rbtnFemale.setSelected(false);
@@ -861,7 +810,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnMaleActionPerformed
 
     private void rbtnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFemaleActionPerformed
-        // TODO add your handling code here:
+        
         gender = "Female";
         if(rbtnFemale.isSelected()){
             rbtnMale.setSelected(false);
@@ -869,7 +818,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnFemaleActionPerformed
     private JFrame logout;
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
-        // TODO add your handling code here: 
+        //Condition for logout
         logout = new JFrame("Log Out");
         if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Message",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
@@ -881,6 +830,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLogoutMouseClicked
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
+        //Upload Residents Picture
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
@@ -931,6 +881,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }   
     }
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        //Cleats the registration form
         txtLname.setText("");
         txtFname.setText("");
         txtInitial.setText("");
@@ -947,7 +898,7 @@ public class ResidentsDataForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
-        // TODO add your handling code here:
+
         String contactNo = txtContact.getText();
         int length = contactNo.length();
         
@@ -968,10 +919,10 @@ public class ResidentsDataForm extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_txtContactKeyPressed
 //Change the filepath     
-private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationSystem\\generated_qr";    
+private String filepath = "C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\generated_qr";    
         
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
+        //Add Residents Data
         try{
             //generate the qr code and save it to temporay file
             String qrCode = filepath + txtLname.getText() + "," + txtFname.getText() + "-QRCODE.png";
@@ -1024,7 +975,6 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
             ps.executeUpdate();
             DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
             model.setRowCount(0);
-            show_resident();
             populationCount();
             JOptionPane.showMessageDialog(null, "Resident Data Added !");
         }catch(Exception e){
@@ -1033,6 +983,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        //Delete Residents Data
         int ask = JOptionPane.showConfirmDialog(null, "Do you really want to delete?","Message",
             JOptionPane.YES_NO_OPTION);
         if(ask == 0){
@@ -1048,6 +999,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
             DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
             model.setRowCount(0);
             show_resident();
+            populationCount();
             txtLname.setText("");
             txtFname.setText("");
             txtInitial.setText("");
@@ -1062,7 +1014,6 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
             txtContact.setText("");
             lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
             JOptionPane.showMessageDialog(null, "Resident Data Deleted!");
-            
          }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
          } 
@@ -1070,6 +1021,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tblResidentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResidentsMouseClicked
+        //Enable table click (Get residents data and display in form)
         int row = tblResidents.getSelectedRow();
         TableModel model = tblResidents.getModel();
         txtLname.setText(model.getValueAt(row,1).toString());
@@ -1112,12 +1064,11 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
 
              Path path = FileSystems.getDefault().getPath(qrCode);
              MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
-             
+            // Update Residents data
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
             int row = tblResidents.getSelectedRow();
             String value = (tblResidents.getModel().getValueAt(row,0)).toString();
-            //String value = txtRIN.getText().toString();
             String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,"
                     + "street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,"
                     + "contact_number = ?, profile = ?, qr_code = ? WHERE rin ="+value;
@@ -1169,53 +1120,8 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        /*try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "SELECT *FROM ROOT.TBL_RESIDENTS WHERE rin = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, txtSearch.getText().toString());
-            rs = ps.executeQuery();
-            if(rs.next()){
-                String setLname = rs.getString("l_name");
-                txtLname.setText(setLname);
-                String setFname = rs.getString("f_name");
-                txtFname.setText(setFname);
-                String setMi = rs.getString("mi");
-                txtInitial.setText(setMi);
-                String setHousenum = rs.getString("house_number");
-                txtHousenum.setText(setHousenum);
-                String setStreet = rs.getString("street");
-                txtStreet.setText(setStreet);
-                String sex = rs.getString("gender");
-                if(sex.equals("Male")){
-                rbtnMale.setSelected(true);
-                }else {
-                rbtnFemale.setSelected(true);
-                } 
-                String setAge = rs.getString("age");
-                txtAge.setText(setAge);
-                String setYearstay = rs.getString("year_of_stay");
-                txtYearstay.setText(setYearstay);
-                date_chooser.setDate(rs.getDate("birthday"));
-                String setBirthplace = rs.getString("birthplace");
-                txtPlaceofbirth.setText(setBirthplace);
-                String setContact = rs.getString("contact_number");
-                txtContact.setText(setContact);
-                byte[] img = rs.getBytes("profile");
-                ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(lblDefaultimage.getWidth(),lblDefaultimage.getHeight(),Image.SCALE_SMOOTH));
-                lblDefaultimage.setIcon(imageIcon);
-                resident_image = img;
-            } 
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }*/
-    }//GEN-LAST:event_txtSearchKeyReleased
-
     private void txtSearchtableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchtableKeyReleased
-        // TODO add your handling code here:
+        //Search specific resident data in table
         DefaultTableModel table = (DefaultTableModel)this.tblResidents.getModel();
         String search =this.txtSearchtable.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
@@ -1223,94 +1129,15 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
         tr.setRowFilter(RowFilter.regexFilter(search)); 
     }//GEN-LAST:event_txtSearchtableKeyReleased
 
-    private void btnUpdateRINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRINActionPerformed
-
-        try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "UPDATE ROOT.TBL_RESIDENTS SET l_name = ?, f_name = ?, mi = ?, house_number = ?,street = ?, gender = ?, age = ?, year_of_stay = ?, birthday = ?, birthplace = ?,contact_number = ?, profile = ? WHERE rin=?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(13, txtSearch.getText());
-            ps.setString(1, txtLname.getText());
-            ps.setString(2, txtFname.getText());
-            ps.setString(3, txtInitial.getText());
-            ps.setString(4, txtHousenum.getText());
-            ps.setString(5, txtStreet.getText());
-            ps.setString(6, gender);
-            ps.setString(7, txtAge.getText());
-            ps.setString(8, txtYearstay.getText());
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String date = sdf.format(date_chooser.getDate());
-            ps.setString(9, date);
-            ps.setString(10, txtPlaceofbirth.getText());
-            ps.setString(11, txtContact.getText());
-            byte [] img = resident_image;
-            ps.setBytes(12,img);
-            
-            txtSearch.setText("");
-            txtLname.setText("");
-            txtFname.setText("");
-            txtInitial.setText("");
-            txtHousenum.setText("");
-            txtStreet.setText("");
-            rbtnMale.setSelected(false);
-            rbtnFemale.setSelected(false);
-            txtAge.setText("");
-            txtYearstay.setText("");
-            date_chooser.setCalendar(null);
-            txtPlaceofbirth.setText("");
-            txtContact.setText("");
-            lblDefaultimage.setIcon(new ImageIcon ("C:\\Users\\Reymart\\Documents\\GitHub\\document-fill-up-automation-system\\src\\assets\\defaultimage.png"));
-            
-            
-            ps.executeUpdate();
-            DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
-            model.setRowCount(0);
-            show_resident();
-            JOptionPane.showMessageDialog(null, "Resident Data Updated using RIN !");
-         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, e);
-         }
-    }//GEN-LAST:event_btnUpdateRINActionPerformed
-
-    private void btnDeleteRINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRINActionPerformed
-         int ask = JOptionPane.showConfirmDialog(null, "Do you really want to delete?","Message",
-            JOptionPane.YES_NO_OPTION);
-        if(ask == 0){
-        try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "DELETE FROM ROOT.TBL_RESIDENTS WHERE rin=?";
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, txtSearch.getText());
-            ps.executeUpdate();
-            
-            
-            DefaultTableModel model = (DefaultTableModel)tblResidents.getModel();
-            model.setRowCount(0);
-            show_resident();
-            
-            txtSearch.setText("");
-            JOptionPane.showMessageDialog(null, "Resident Data Deleted!");
-         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-         } 
-        }
-    }//GEN-LAST:event_btnDeleteRINActionPerformed
-
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
-        // TODO add your handling code here:
+
         generateIDPanel.setVisible(true);
         registerborder.setVisible(false);
         tableborder.setVisible(false);              
     }//GEN-LAST:event_btnGenerateActionPerformed
 
-    private void txtSearch2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearch2KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearch2KeyReleased
-
     private void btnClear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear2ActionPerformed
-        // TODO add your handling code here:
+        // Clear text in generate I.D
         txtSearch2.setText("");
         rinLabel.setText("");
         lblName.setText("");
@@ -1322,7 +1149,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     }//GEN-LAST:event_btnClear2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
         generateIDPanel.setVisible(false);
         registerborder.setVisible(true);
         tableborder.setVisible(true);
@@ -1333,7 +1160,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     }//GEN-LAST:event_printIDActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        
+        //Search resident info to display in resident I.D
         try{
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
@@ -1350,7 +1177,7 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
                 lblName.setText(setLname + "," +"  "+ setFname + "  " +setMi);
                 String setHousenum = rs.getString("house_number");
                 String setStreet = rs.getString("street");
-                addressLbl.setText(setHousenum + "  " + setStreet);
+                addressLbl.setText(setHousenum + "  " + setStreet +" St.");
                 String sex = rs.getString("gender");
                 lblSex.setText(sex);
                 String setAge = rs.getString("age");
@@ -1419,11 +1246,9 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClear2;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnDeleteRIN;
     private javax.swing.JButton btnGenerate;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton btnUpdateRIN;
     private javax.swing.JButton btnUpload;
     private com.toedter.calendar.JDateChooser date_chooser;
     private javax.swing.JPanel generateIDPanel;
@@ -1431,10 +1256,8 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1448,7 +1271,6 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JPanel jpFooter;
     private javax.swing.JPanel jpRD;
     private javax.swing.JPanel jpTopnavbg;
-    private javax.swing.JLabel lastname1;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAge2;
@@ -1491,7 +1313,6 @@ private String filepath = "D:\\Documents\\NetBeansProjects\\DocFillUpAutomationS
     private javax.swing.JTextField txtInitial;
     private javax.swing.JTextField txtLname;
     private javax.swing.JTextField txtPlaceofbirth;
-    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSearch2;
     private javax.swing.JTextField txtSearchtable;
     private javax.swing.JTextField txtStreet;

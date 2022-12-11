@@ -845,7 +845,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private JFrame logout;
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         //topbar navigation
-         logout = new JFrame("Log Out");
+        logout = new JFrame("Log Out");
         if(JOptionPane.showConfirmDialog(logout,"Are you sure you want to Logout?","Message",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {

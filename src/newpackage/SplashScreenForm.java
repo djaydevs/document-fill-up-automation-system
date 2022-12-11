@@ -146,7 +146,7 @@ public class SplashScreenForm extends javax.swing.JFrame {
                 sp.loadbar.setValue(i);
             }
             LogInForm lif = new LogInForm();
-            lif.setVisible(true);
+            lif.show();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

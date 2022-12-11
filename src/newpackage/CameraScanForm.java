@@ -679,7 +679,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 
                 choosedocpanel.setVisible(true);
                 scanqrpanel.setVisible(false);
-                
             }
         } while(true);
     }
@@ -732,7 +731,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/brgyDB", "root", "admin");
-            String sql = "INSERT INTO ROOT.TBL_HISTORY (info_id, brgy_docs, date_time)";
+            String sql = "INSERT INTO ROOT.TBL_HISTORY (hin, info_id, brgy_docs, date_time)";
             PreparedStatement ps = conn.prepareStatement(sql);
            
             if(btnCOI.getModel().isPressed()) {
@@ -743,6 +742,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 ps.setString(1, infoname);
                 ps.setString(2,"Certificate of Indigiency" + " - " + reason);
                 ps.setString(3, dft.format(now));
+                ps.executeUpdate();
             }else if(btnCOR.getModel().isPressed()) {
                 trans.setInfoId(infoname);
                 trans.setBrgyDocs("Certificate of Residency" + " - " + reason);
@@ -751,6 +751,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 ps.setString(1, infoname);
                 ps.setString(2,"Certificate of Residency" + " - " + reason);
                 ps.setString(3, dft.format(now));
+                ps.executeUpdate();
             }else if(btnCOC.getModel().isPressed()) {
                 trans.setInfoId(infoname);
                 trans.setBrgyDocs("Barangay Certificate" + " - " + reason);
@@ -759,11 +760,12 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
                 ps.setString(1, infoname);
                 ps.setString(2,"Barangay Clearance" + " - " + reason);
                 ps.setString(3, dft.format(now));
+                ps.executeUpdate();
             }else {
                 //some codes here
             } 
-            
             ps.executeUpdate();
+            
         }catch(Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

@@ -130,7 +130,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COCeditage = new javax.swing.JTextField();
         COCeditname1 = new javax.swing.JTextField();
         docclearance = new javax.swing.JLabel();
-        btnChangeText = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
         scanqrpanel = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -384,7 +383,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         COIeditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COIeditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        COIeditreason.setText("Reason");
+        COIeditreason.setText("PURPOSE");
         COIeditreason.setBorder(null);
         indigencypanel.add(COIeditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 544, 220, 20));
 
@@ -448,7 +447,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         COReditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COReditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        COReditreason.setText("Reason");
+        COReditreason.setText("PURPOSE");
         COReditreason.setBorder(null);
         residencypanel.add(COReditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 467, 240, 20));
 
@@ -525,7 +524,7 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
 
         COCeditreason.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
         COCeditreason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        COCeditreason.setText("Reason");
+        COCeditreason.setText("PURPOSE");
         COCeditreason.setBorder(null);
         clearancepanel.add(COCeditreason, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 497, 240, 20));
 
@@ -562,17 +561,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         jScrollPane2.setViewportView(printpanel);
 
         choosedocpanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 93, -1, 720));
-
-        btnChangeText.setBackground(new java.awt.Color(13, 76, 146));
-        btnChangeText.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        btnChangeText.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangeText.setText("CHANGE TEXT");
-        btnChangeText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeTextActionPerformed(evt);
-            }
-        });
-        choosedocpanel.add(btnChangeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 830, 200, 50));
 
         btnPrint.setBackground(new java.awt.Color(13, 76, 146));
         btnPrint.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
@@ -870,11 +858,41 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         dispose();
     }//GEN-LAST:event_lblDashboardMouseClicked
 
-    private void btnChangeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTextActionPerformed
-        //automatic fill-up if CHANGE TEXT button was clicked
+    private void choosedocpanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_choosedocpanelComponentShown
+        //show this message dialog if QR code was scanned successfully
+        webcam.close();
+        JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully!\n"
+            + "Choose the document you need, it will be filled-up automatically.");
+
         COIeditname.setText(infoname);
         COIeditage.setText(infoage);
         COIeditaddress.setText(infoaddress);
+        COIeditmonth.setText(month.format(thisDate));
+        COIeditday.setText(day.format(thisDate));
+        COIedityear.setText(year.format(thisDate));
+        COIeditdate.setText(dateForm.format(thisDate));
+    }//GEN-LAST:event_choosedocpanelComponentShown
+
+    private void btnCOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOIActionPerformed
+        //fill-up automatically
+        indigencypanel.setVisible(true);
+        residencypanel.setVisible(false);
+        clearancepanel.setVisible(false);
+
+        COIeditname.setText(infoname);
+        COIeditage.setText(infoage);
+        COIeditaddress.setText(infoaddress);
+        COIeditmonth.setText(month.format(thisDate));
+        COIeditday.setText(day.format(thisDate));
+        COIedityear.setText(year.format(thisDate));
+        COIeditdate.setText(dateForm.format(thisDate));
+    }//GEN-LAST:event_btnCOIActionPerformed
+
+    private void btnCORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCORActionPerformed
+        //fill-up automatically
+        indigencypanel.setVisible(false);
+        residencypanel.setVisible(true);
+        clearancepanel.setVisible(false);
 
         COReditname1.setText(infoname);
         COReditname2.setText(infoname);
@@ -882,56 +900,27 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COReditage.setText(infoage);
         COReditaddress.setText(infoaddress);
         COReditstay.setText(infoyearstay);
+        COReditmonth.setText(month.format(thisDate));
+        COReditday.setText(day.format(thisDate));
+        CORedityear.setText(year.format(thisDate));
+        COReditdate.setText(dateForm.format(thisDate));
+    }//GEN-LAST:event_btnCORActionPerformed
+
+    private void btnCOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOCActionPerformed
+        //fill-up automatically
+        indigencypanel.setVisible(false);
+        residencypanel.setVisible(false);
+        clearancepanel.setVisible(true);
 
         COCeditname1.setText(infoname);
         COCeditname2.setText(infoname.toUpperCase());
         COCeditage.setText(infoage);
         COCeditaddress.setText(infoaddress);
         COCeditstay.setText(infoyearstay);
-
-        COIeditmonth.setText(month.format(thisDate));
-        COReditmonth.setText(month.format(thisDate));
         COCeditmonth.setText(month.format(thisDate));
-
-        COIeditday.setText(day.format(thisDate));
-        COReditday.setText(day.format(thisDate));
         COCeditday.setText(day.format(thisDate));
-
-        COIedityear.setText(year.format(thisDate));
-        CORedityear.setText(year.format(thisDate));
         COCedityear.setText(year.format(thisDate));
-
-        COIeditdate.setText(dateForm.format(thisDate));
-        COReditdate.setText(dateForm.format(thisDate));
         COCeditdate.setText(dateForm.format(thisDate));
-    }//GEN-LAST:event_btnChangeTextActionPerformed
-
-    private void choosedocpanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_choosedocpanelComponentShown
-        //show this message dialog if QR code was scanned successfully
-        webcam.close();
-        JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully.\n"
-            + "Click CHANGE TEXT button to automatically fill-up the document.");
-    }//GEN-LAST:event_choosedocpanelComponentShown
-
-    private void btnCOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOIActionPerformed
-        // TODO add your handling code here:
-        indigencypanel.setVisible(true);
-        residencypanel.setVisible(false);
-        clearancepanel.setVisible(false);
-    }//GEN-LAST:event_btnCOIActionPerformed
-
-    private void btnCORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCORActionPerformed
-        // TODO add your handling code here:
-        indigencypanel.setVisible(false);
-        residencypanel.setVisible(true);
-        clearancepanel.setVisible(false);
-    }//GEN-LAST:event_btnCORActionPerformed
-
-    private void btnCOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOCActionPerformed
-        // TODO add your handling code here:
-        indigencypanel.setVisible(false);
-        residencypanel.setVisible(false);
-        clearancepanel.setVisible(true);
     }//GEN-LAST:event_btnCOCActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -1006,7 +995,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private javax.swing.JButton btnCOC;
     private javax.swing.JButton btnCOI;
     private javax.swing.JButton btnCOR;
-    private javax.swing.JButton btnChangeText;
     private javax.swing.JButton btnPrint;
     private javax.swing.JPanel choosedocpanel;
     private javax.swing.JPanel clearancepanel;

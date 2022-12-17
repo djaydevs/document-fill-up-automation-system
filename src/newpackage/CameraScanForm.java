@@ -861,8 +861,6 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
     private void choosedocpanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_choosedocpanelComponentShown
         //show this message dialog if QR code was scanned successfully
         webcam.close();
-        JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully!\n"
-            + "Choose the document you need, it will be filled-up automatically.");
 
         COIeditname.setText(infoname);
         COIeditage.setText(infoage);
@@ -871,6 +869,8 @@ public class CameraScanForm extends javax.swing.JFrame implements Runnable, Thre
         COIeditday.setText(day.format(thisDate));
         COIedityear.setText(year.format(thisDate));
         COIeditdate.setText(dateForm.format(thisDate));
+
+        JOptionPane.showMessageDialog(this, "Data from QR code was scanned successfully!");
     }//GEN-LAST:event_choosedocpanelComponentShown
 
     private void btnCOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCOIActionPerformed
